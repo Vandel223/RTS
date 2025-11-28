@@ -111,7 +111,7 @@ channel_Temp 61
 channel_DAC1 62
 channel_FVR_buf1 63
 ]
-"190 /Users/dias/MPLABXProjects/tstTC74LCD.X/main.c
+"213 /Users/dias/MPLABXProjects/tstTC74LCD.X/main.c
 [e E12731 . `uc
 adc_potent 0
 channel_VSS 60
@@ -153,6 +153,14 @@ channel_FVR_buf1 63
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"14 /Users/dias/MPLABXProjects/tstTC74LCD.X/EEPROM/eeprom.c
+[v _write_EEPROM_record write_EEPROM_record `(v  1 e 1 0 ]
+"32
+[v _EEPROM_checksum EEPROM_checksum `(uc  1 e 1 0 ]
+"49 /Users/dias/MPLABXProjects/tstTC74LCD.X/EEPROM/eeprom.h
+[s S2391 __EEPROM_config 11 `uc 1 pmon 1 0 `uc 1 tala 1 1 `uc 1 tina 1 2 `uc 1 alaf 1 3 `uc 1 alah 1 4 `uc 1 alam 1 5 `uc 1 alas 1 6 `uc 1 alat 1 7 `uc 1 alal 1 8 `uc 1 clkh 1 9 `uc 1 clkm 1 10 ]
+"65 /Users/dias/MPLABXProjects/tstTC74LCD.X/EEPROM/eeprom.c
+[v _read_EEPROM_config read_EEPROM_config `(S2391  1 e 11 0 ]
 "26 /Users/dias/MPLABXProjects/tstTC74LCD.X/I2C/i2c.c
 [v _OpenI2C OpenI2C `(v  1 e 1 0 ]
 "44
@@ -177,13 +185,13 @@ channel_FVR_buf1 63
 [v _LCDbusy LCDbusy `(i  1 e 2 0 ]
 "125
 [v _LCDpos LCDpos `(v  1 e 1 0 ]
-"59 /Users/dias/MPLABXProjects/tstTC74LCD.X/main.c
+"78 /Users/dias/MPLABXProjects/tstTC74LCD.X/main.c
 [v _timer_1s timer_1s `(v  1 e 1 0 ]
-"64
+"83
 [v _timer3_100ms timer3_100ms `(v  1 e 1 0 ]
-"70
+"89
 [v _timer5_100ms timer5_100ms `(v  1 e 1 0 ]
-"76
+"95
 [v _main main `(v  1 e 1 0 ]
 "63 /Users/dias/MPLABXProjects/tstTC74LCD.X/mcc_generated_files/adcc.c
 [v _ADCC_Initialize ADCC_Initialize `(v  1 e 1 0 ]
@@ -305,6 +313,16 @@ channel_FVR_buf1 63
 [v _OSCILLATOR_Initialize OSCILLATOR_Initialize `(v  1 e 1 0 ]
 "78
 [v _PMD_Initialize PMD_Initialize `(v  1 e 1 0 ]
+"58 /Users/dias/MPLABXProjects/tstTC74LCD.X/mcc_generated_files/memory.c
+[v _FLASH_ReadWord FLASH_ReadWord `(us  1 e 2 0 ]
+"94
+[v _FLASH_WriteBlock FLASH_WriteBlock `(c  1 e 1 0 ]
+"149
+[v _FLASH_EraseBlock FLASH_EraseBlock `(v  1 e 1 0 ]
+"180
+[v _DATAEE_WriteByte DATAEE_WriteByte `(v  1 e 1 0 ]
+"202
+[v _DATAEE_ReadByte DATAEE_ReadByte `(uc  1 e 1 0 ]
 "55 /Users/dias/MPLABXProjects/tstTC74LCD.X/mcc_generated_files/pin_manager.c
 [v _PIN_MANAGER_Initialize PIN_MANAGER_Initialize `(v  1 e 1 0 ]
 "58 /Users/dias/MPLABXProjects/tstTC74LCD.X/mcc_generated_files/pwm6.c
@@ -375,7 +393,7 @@ channel_FVR_buf1 63
 "364 /Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8/pic/include/proc/pic16f18875.h
 [u S1453 . 1 `S1448 1 . 1 0 ]
 [v _INTCONbits INTCONbits `VES1453  1 e 1 @11 ]
-[s S2423 . 1 `uc 1 RB0 1 0 :1:0 
+[s S2452 . 1 `uc 1 RB0 1 0 :1:0 
 `uc 1 RB1 1 0 :1:1 
 `uc 1 RB2 1 0 :1:2 
 `uc 1 RB3 1 0 :1:3 
@@ -385,9 +403,9 @@ channel_FVR_buf1 63
 `uc 1 RB7 1 0 :1:7 
 ]
 "463
-[u S2432 . 1 `S2423 1 . 1 0 ]
-[v _PORTBbits PORTBbits `VES2432  1 e 1 @13 ]
-[s S2448 . 1 `uc 1 RC0 1 0 :1:0 
+[u S2461 . 1 `S2452 1 . 1 0 ]
+[v _PORTBbits PORTBbits `VES2461  1 e 1 @13 ]
+[s S2477 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -397,8 +415,8 @@ channel_FVR_buf1 63
 `uc 1 RC7 1 0 :1:7 
 ]
 "525
-[u S2457 . 1 `S2448 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES2457  1 e 1 @14 ]
+[u S2486 . 1 `S2477 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES2486  1 e 1 @14 ]
 "670
 [v _TRISA TRISA `VEuc  1 e 1 @17 ]
 "732
@@ -797,22 +815,22 @@ channel_FVR_buf1 63
 "7684
 [v _T3CON T3CON `VEuc  1 e 1 @532 ]
 "7715
-[s S2578 . 1 `uc 1 TMR3ON 1 0 :1:0 
+[s S2667 . 1 `uc 1 TMR3ON 1 0 :1:0 
 `uc 1 T3RD16 1 0 :1:1 
 `uc 1 nT3SYNC 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
 `uc 1 T3CKPS0 1 0 :1:4 
 `uc 1 T3CKPS1 1 0 :1:5 
 ]
-[s S2589 . 1 `uc 1 . 1 0 :1:0 
+[s S2678 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 RD163 1 0 :1:1 
 ]
-[u S2592 . 1 `S1565 1 . 1 0 `S2578 1 . 1 0 `S1578 1 . 1 0 `S2589 1 . 1 0 ]
-[v _T3CONbits T3CONbits `VES2592  1 e 1 @532 ]
+[u S2681 . 1 `S1565 1 . 1 0 `S2667 1 . 1 0 `S1578 1 . 1 0 `S2678 1 . 1 0 ]
+[v _T3CONbits T3CONbits `VES2681  1 e 1 @532 ]
 "7780
 [v _T3GCON T3GCON `VEuc  1 e 1 @533 ]
 "7814
-[s S2626 . 1 `uc 1 . 1 0 :2:0 
+[s S2715 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 T3GVAL 1 0 :1:2 
 `uc 1 T3GGO_nDONE 1 0 :1:3 
 `uc 1 T3GSPM 1 0 :1:4 
@@ -820,11 +838,11 @@ channel_FVR_buf1 63
 `uc 1 T3GPOL 1 0 :1:6 
 `uc 1 T3GE 1 0 :1:7 
 ]
-[s S2634 . 1 `uc 1 . 1 0 :3:0 
+[s S2723 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 T3GGO 1 0 :1:3 
 ]
-[u S2637 . 1 `S1611 1 . 1 0 `S2626 1 . 1 0 `S2634 1 . 1 0 ]
-[v _T3GCONbits T3GCONbits `VES2637  1 e 1 @533 ]
+[u S2726 . 1 `S1611 1 . 1 0 `S2715 1 . 1 0 `S2723 1 . 1 0 ]
+[v _T3GCONbits T3GCONbits `VES2726  1 e 1 @533 ]
 "7976
 [v _T3GATE T3GATE `VEuc  1 e 1 @534 ]
 "8142
@@ -836,22 +854,22 @@ channel_FVR_buf1 63
 "8581
 [v _T5CON T5CON `VEuc  1 e 1 @538 ]
 "8612
-[s S2738 . 1 `uc 1 TMR5ON 1 0 :1:0 
+[s S2827 . 1 `uc 1 TMR5ON 1 0 :1:0 
 `uc 1 T5RD16 1 0 :1:1 
 `uc 1 nT5SYNC 1 0 :1:2 
 `uc 1 . 1 0 :1:3 
 `uc 1 T5CKPS0 1 0 :1:4 
 `uc 1 T5CKPS1 1 0 :1:5 
 ]
-[s S2749 . 1 `uc 1 . 1 0 :1:0 
+[s S2838 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 RD165 1 0 :1:1 
 ]
-[u S2752 . 1 `S1565 1 . 1 0 `S2738 1 . 1 0 `S1578 1 . 1 0 `S2749 1 . 1 0 ]
-[v _T5CONbits T5CONbits `VES2752  1 e 1 @538 ]
+[u S2841 . 1 `S1565 1 . 1 0 `S2827 1 . 1 0 `S1578 1 . 1 0 `S2838 1 . 1 0 ]
+[v _T5CONbits T5CONbits `VES2841  1 e 1 @538 ]
 "8677
 [v _T5GCON T5GCON `VEuc  1 e 1 @539 ]
 "8711
-[s S2786 . 1 `uc 1 . 1 0 :2:0 
+[s S2875 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 T5GVAL 1 0 :1:2 
 `uc 1 T5GGO_nDONE 1 0 :1:3 
 `uc 1 T5GSPM 1 0 :1:4 
@@ -859,11 +877,11 @@ channel_FVR_buf1 63
 `uc 1 T5GPOL 1 0 :1:6 
 `uc 1 T5GE 1 0 :1:7 
 ]
-[s S2794 . 1 `uc 1 . 1 0 :3:0 
+[s S2883 . 1 `uc 1 . 1 0 :3:0 
 `uc 1 T5GGO 1 0 :1:3 
 ]
-[u S2797 . 1 `S1611 1 . 1 0 `S2786 1 . 1 0 `S2794 1 . 1 0 ]
-[v _T5GCONbits T5GCONbits `VES2797  1 e 1 @539 ]
+[u S2886 . 1 `S1611 1 . 1 0 `S2875 1 . 1 0 `S2883 1 . 1 0 ]
+[v _T5GCONbits T5GCONbits `VES2886  1 e 1 @539 ]
 "8873
 [v _T5GATE T5GATE `VEuc  1 e 1 @540 ]
 "9039
@@ -1028,6 +1046,27 @@ channel_FVR_buf1 63
 [v _PMD4 PMD4 `VEuc  1 e 1 @1946 ]
 "22380
 [v _PMD5 PMD5 `VEuc  1 e 1 @1947 ]
+"23101
+[v _NVMADRL NVMADRL `VEuc  1 e 1 @2074 ]
+"23163
+[v _NVMADRH NVMADRH `VEuc  1 e 1 @2075 ]
+"23219
+[v _NVMDATL NVMDATL `VEuc  1 e 1 @2076 ]
+"23281
+[v _NVMDATH NVMDATH `VEuc  1 e 1 @2077 ]
+[s S2958 . 1 `uc 1 RD 1 0 :1:0 
+`uc 1 WR 1 0 :1:1 
+`uc 1 WREN 1 0 :1:2 
+`uc 1 WRERR 1 0 :1:3 
+`uc 1 FREE 1 0 :1:4 
+`uc 1 LWLO 1 0 :1:5 
+`uc 1 NVMREGS 1 0 :1:6 
+]
+"23347
+[u S2966 . 1 `S2958 1 . 1 0 ]
+[v _NVMCON1bits NVMCON1bits `VES2966  1 e 1 @2078 ]
+"23387
+[v _NVMCON2 NVMCON2 `VEuc  1 e 1 @2079 ]
 "23451
 [v _OSCCON1 OSCCON1 `VEuc  1 e 1 @2189 ]
 "23591
@@ -1105,13 +1144,13 @@ channel_FVR_buf1 63
 [v _flags flags `uc  1 s 1 flags ]
 "185
 [v _dbuf dbuf `[32]uc  1 s 32 dbuf ]
-"54 /Users/dias/MPLABXProjects/tstTC74LCD.X/main.c
+"73 /Users/dias/MPLABXProjects/tstTC74LCD.X/main.c
 [v _timer_1s_flag timer_1s_flag `uc  1 e 1 0 ]
-"55
-[v _timer_5s_flag timer_5s_flag `uc  1 e 1 0 ]
-"56
+"74
+[v _timer_PMON_flag timer_PMON_flag `uc  1 e 1 0 ]
+"75
 [v _timer3_100ms_flag timer3_100ms_flag `uc  1 e 1 0 ]
-"57
+"76
 [v _timer5_100ms_flag timer5_100ms_flag `uc  1 e 1 0 ]
 "146 /Users/dias/MPLABXProjects/tstTC74LCD.X/mcc_generated_files/i2c1_master.c
 [v _i2c1_fsmStateTable i2c1_fsmStateTable `DC[16]*.37(E12611  1 e 32 0 ]
@@ -1134,40 +1173,78 @@ channel_FVR_buf1 63
 [v _timer5ReloadVal timer5ReloadVal `VEus  1 e 2 0 ]
 "58
 [v _TMR5_InterruptHandler TMR5_InterruptHandler `*.37(v  1 e 2 0 ]
-"76 /Users/dias/MPLABXProjects/tstTC74LCD.X/main.c
+"95 /Users/dias/MPLABXProjects/tstTC74LCD.X/main.c
 [v _main main `(v  1 e 1 0 ]
 {
-"88
-[v main@buf buf `[17]uc  1 a 17 6 ]
-"79
-[v main@potentiometer potentiometer `us  1 a 2 23 ]
-"85
-[v main@min min `uc  1 a 1 31 ]
-"84
-[v main@sec sec `uc  1 a 1 30 ]
-"86
-[v main@hour hour `uc  1 a 1 29 ]
-"91
-[v main@sw2 sw2 `uc  1 a 1 28 ]
-"90
-[v main@sw1 sw1 `uc  1 a 1 27 ]
-"82
-[v main@temp temp `uc  1 a 1 26 ]
-"80
-[v main@lumin lumin `uc  1 a 1 25 ]
-"195
+"113
+[v main@buf buf `[17]uc  1 a 17 0 ]
+[s S2391 __EEPROM_config 11 `uc 1 pmon 1 0 `uc 1 tala 1 1 `uc 1 tina 1 2 `uc 1 alaf 1 3 `uc 1 alah 1 4 `uc 1 alam 1 5 `uc 1 alas 1 6 `uc 1 alat 1 7 `uc 1 alal 1 8 `uc 1 clkh 1 9 `uc 1 clkm 1 10 ]
+"98
+[v main@config config `S2391  1 a 11 46 ]
+[s S2403 __EEPROM_record 5 `uc 1 temp 1 0 `uc 1 lumin 1 1 `uc 1 hour 1 2 `uc 1 min 1 3 `uc 1 sec 1 4 ]
+"103
+[v main@min_lumin min_lumin `S2403  1 a 5 41 ]
+"102
+[v main@max_lumin max_lumin `S2403  1 a 5 36 ]
+"107
+[v main@min_temp min_temp `S2403  1 a 5 31 ]
+"106
+[v main@max_temp max_temp `S2403  1 a 5 26 ]
+"100
+[v main@potentiometer potentiometer `us  1 a 2 17 ]
+"105
+[v main@temp temp `uc  1 a 1 25 ]
+"101
+[v main@lumin lumin `uc  1 a 1 24 ]
+"109
+[v main@sec sec `uc  1 a 1 23 ]
+"110
+[v main@min min `uc  1 a 1 22 ]
+"111
+[v main@hour hour `uc  1 a 1 21 ]
+"116
+[v main@sw2 sw2 `uc  1 a 1 20 ]
+"115
+[v main@sw1 sw1 `uc  1 a 1 19 ]
+"101
+[v main@F12858 F12858 `S2403  1 s 5 F12858 ]
+"102
+[v main@F12860 F12860 `S2403  1 s 5 F12860 ]
+"105
+[v main@F12863 F12863 `S2403  1 s 5 F12863 ]
+"106
+[v main@F12865 F12865 `S2403  1 s 5 F12865 ]
+"273
+} 0
+"14 /Users/dias/MPLABXProjects/tstTC74LCD.X/EEPROM/eeprom.c
+[v _write_EEPROM_record write_EEPROM_record `(v  1 e 1 0 ]
+{
+[s S2403 __EEPROM_record 5 `uc 1 temp 1 0 `uc 1 lumin 1 1 `uc 1 hour 1 2 `uc 1 min 1 3 `uc 1 sec 1 4 ]
+[v write_EEPROM_record@record record `S2403  1 p 5 0 ]
+[v write_EEPROM_record@addr addr `us  1 p 2 5 ]
+"20
+} 0
+"180 /Users/dias/MPLABXProjects/tstTC74LCD.X/mcc_generated_files/memory.c
+[v _DATAEE_WriteByte DATAEE_WriteByte `(v  1 e 1 0 ]
+{
+"182
+[v DATAEE_WriteByte@GIEBitValue GIEBitValue `uc  1 a 1 5 ]
+"180
+[v DATAEE_WriteByte@bAdd bAdd `us  1 p 2 2 ]
+[v DATAEE_WriteByte@bData bData `uc  1 p 1 4 ]
+"200
 } 0
 "9 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/nf_sprintf.c
 [v _sprintf sprintf `(i  1 e 2 0 ]
 {
-[u S3265 . 2 `*.39uc 1 buffer 2 0 `*.2DCuc 1 source 2 0 ]
+[u S3499 . 2 `*.39uc 1 buffer 2 0 `*.2DCuc 1 source 2 0 ]
 "13
-[s S3268 _IO_FILE 11 `S3265 1 . 2 0 `i 1 count 2 2 `[3]uc 1 ungetbuf 3 4 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
-[v sprintf@f f `S3268  1 a 11 64 ]
+[s S3502 _IO_FILE 11 `S3499 1 . 2 0 `i 1 count 2 2 `[3]uc 1 ungetbuf 3 4 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
+[v sprintf@f f `S3502  1 a 11 64 ]
 "12
 [v sprintf@ap ap `[1]*.4v  1 a 1 63 ]
 "9
-[v sprintf@s s `*.4uc  1 p 1 54 ]
+[v sprintf@s s `*.5uc  1 p 1 54 ]
 [v sprintf@fmt fmt `*.25DCuc  1 p 2 55 ]
 "23
 } 0
@@ -1176,9 +1253,9 @@ channel_FVR_buf1 63
 {
 "1820
 [v vfprintf@cfmt cfmt `*.25uc  1 a 2 52 ]
-[s S3300 _IO_FILE 0 ]
+[s S3534 _IO_FILE 0 ]
 "1817
-[v vfprintf@fp fp `*.39S3300  1 p 2 46 ]
+[v vfprintf@fp fp `*.39S3534  1 p 2 46 ]
 [v vfprintf@fmt fmt `*.25DCuc  1 p 2 48 ]
 [v vfprintf@ap ap `*.4*.4v  1 p 1 50 ]
 "1840
@@ -1186,16 +1263,16 @@ channel_FVR_buf1 63
 "1177
 [v _vfpfcnvrt vfpfcnvrt `(v  1 s 1 vfpfcnvrt ]
 {
-[u S3324 . 4 `i 1 sint 2 0 `ui 1 uint 2 0 `d 1 f 4 0 ]
+[u S3558 . 4 `i 1 sint 2 0 `ui 1 uint 2 0 `d 1 f 4 0 ]
 "1188
-[v vfpfcnvrt@convarg convarg `S3324  1 a 4 39 ]
+[v vfpfcnvrt@convarg convarg `S3558  1 a 4 39 ]
 "1179
 [v vfpfcnvrt@cp cp `*.25uc  1 a 2 44 ]
 "1180
 [v vfpfcnvrt@done done `a  1 a 1 43 ]
-[s S3300 _IO_FILE 0 ]
+[s S3534 _IO_FILE 0 ]
 "1177
-[v vfpfcnvrt@fp fp `*.39S3300  1 p 2 31 ]
+[v vfpfcnvrt@fp fp `*.39S3534  1 p 2 31 ]
 [v vfpfcnvrt@fmt fmt `*.4*.25uc  1 p 1 33 ]
 [v vfpfcnvrt@ap ap `*.4*.4v  1 p 1 34 ]
 "1814
@@ -1232,9 +1309,9 @@ channel_FVR_buf1 63
 [v dtoa@s s `uc  1 a 1 28 ]
 "520
 [v dtoa@p p `a  1 a 1 25 ]
-[s S3300 _IO_FILE 0 ]
+[s S3534 _IO_FILE 0 ]
 "513
-[v dtoa@fp fp `*.39S3300  1 p 2 18 ]
+[v dtoa@fp fp `*.39S3534  1 p 2 18 ]
 [v dtoa@d d `i  1 p 2 20 ]
 "583
 } 0
@@ -1243,9 +1320,9 @@ channel_FVR_buf1 63
 {
 "195
 [v pad@i i `i  1 a 2 16 ]
-[s S3300 _IO_FILE 0 ]
+[s S3534 _IO_FILE 0 ]
 "193
-[v pad@fp fp `*.39S3300  1 p 2 11 ]
+[v pad@fp fp `*.39S3534  1 p 2 11 ]
 [v pad@buf buf `*.5uc  1 p 1 13 ]
 [v pad@p p `i  1 p 2 14 ]
 "226
@@ -1259,18 +1336,18 @@ channel_FVR_buf1 63
 [v fputs@c c `uc  1 a 1 8 ]
 "8
 [v fputs@s s `*.5DCuc  1 p 1 5 ]
-[u S3265 . 2 `*.39uc 1 buffer 2 0 `*.2DCuc 1 source 2 0 ]
-[s S3268 _IO_FILE 11 `S3265 1 . 2 0 `i 1 count 2 2 `[3]uc 1 ungetbuf 3 4 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
-[v fputs@fp fp `*.39S3268  1 p 2 6 ]
+[u S3499 . 2 `*.39uc 1 buffer 2 0 `*.2DCuc 1 source 2 0 ]
+[s S3502 _IO_FILE 11 `S3499 1 . 2 0 `i 1 count 2 2 `[3]uc 1 ungetbuf 3 4 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
+[v fputs@fp fp `*.39S3502  1 p 2 6 ]
 "19
 } 0
 "8 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/nf_fputc.c
 [v _fputc fputc `(i  1 e 2 0 ]
 {
 [v fputc@c c `i  1 p 2 2 ]
-[u S3265 . 2 `*.39uc 1 buffer 2 0 `*.2DCuc 1 source 2 0 ]
-[s S3268 _IO_FILE 11 `S3265 1 . 2 0 `i 1 count 2 2 `[3]uc 1 ungetbuf 3 4 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
-[v fputc@fp fp `*.39S3268  1 p 2 4 ]
+[u S3499 . 2 `*.39uc 1 buffer 2 0 `*.2DCuc 1 source 2 0 ]
+[s S3502 _IO_FILE 11 `S3499 1 . 2 0 `i 1 count 2 2 `[3]uc 1 ungetbuf 3 4 `i 1 ungetcnt 2 7 `i 1 limit 2 9 ]
+[v fputc@fp fp `*.39S3502  1 p 2 4 ]
 "24
 } 0
 "7 /Applications/microchip/xc8/v3.10/pic/sources/c99/common/putch.c
@@ -1307,6 +1384,36 @@ channel_FVR_buf1 63
 [v ___awdiv@divisor divisor `i  1 p 2 2 ]
 [v ___awdiv@dividend dividend `i  1 p 2 4 ]
 "41
+} 0
+"49 /Users/dias/MPLABXProjects/tstTC74LCD.X/EEPROM/eeprom.h
+[s S2391 __EEPROM_config 11 `uc 1 pmon 1 0 `uc 1 tala 1 1 `uc 1 tina 1 2 `uc 1 alaf 1 3 `uc 1 alah 1 4 `uc 1 alam 1 5 `uc 1 alas 1 6 `uc 1 alat 1 7 `uc 1 alal 1 8 `uc 1 clkh 1 9 `uc 1 clkm 1 10 ]
+"65 /Users/dias/MPLABXProjects/tstTC74LCD.X/EEPROM/eeprom.c
+[v _read_EEPROM_config read_EEPROM_config `(S2391  1 e 11 0 ]
+{
+"66
+[v read_EEPROM_config@config config `S2391  1 a 11 24 ]
+"67
+[v read_EEPROM_config@checksum checksum `uc  1 a 1 23 ]
+[v read_EEPROM_config@magic_word magic_word `uc  1 a 1 22 ]
+"65
+[v read_EEPROM_config@addr addr `us  1 p 2 11 ]
+"90
+} 0
+"32
+[v _EEPROM_checksum EEPROM_checksum `(uc  1 e 1 0 ]
+{
+"34
+[v EEPROM_checksum@sum sum `uc  1 a 1 2 ]
+[s S2391 __EEPROM_config 11 `uc 1 pmon 1 0 `uc 1 tala 1 1 `uc 1 tina 1 2 `uc 1 alaf 1 3 `uc 1 alah 1 4 `uc 1 alam 1 5 `uc 1 alas 1 6 `uc 1 alat 1 7 `uc 1 alal 1 8 `uc 1 clkh 1 9 `uc 1 clkm 1 10 ]
+"32
+[v EEPROM_checksum@config config `S2391  1 p 11 0 ]
+"47
+} 0
+"202 /Users/dias/MPLABXProjects/tstTC74LCD.X/mcc_generated_files/memory.c
+[v _DATAEE_ReadByte DATAEE_ReadByte `(uc  1 e 1 0 ]
+{
+[v DATAEE_ReadByte@bAdd bAdd `us  1 p 2 2 ]
+"212
 } 0
 "16 /Users/dias/MPLABXProjects/tstTC74LCD.X/TC74/tc74.c
 [v _readTC74 readTC74 `(uc  1 e 1 0 ]
@@ -1414,7 +1521,7 @@ channel_FVR_buf1 63
 "114
 [v LCDstr@c c `uc  1 a 1 1 ]
 "112
-[v LCDstr@p p `*.4uc  1 p 1 0 ]
+[v LCDstr@p p `*.5uc  1 p 1 0 ]
 "117
 } 0
 "107
@@ -1537,10 +1644,10 @@ channel_FVR_buf1 63
 {
 "185
 } 0
-"70 /Users/dias/MPLABXProjects/tstTC74LCD.X/main.c
+"89 /Users/dias/MPLABXProjects/tstTC74LCD.X/main.c
 [v _timer5_100ms timer5_100ms `(v  1 e 1 0 ]
 {
-"74
+"93
 } 0
 "105 /Users/dias/MPLABXProjects/tstTC74LCD.X/mcc_generated_files/tmr5.c
 [v _TMR5_StopTimer TMR5_StopTimer `(v  1 e 1 0 ]
@@ -1568,10 +1675,10 @@ channel_FVR_buf1 63
 {
 "185
 } 0
-"64 /Users/dias/MPLABXProjects/tstTC74LCD.X/main.c
+"83 /Users/dias/MPLABXProjects/tstTC74LCD.X/main.c
 [v _timer3_100ms timer3_100ms `(v  1 e 1 0 ]
 {
-"68
+"87
 } 0
 "105 /Users/dias/MPLABXProjects/tstTC74LCD.X/mcc_generated_files/tmr3.c
 [v _TMR3_StopTimer TMR3_StopTimer `(v  1 e 1 0 ]
@@ -1599,10 +1706,10 @@ channel_FVR_buf1 63
 {
 "185
 } 0
-"59 /Users/dias/MPLABXProjects/tstTC74LCD.X/main.c
+"78 /Users/dias/MPLABXProjects/tstTC74LCD.X/main.c
 [v _timer_1s timer_1s `(v  1 e 1 0 ]
 {
-"62
+"81
 } 0
 "127 /Users/dias/MPLABXProjects/tstTC74LCD.X/mcc_generated_files/tmr1.c
 [v _TMR1_WriteTimer TMR1_WriteTimer `(v  1 e 1 0 ]

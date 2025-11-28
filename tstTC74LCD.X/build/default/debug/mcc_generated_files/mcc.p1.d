@@ -10,4 +10,5 @@ mcc_generated_files/tmr3.h  \
 mcc_generated_files/pwm6.h  \
 mcc_generated_files/tmr1.h  \
 mcc_generated_files/tmr2.h  \
-mcc_generated_files/adcc.h 
+mcc_generated_files/adcc.h  \
+mcc_generated_files/memory.h 

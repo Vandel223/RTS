@@ -1,4 +1,4 @@
-# 1 "mcc_generated_files/pwm6.c"
+# 1 "EEPROM/eeprom.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 295 "<built-in>" 3
@@ -6,8 +6,8 @@
 # 1 "<built-in>" 2
 # 1 "/Applications/microchip/xc8/v3.10/pic/include/language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "mcc_generated_files/pwm6.c" 2
-# 51 "mcc_generated_files/pwm6.c"
+# 1 "EEPROM/eeprom.c" 2
+# 10 "EEPROM/eeprom.c"
 # 1 "/Applications/microchip/xc8/v3.10/pic/include/xc.h" 1 3
 # 18 "/Applications/microchip/xc8/v3.10/pic/include/xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -20805,39 +20805,128 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "/Applications/microchip/xc8/v3.10/pic/include/xc.h" 2 3
-# 52 "mcc_generated_files/pwm6.c" 2
-# 1 "mcc_generated_files/pwm6.h" 1
-# 102 "mcc_generated_files/pwm6.h"
- void PWM6_Initialize(void);
-# 129 "mcc_generated_files/pwm6.h"
- void PWM6_LoadDutyValue(uint16_t dutyValue);
-# 53 "mcc_generated_files/pwm6.c" 2
+# 11 "EEPROM/eeprom.c" 2
+# 1 "EEPROM/eeprom.h" 1
+# 41 "EEPROM/eeprom.h"
+typedef struct __EEPROM_record {
+    uint8_t temp;
+    uint8_t lumin;
+    uint8_t hour;
+    uint8_t min;
+    uint8_t sec;
+} EEPROM_record;
 
+typedef struct __EEPROM_config {
+    uint8_t pmon;
+    uint8_t tala;
+    uint8_t tina;
+    uint8_t alaf;
+    uint8_t alah;
+    uint8_t alam;
+    uint8_t alas;
+    uint8_t alat;
+    uint8_t alal;
+    uint8_t clkh;
+    uint8_t clkm;
+} EEPROM_config;
 
+void write_EEPROM_record(EEPROM_record record, uint16_t addr);
+EEPROM_record read_EEPROM_record(uint16_t addr);
+void write_EEPROM_config(EEPROM_config config, uint16_t addr);
+EEPROM_config read_EEPROM_config(uint16_t addr);
+# 12 "EEPROM/eeprom.c" 2
+# 1 "EEPROM/../mcc_generated_files/memory.h" 1
+# 54 "EEPROM/../mcc_generated_files/memory.h"
+# 1 "/Applications/microchip/xc8/v3.10/pic/include/c99/stdbool.h" 1 3
+# 55 "EEPROM/../mcc_generated_files/memory.h" 2
+# 99 "EEPROM/../mcc_generated_files/memory.h"
+uint16_t FLASH_ReadWord(uint16_t flashAddr);
+# 128 "EEPROM/../mcc_generated_files/memory.h"
+void FLASH_WriteWord(uint16_t flashAddr, uint16_t *ramBuf, uint16_t word);
+# 164 "EEPROM/../mcc_generated_files/memory.h"
+int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
+# 189 "EEPROM/../mcc_generated_files/memory.h"
+void FLASH_EraseBlock(uint16_t startAddr);
+# 222 "EEPROM/../mcc_generated_files/memory.h"
+void DATAEE_WriteByte(uint16_t bAdd, uint8_t bData);
+# 248 "EEPROM/../mcc_generated_files/memory.h"
+uint8_t DATAEE_ReadByte(uint16_t bAdd);
+# 13 "EEPROM/eeprom.c" 2
 
+void write_EEPROM_record(EEPROM_record record, uint16_t addr) {
+    DATAEE_WriteByte(addr, record.hour);
+    DATAEE_WriteByte(addr + 1, record.min);
+    DATAEE_WriteByte(addr + 2, record.sec);
+    DATAEE_WriteByte(addr + 3, record.temp);
+    DATAEE_WriteByte(addr + 4, record.lumin);
+}
 
+EEPROM_record read_EEPROM_record(uint16_t addr) {
+    EEPROM_record record;
+    record.hour = DATAEE_ReadByte(addr);
+    record.min = DATAEE_ReadByte(addr + 1);
+    record.sec = DATAEE_ReadByte(addr + 2);
+    record.temp = DATAEE_ReadByte(addr + 3);
+    record.lumin = DATAEE_ReadByte(addr + 4);
+    return record;
+}
 
- void PWM6_Initialize(void)
- {
+uint8_t EEPROM_checksum(EEPROM_config config)
+{
+    uint8_t sum = 0;
+    sum += config.pmon +
+            config.tala +
+            config.tina +
+            config.alaf +
+            config.alah +
+            config.alam +
+            config.alas +
+            config.alat +
+            config.alal +
+            config.clkh +
+            config.clkm;
+    return sum;
+}
 
+void write_EEPROM_config(EEPROM_config config, uint16_t addr) {
+    DATAEE_WriteByte(addr, 0xAB);
+    DATAEE_WriteByte(addr + 1, config.pmon);
+    DATAEE_WriteByte(addr + 2, config.tala);
+    DATAEE_WriteByte(addr + 3, config.tina);
+    DATAEE_WriteByte(addr + 4, config.alaf);
+    DATAEE_WriteByte(addr + 5, config.alah);
+    DATAEE_WriteByte(addr + 6, config.alam);
+    DATAEE_WriteByte(addr + 7, config.alas);
+    DATAEE_WriteByte(addr + 8, config.alat);
+    DATAEE_WriteByte(addr + 9, config.alal);
+    DATAEE_WriteByte(addr + 10, config.clkh);
+    DATAEE_WriteByte(addr + 11, config.clkm);
+    DATAEE_WriteByte(addr + 12, EEPROM_checksum(config));
+}
 
-    PWM6CON = 0x80;
+EEPROM_config read_EEPROM_config(uint16_t addr) {
+    EEPROM_config config;
+    uint8_t magic_word, checksum;
 
+    magic_word = DATAEE_ReadByte(addr);
+    config.pmon = DATAEE_ReadByte(addr + 1);
+    config.tala = DATAEE_ReadByte(addr + 2);
+    config.tina = DATAEE_ReadByte(addr + 3);
+    config.alaf = DATAEE_ReadByte(addr + 4);
+    config.alah = DATAEE_ReadByte(addr + 5);
+    config.alam = DATAEE_ReadByte(addr + 6);
+    config.alas = DATAEE_ReadByte(addr + 7);
+    config.alat = DATAEE_ReadByte(addr + 8);
+    config.alal = DATAEE_ReadByte(addr + 9);
+    config.clkh = DATAEE_ReadByte(addr + 10);
+    config.clkm = DATAEE_ReadByte(addr + 11);
+    checksum = DATAEE_ReadByte(addr + 12);
 
-    PWM6DCH = 0x00;
+    if (magic_word == 0xAB && checksum == EEPROM_checksum(config))
+        return config;
+    else {
+        config.pmon = 0;
+        return config;
+    }
 
-
-    PWM6DCL = 0x00;
-
-
-    CCPTMRS1bits.P6TSEL = 1;
- }
-
- void PWM6_LoadDutyValue(uint16_t dutyValue)
- {
-
-     PWM6DCH = (dutyValue & 0x03FC)>>2;
-
-
-     PWM6DCL = (dutyValue & 0x0003)<<6;
- }
+}

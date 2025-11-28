@@ -1,67 +1,18 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"104 mcc_generated_files/mcc.h
-[; ;mcc_generated_files/mcc.h: 104: void PMD_Initialize(void);
-[v _PMD_Initialize `(v ~T0 @X0 0 ef ]
-"89 mcc_generated_files/i2c1_master.h
-[; ;mcc_generated_files/i2c1_master.h: 89: void I2C1_Initialize(void);
-[v _I2C1_Initialize `(v ~T0 @X0 0 ef ]
-"234 mcc_generated_files/pin_manager.h
-[; ;mcc_generated_files/pin_manager.h: 234: void PIN_MANAGER_Initialize (void);
-[v _PIN_MANAGER_Initialize `(v ~T0 @X0 0 ef ]
-"91 mcc_generated_files/mcc.h
-[; ;mcc_generated_files/mcc.h: 91: void OSCILLATOR_Initialize(void);
-[v _OSCILLATOR_Initialize `(v ~T0 @X0 0 ef ]
-"102 mcc_generated_files/pwm6.h
-[; ;mcc_generated_files/pwm6.h: 102:  void PWM6_Initialize(void);
-[v _PWM6_Initialize `(v ~T0 @X0 0 ef ]
-"127 mcc_generated_files/adcc.h
-[; ;mcc_generated_files/adcc.h: 127: void ADCC_Initialize(void);
-[v _ADCC_Initialize `(v ~T0 @X0 0 ef ]
-"100 mcc_generated_files/tmr3.h
-[; ;mcc_generated_files/tmr3.h: 100: void TMR3_Initialize(void);
-[v _TMR3_Initialize `(v ~T0 @X0 0 ef ]
-"100 mcc_generated_files/tmr5.h
-[; ;mcc_generated_files/tmr5.h: 100: void TMR5_Initialize(void);
-[v _TMR5_Initialize `(v ~T0 @X0 0 ef ]
-"336 mcc_generated_files/tmr2.h
-[; ;mcc_generated_files/tmr2.h: 336: void TMR2_Initialize(void);
-[v _TMR2_Initialize `(v ~T0 @X0 0 ef ]
-"100 mcc_generated_files/tmr1.h
-[; ;mcc_generated_files/tmr1.h: 100: void TMR1_Initialize(void);
-[v _TMR1_Initialize `(v ~T0 @X0 0 ef ]
-"23451 /Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8/pic/include/proc/pic16f18875.h
-[; ;/Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8/pic/include/proc/pic16f18875.h: 23451: extern volatile unsigned char OSCCON1 __attribute__((address(0x88D)));
-[v _OSCCON1 `Vuc ~T0 @X0 0 e@2189 ]
-"23591
-[; ;/Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8/pic/include/proc/pic16f18875.h: 23591: extern volatile unsigned char OSCCON3 __attribute__((address(0x88F)));
-[v _OSCCON3 `Vuc ~T0 @X0 0 e@2191 ]
-"23688
-[; ;/Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8/pic/include/proc/pic16f18875.h: 23688: extern volatile unsigned char OSCEN __attribute__((address(0x891)));
-[v _OSCEN `Vuc ~T0 @X0 0 e@2193 ]
-"23797
-[; ;/Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8/pic/include/proc/pic16f18875.h: 23797: extern volatile unsigned char OSCFRQ __attribute__((address(0x893)));
-[v _OSCFRQ `Vuc ~T0 @X0 0 e@2195 ]
-"23739
-[; ;/Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8/pic/include/proc/pic16f18875.h: 23739: extern volatile unsigned char OSCTUNE __attribute__((address(0x892)));
-[v _OSCTUNE `Vuc ~T0 @X0 0 e@2194 ]
-"22100
-[; ;/Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8/pic/include/proc/pic16f18875.h: 22100: extern volatile unsigned char PMD0 __attribute__((address(0x796)));
-[v _PMD0 `Vuc ~T0 @X0 0 e@1942 ]
-"22157
-[; ;/Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8/pic/include/proc/pic16f18875.h: 22157: extern volatile unsigned char PMD1 __attribute__((address(0x797)));
-[v _PMD1 `Vuc ~T0 @X0 0 e@1943 ]
-"22228
-[; ;/Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8/pic/include/proc/pic16f18875.h: 22228: extern volatile unsigned char PMD2 __attribute__((address(0x798)));
-[v _PMD2 `Vuc ~T0 @X0 0 e@1944 ]
-"22273
-[; ;/Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8/pic/include/proc/pic16f18875.h: 22273: extern volatile unsigned char PMD3 __attribute__((address(0x799)));
-[v _PMD3 `Vuc ~T0 @X0 0 e@1945 ]
-"22329
-[; ;/Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8/pic/include/proc/pic16f18875.h: 22329: extern volatile unsigned char PMD4 __attribute__((address(0x79A)));
-[v _PMD4 `Vuc ~T0 @X0 0 e@1946 ]
-"22380
-[; ;/Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8/pic/include/proc/pic16f18875.h: 22380: extern volatile unsigned char PMD5 __attribute__((address(0x79B)));
-[v _PMD5 `Vuc ~T0 @X0 0 e@1947 ]
+"41 EEPROM/eeprom.h
+[; ;EEPROM/eeprom.h: 41: typedef struct __EEPROM_record {
+[s S1618 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S1618 __EEPROM_record temp lumin hour min sec ]
+"222 EEPROM/../mcc_generated_files/memory.h
+[; ;EEPROM/../mcc_generated_files/memory.h: 222: void DATAEE_WriteByte(uint16_t bAdd, uint8_t bData);
+[v _DATAEE_WriteByte `(v ~T0 @X0 0 ef2`us`uc ]
+"248
+[; ;EEPROM/../mcc_generated_files/memory.h: 248: uint8_t DATAEE_ReadByte(uint16_t bAdd);
+[v _DATAEE_ReadByte `(uc ~T0 @X0 0 ef1`us ]
+"49 EEPROM/eeprom.h
+[; ;EEPROM/eeprom.h: 49: typedef struct __EEPROM_config {
+[s S1619 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 `uc 1 ]
+[n S1619 __EEPROM_config pmon tala tina alaf alah alam alas alat alal clkh clkm ]
 "54 /Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8/pic/include/proc/pic16f18875.h
 [; ;/Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8/pic/include/proc/pic16f18875.h: 54: __asm("INDF0 equ 00h");
 [; <" INDF0 equ 00h ;# ">
@@ -1700,102 +1651,222 @@ Version 4.0 HI-TECH Software Intermediate Code
 "36489
 [; ;/Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8/pic/include/proc/pic16f18875.h: 36489: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
-"50 mcc_generated_files/mcc.c
-[; ;mcc_generated_files/mcc.c: 50: void SYSTEM_Initialize(void)
-[v _SYSTEM_Initialize `(v ~T0 @X0 1 ef ]
-"51
-[; ;mcc_generated_files/mcc.c: 51: {
+"14 EEPROM/eeprom.c
+[; ;EEPROM/eeprom.c: 14: void write_EEPROM_record(EEPROM_record record, uint16_t addr) {
+[v _write_EEPROM_record `(v ~T0 @X0 1 ef2`S1618`us ]
 {
-[e :U _SYSTEM_Initialize ]
+[e :U _write_EEPROM_record ]
+[v _record `S1618 ~T0 @X0 1 r1 ]
+[v _addr `us ~T0 @X0 1 r2 ]
 [f ]
-"52
-[; ;mcc_generated_files/mcc.c: 52:     PMD_Initialize();
-[e ( _PMD_Initialize ..  ]
-"53
-[; ;mcc_generated_files/mcc.c: 53:     I2C1_Initialize();
-[e ( _I2C1_Initialize ..  ]
-"54
-[; ;mcc_generated_files/mcc.c: 54:     PIN_MANAGER_Initialize();
-[e ( _PIN_MANAGER_Initialize ..  ]
-"55
-[; ;mcc_generated_files/mcc.c: 55:     OSCILLATOR_Initialize();
-[e ( _OSCILLATOR_Initialize ..  ]
-"56
-[; ;mcc_generated_files/mcc.c: 56:     PWM6_Initialize();
-[e ( _PWM6_Initialize ..  ]
-"57
-[; ;mcc_generated_files/mcc.c: 57:     ADCC_Initialize();
-[e ( _ADCC_Initialize ..  ]
-"58
-[; ;mcc_generated_files/mcc.c: 58:     TMR3_Initialize();
-[e ( _TMR3_Initialize ..  ]
-"59
-[; ;mcc_generated_files/mcc.c: 59:     TMR5_Initialize();
-[e ( _TMR5_Initialize ..  ]
-"60
-[; ;mcc_generated_files/mcc.c: 60:     TMR2_Initialize();
-[e ( _TMR2_Initialize ..  ]
-"61
-[; ;mcc_generated_files/mcc.c: 61:     TMR1_Initialize();
-[e ( _TMR1_Initialize ..  ]
-"62
-[; ;mcc_generated_files/mcc.c: 62: }
+"15
+[; ;EEPROM/eeprom.c: 15:     DATAEE_WriteByte(addr, record.hour);
+[e ( _DATAEE_WriteByte (2 , _addr . _record 2 ]
+"16
+[; ;EEPROM/eeprom.c: 16:     DATAEE_WriteByte(addr + 1, record.min);
+[e ( _DATAEE_WriteByte (2 , -> + -> _addr `ui -> -> 1 `i `ui `us . _record 3 ]
+"17
+[; ;EEPROM/eeprom.c: 17:     DATAEE_WriteByte(addr + 2, record.sec);
+[e ( _DATAEE_WriteByte (2 , -> + -> _addr `ui -> -> 2 `i `ui `us . _record 4 ]
+"18
+[; ;EEPROM/eeprom.c: 18:     DATAEE_WriteByte(addr + 3, record.temp);
+[e ( _DATAEE_WriteByte (2 , -> + -> _addr `ui -> -> 3 `i `ui `us . _record 0 ]
+"19
+[; ;EEPROM/eeprom.c: 19:     DATAEE_WriteByte(addr + 4, record.lumin);
+[e ( _DATAEE_WriteByte (2 , -> + -> _addr `ui -> -> 4 `i `ui `us . _record 1 ]
+"20
+[; ;EEPROM/eeprom.c: 20: }
 [e :UE 1620 ]
 }
-"64
-[; ;mcc_generated_files/mcc.c: 64: void OSCILLATOR_Initialize(void)
-[v _OSCILLATOR_Initialize `(v ~T0 @X0 1 ef ]
-"65
-[; ;mcc_generated_files/mcc.c: 65: {
+"22
+[; ;EEPROM/eeprom.c: 22: EEPROM_record read_EEPROM_record(uint16_t addr) {
+[v _read_EEPROM_record `(S1618 ~T0 @X0 1 ef1`us ]
 {
-[e :U _OSCILLATOR_Initialize ]
+[e :U _read_EEPROM_record ]
+[v _addr `us ~T0 @X0 1 r1 ]
 [f ]
-"67
-[; ;mcc_generated_files/mcc.c: 67:     OSCCON1 = 0x62;
-[e = _OSCCON1 -> -> 98 `i `uc ]
-"69
-[; ;mcc_generated_files/mcc.c: 69:     OSCCON3 = 0x00;
-[e = _OSCCON3 -> -> 0 `i `uc ]
-"71
-[; ;mcc_generated_files/mcc.c: 71:     OSCEN = 0x00;
-[e = _OSCEN -> -> 0 `i `uc ]
-"73
-[; ;mcc_generated_files/mcc.c: 73:     OSCFRQ = 0x02;
-[e = _OSCFRQ -> -> 2 `i `uc ]
-"75
-[; ;mcc_generated_files/mcc.c: 75:     OSCTUNE = 0x00;
-[e = _OSCTUNE -> -> 0 `i `uc ]
-"76
-[; ;mcc_generated_files/mcc.c: 76: }
+"23
+[; ;EEPROM/eeprom.c: 23:     EEPROM_record record;
+[v _record `S1618 ~T0 @X0 1 a ]
+"24
+[; ;EEPROM/eeprom.c: 24:     record.hour = DATAEE_ReadByte(addr);
+[e = . _record 2 ( _DATAEE_ReadByte (1 _addr ]
+"25
+[; ;EEPROM/eeprom.c: 25:     record.min = DATAEE_ReadByte(addr + 1);
+[e = . _record 3 ( _DATAEE_ReadByte (1 -> + -> _addr `ui -> -> 1 `i `ui `us ]
+"26
+[; ;EEPROM/eeprom.c: 26:     record.sec = DATAEE_ReadByte(addr + 2);
+[e = . _record 4 ( _DATAEE_ReadByte (1 -> + -> _addr `ui -> -> 2 `i `ui `us ]
+"27
+[; ;EEPROM/eeprom.c: 27:     record.temp = DATAEE_ReadByte(addr + 3);
+[e = . _record 0 ( _DATAEE_ReadByte (1 -> + -> _addr `ui -> -> 3 `i `ui `us ]
+"28
+[; ;EEPROM/eeprom.c: 28:     record.lumin = DATAEE_ReadByte(addr + 4);
+[e = . _record 1 ( _DATAEE_ReadByte (1 -> + -> _addr `ui -> -> 4 `i `ui `us ]
+"29
+[; ;EEPROM/eeprom.c: 29:     return record;
+[e ) _record ]
+[e $UE 1621  ]
+"30
+[; ;EEPROM/eeprom.c: 30: }
 [e :UE 1621 ]
 }
-"78
-[; ;mcc_generated_files/mcc.c: 78: void PMD_Initialize(void)
-[v _PMD_Initialize `(v ~T0 @X0 1 ef ]
-"79
-[; ;mcc_generated_files/mcc.c: 79: {
+"32
+[; ;EEPROM/eeprom.c: 32: uint8_t EEPROM_checksum(EEPROM_config config)
+[v _EEPROM_checksum `(uc ~T0 @X0 1 ef1`S1619 ]
+"33
+[; ;EEPROM/eeprom.c: 33: {
 {
-[e :U _PMD_Initialize ]
+[e :U _EEPROM_checksum ]
+"32
+[; ;EEPROM/eeprom.c: 32: uint8_t EEPROM_checksum(EEPROM_config config)
+[v _config `S1619 ~T0 @X0 1 r1 ]
+"33
+[; ;EEPROM/eeprom.c: 33: {
 [f ]
-"81
-[; ;mcc_generated_files/mcc.c: 81:     PMD0 = 0x00;
-[e = _PMD0 -> -> 0 `i `uc ]
-"83
-[; ;mcc_generated_files/mcc.c: 83:     PMD1 = 0x00;
-[e = _PMD1 -> -> 0 `i `uc ]
-"85
-[; ;mcc_generated_files/mcc.c: 85:     PMD2 = 0x00;
-[e = _PMD2 -> -> 0 `i `uc ]
-"87
-[; ;mcc_generated_files/mcc.c: 87:     PMD3 = 0x00;
-[e = _PMD3 -> -> 0 `i `uc ]
-"89
-[; ;mcc_generated_files/mcc.c: 89:     PMD4 = 0x00;
-[e = _PMD4 -> -> 0 `i `uc ]
-"91
-[; ;mcc_generated_files/mcc.c: 91:     PMD5 = 0x00;
-[e = _PMD5 -> -> 0 `i `uc ]
-"92
-[; ;mcc_generated_files/mcc.c: 92: }
+"34
+[; ;EEPROM/eeprom.c: 34:     uint8_t sum = 0;
+[v _sum `uc ~T0 @X0 1 a ]
+[e = _sum -> -> 0 `i `uc ]
+"35
+[; ;EEPROM/eeprom.c: 35:     sum += config.pmon +
+[e =+ _sum -> + + + + + + + + + + -> . _config 0 `i -> . _config 1 `i -> . _config 2 `i -> . _config 3 `i -> . _config 4 `i -> . _config 5 `i -> . _config 6 `i -> . _config 7 `i -> . _config 8 `i -> . _config 9 `i -> . _config 10 `i `uc ]
+"46
+[; ;EEPROM/eeprom.c: 46:     return sum;
+[e ) _sum ]
+[e $UE 1622  ]
+"47
+[; ;EEPROM/eeprom.c: 47: }
 [e :UE 1622 ]
+}
+"49
+[; ;EEPROM/eeprom.c: 49: void write_EEPROM_config(EEPROM_config config, uint16_t addr) {
+[v _write_EEPROM_config `(v ~T0 @X0 1 ef2`S1619`us ]
+{
+[e :U _write_EEPROM_config ]
+[v _config `S1619 ~T0 @X0 1 r1 ]
+[v _addr `us ~T0 @X0 1 r2 ]
+[f ]
+"50
+[; ;EEPROM/eeprom.c: 50:     DATAEE_WriteByte(addr, 0xAB);
+[e ( _DATAEE_WriteByte (2 , _addr -> -> 171 `i `uc ]
+"51
+[; ;EEPROM/eeprom.c: 51:     DATAEE_WriteByte(addr + 1, config.pmon);
+[e ( _DATAEE_WriteByte (2 , -> + -> _addr `ui -> -> 1 `i `ui `us . _config 0 ]
+"52
+[; ;EEPROM/eeprom.c: 52:     DATAEE_WriteByte(addr + 2, config.tala);
+[e ( _DATAEE_WriteByte (2 , -> + -> _addr `ui -> -> 2 `i `ui `us . _config 1 ]
+"53
+[; ;EEPROM/eeprom.c: 53:     DATAEE_WriteByte(addr + 3, config.tina);
+[e ( _DATAEE_WriteByte (2 , -> + -> _addr `ui -> -> 3 `i `ui `us . _config 2 ]
+"54
+[; ;EEPROM/eeprom.c: 54:     DATAEE_WriteByte(addr + 4, config.alaf);
+[e ( _DATAEE_WriteByte (2 , -> + -> _addr `ui -> -> 4 `i `ui `us . _config 3 ]
+"55
+[; ;EEPROM/eeprom.c: 55:     DATAEE_WriteByte(addr + 5, config.alah);
+[e ( _DATAEE_WriteByte (2 , -> + -> _addr `ui -> -> 5 `i `ui `us . _config 4 ]
+"56
+[; ;EEPROM/eeprom.c: 56:     DATAEE_WriteByte(addr + 6, config.alam);
+[e ( _DATAEE_WriteByte (2 , -> + -> _addr `ui -> -> 6 `i `ui `us . _config 5 ]
+"57
+[; ;EEPROM/eeprom.c: 57:     DATAEE_WriteByte(addr + 7, config.alas);
+[e ( _DATAEE_WriteByte (2 , -> + -> _addr `ui -> -> 7 `i `ui `us . _config 6 ]
+"58
+[; ;EEPROM/eeprom.c: 58:     DATAEE_WriteByte(addr + 8, config.alat);
+[e ( _DATAEE_WriteByte (2 , -> + -> _addr `ui -> -> 8 `i `ui `us . _config 7 ]
+"59
+[; ;EEPROM/eeprom.c: 59:     DATAEE_WriteByte(addr + 9, config.alal);
+[e ( _DATAEE_WriteByte (2 , -> + -> _addr `ui -> -> 9 `i `ui `us . _config 8 ]
+"60
+[; ;EEPROM/eeprom.c: 60:     DATAEE_WriteByte(addr + 10, config.clkh);
+[e ( _DATAEE_WriteByte (2 , -> + -> _addr `ui -> -> 10 `i `ui `us . _config 9 ]
+"61
+[; ;EEPROM/eeprom.c: 61:     DATAEE_WriteByte(addr + 11, config.clkm);
+[e ( _DATAEE_WriteByte (2 , -> + -> _addr `ui -> -> 11 `i `ui `us . _config 10 ]
+"62
+[; ;EEPROM/eeprom.c: 62:     DATAEE_WriteByte(addr + 12, EEPROM_checksum(config));
+[e ( _DATAEE_WriteByte (2 , -> + -> _addr `ui -> -> 12 `i `ui `us ( _EEPROM_checksum (1 _config ]
+"63
+[; ;EEPROM/eeprom.c: 63: }
+[e :UE 1623 ]
+}
+"65
+[; ;EEPROM/eeprom.c: 65: EEPROM_config read_EEPROM_config(uint16_t addr) {
+[v _read_EEPROM_config `(S1619 ~T0 @X0 1 ef1`us ]
+{
+[e :U _read_EEPROM_config ]
+[v _addr `us ~T0 @X0 1 r1 ]
+[f ]
+"66
+[; ;EEPROM/eeprom.c: 66:     EEPROM_config config;
+[v _config `S1619 ~T0 @X0 1 a ]
+"67
+[; ;EEPROM/eeprom.c: 67:     uint8_t magic_word, checksum;
+[v _magic_word `uc ~T0 @X0 1 a ]
+[v _checksum `uc ~T0 @X0 1 a ]
+"69
+[; ;EEPROM/eeprom.c: 69:     magic_word = DATAEE_ReadByte(addr);
+[e = _magic_word ( _DATAEE_ReadByte (1 _addr ]
+"70
+[; ;EEPROM/eeprom.c: 70:     config.pmon = DATAEE_ReadByte(addr + 1);
+[e = . _config 0 ( _DATAEE_ReadByte (1 -> + -> _addr `ui -> -> 1 `i `ui `us ]
+"71
+[; ;EEPROM/eeprom.c: 71:     config.tala = DATAEE_ReadByte(addr + 2);
+[e = . _config 1 ( _DATAEE_ReadByte (1 -> + -> _addr `ui -> -> 2 `i `ui `us ]
+"72
+[; ;EEPROM/eeprom.c: 72:     config.tina = DATAEE_ReadByte(addr + 3);
+[e = . _config 2 ( _DATAEE_ReadByte (1 -> + -> _addr `ui -> -> 3 `i `ui `us ]
+"73
+[; ;EEPROM/eeprom.c: 73:     config.alaf = DATAEE_ReadByte(addr + 4);
+[e = . _config 3 ( _DATAEE_ReadByte (1 -> + -> _addr `ui -> -> 4 `i `ui `us ]
+"74
+[; ;EEPROM/eeprom.c: 74:     config.alah = DATAEE_ReadByte(addr + 5);
+[e = . _config 4 ( _DATAEE_ReadByte (1 -> + -> _addr `ui -> -> 5 `i `ui `us ]
+"75
+[; ;EEPROM/eeprom.c: 75:     config.alam = DATAEE_ReadByte(addr + 6);
+[e = . _config 5 ( _DATAEE_ReadByte (1 -> + -> _addr `ui -> -> 6 `i `ui `us ]
+"76
+[; ;EEPROM/eeprom.c: 76:     config.alas = DATAEE_ReadByte(addr + 7);
+[e = . _config 6 ( _DATAEE_ReadByte (1 -> + -> _addr `ui -> -> 7 `i `ui `us ]
+"77
+[; ;EEPROM/eeprom.c: 77:     config.alat = DATAEE_ReadByte(addr + 8);
+[e = . _config 7 ( _DATAEE_ReadByte (1 -> + -> _addr `ui -> -> 8 `i `ui `us ]
+"78
+[; ;EEPROM/eeprom.c: 78:     config.alal = DATAEE_ReadByte(addr + 9);
+[e = . _config 8 ( _DATAEE_ReadByte (1 -> + -> _addr `ui -> -> 9 `i `ui `us ]
+"79
+[; ;EEPROM/eeprom.c: 79:     config.clkh = DATAEE_ReadByte(addr + 10);
+[e = . _config 9 ( _DATAEE_ReadByte (1 -> + -> _addr `ui -> -> 10 `i `ui `us ]
+"80
+[; ;EEPROM/eeprom.c: 80:     config.clkm = DATAEE_ReadByte(addr + 11);
+[e = . _config 10 ( _DATAEE_ReadByte (1 -> + -> _addr `ui -> -> 11 `i `ui `us ]
+"81
+[; ;EEPROM/eeprom.c: 81:     checksum = DATAEE_ReadByte(addr + 12);
+[e = _checksum ( _DATAEE_ReadByte (1 -> + -> _addr `ui -> -> 12 `i `ui `us ]
+"83
+[; ;EEPROM/eeprom.c: 83:     if (magic_word == 0xAB && checksum == EEPROM_checksum(config))
+[e $ ! && == -> _magic_word `i -> 171 `i == -> _checksum `i -> ( _EEPROM_checksum (1 _config `i 1625  ]
+"84
+[; ;EEPROM/eeprom.c: 84:         return config;
+[e ) _config ]
+[e $UE 1624  ]
+[e $U 1626  ]
+"85
+[; ;EEPROM/eeprom.c: 85:     else {
+[e :U 1625 ]
+{
+"86
+[; ;EEPROM/eeprom.c: 86:         config.pmon = 0;
+[e = . _config 0 -> -> 0 `i `uc ]
+"87
+[; ;EEPROM/eeprom.c: 87:         return config;
+[e ) _config ]
+[e $UE 1624  ]
+"88
+[; ;EEPROM/eeprom.c: 88:     }
+}
+[e :U 1626 ]
+"90
+[; ;EEPROM/eeprom.c: 90: }
+[e :UE 1624 ]
 }

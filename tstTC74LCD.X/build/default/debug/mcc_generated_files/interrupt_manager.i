@@ -21410,11 +21410,25 @@ _Bool ADCC_HasErrorCrossedLowerThreshold(void);
 # 824 "mcc_generated_files/adcc.h"
 uint8_t ADCC_GetConversionStageStatus(void);
 # 63 "mcc_generated_files/mcc.h" 2
-# 77 "mcc_generated_files/mcc.h"
+# 1 "mcc_generated_files/memory.h" 1
+# 99 "mcc_generated_files/memory.h"
+uint16_t FLASH_ReadWord(uint16_t flashAddr);
+# 128 "mcc_generated_files/memory.h"
+void FLASH_WriteWord(uint16_t flashAddr, uint16_t *ramBuf, uint16_t word);
+# 164 "mcc_generated_files/memory.h"
+int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
+# 189 "mcc_generated_files/memory.h"
+void FLASH_EraseBlock(uint16_t startAddr);
+# 222 "mcc_generated_files/memory.h"
+void DATAEE_WriteByte(uint16_t bAdd, uint8_t bData);
+# 248 "mcc_generated_files/memory.h"
+uint8_t DATAEE_ReadByte(uint16_t bAdd);
+# 64 "mcc_generated_files/mcc.h" 2
+# 78 "mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
-# 90 "mcc_generated_files/mcc.h"
+# 91 "mcc_generated_files/mcc.h"
 void OSCILLATOR_Initialize(void);
-# 103 "mcc_generated_files/mcc.h"
+# 104 "mcc_generated_files/mcc.h"
 void PMD_Initialize(void);
 # 51 "mcc_generated_files/interrupt_manager.c" 2
 

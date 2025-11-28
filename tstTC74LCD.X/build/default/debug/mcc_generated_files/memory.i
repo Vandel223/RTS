@@ -1,4 +1,4 @@
-# 1 "mcc_generated_files/pwm6.c"
+# 1 "mcc_generated_files/memory.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 295 "<built-in>" 3
@@ -6,8 +6,8 @@
 # 1 "<built-in>" 2
 # 1 "/Applications/microchip/xc8/v3.10/pic/include/language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "mcc_generated_files/pwm6.c" 2
-# 51 "mcc_generated_files/pwm6.c"
+# 1 "mcc_generated_files/memory.c" 2
+# 51 "mcc_generated_files/memory.c"
 # 1 "/Applications/microchip/xc8/v3.10/pic/include/xc.h" 1 3
 # 18 "/Applications/microchip/xc8/v3.10/pic/include/xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -20805,39 +20805,181 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "/Applications/microchip/xc8/v3.10/pic/include/xc.h" 2 3
-# 52 "mcc_generated_files/pwm6.c" 2
-# 1 "mcc_generated_files/pwm6.h" 1
-# 102 "mcc_generated_files/pwm6.h"
- void PWM6_Initialize(void);
-# 129 "mcc_generated_files/pwm6.h"
- void PWM6_LoadDutyValue(uint16_t dutyValue);
-# 53 "mcc_generated_files/pwm6.c" 2
+# 52 "mcc_generated_files/memory.c" 2
+# 1 "mcc_generated_files/memory.h" 1
+# 54 "mcc_generated_files/memory.h"
+# 1 "/Applications/microchip/xc8/v3.10/pic/include/c99/stdbool.h" 1 3
+# 55 "mcc_generated_files/memory.h" 2
+# 99 "mcc_generated_files/memory.h"
+uint16_t FLASH_ReadWord(uint16_t flashAddr);
+# 128 "mcc_generated_files/memory.h"
+void FLASH_WriteWord(uint16_t flashAddr, uint16_t *ramBuf, uint16_t word);
+# 164 "mcc_generated_files/memory.h"
+int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
+# 189 "mcc_generated_files/memory.h"
+void FLASH_EraseBlock(uint16_t startAddr);
+# 222 "mcc_generated_files/memory.h"
+void DATAEE_WriteByte(uint16_t bAdd, uint8_t bData);
+# 248 "mcc_generated_files/memory.h"
+uint8_t DATAEE_ReadByte(uint16_t bAdd);
+# 53 "mcc_generated_files/memory.c" 2
 
 
 
 
 
- void PWM6_Initialize(void)
- {
+uint16_t FLASH_ReadWord(uint16_t flashAddr)
+{
+    uint8_t GIEBitValue = INTCONbits.GIE;
+
+    INTCONbits.GIE = 0;
+    NVMADRL = (flashAddr & 0x00FF);
+    NVMADRH = ((flashAddr & 0xFF00) >> 8);
+
+    NVMCON1bits.NVMREGS = 0;
+    NVMCON1bits.RD = 1;
+    __nop();
+    __nop();
+    INTCONbits.GIE = GIEBitValue;
+
+    return ((uint16_t)((NVMDATH << 8) | NVMDATL));
+}
+
+void FLASH_WriteWord(uint16_t flashAddr, uint16_t *ramBuf, uint16_t word)
+{
+    uint16_t blockStartAddr = (uint16_t)(flashAddr & ((0x2000 -1) ^ (32 -1)));
+    uint8_t offset = (uint8_t)(flashAddr & (32 -1));
+    uint8_t i;
 
 
-    PWM6CON = 0x80;
+    for (i=0; i<32; i++)
+    {
+        ramBuf[i] = FLASH_ReadWord((blockStartAddr+i));
+    }
 
 
-    PWM6DCH = 0x00;
+    ramBuf[offset] = word;
 
 
-    PWM6DCL = 0x00;
+    FLASH_WriteBlock(blockStartAddr, ramBuf);
+}
+
+int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray)
+{
+    uint16_t blockStartAddr = (uint16_t )(writeAddr & ((0x2000 -1) ^ (32 -1)));
+    uint8_t GIEBitValue = INTCONbits.GIE;
+    uint8_t i;
 
 
-    CCPTMRS1bits.P6TSEL = 1;
- }
 
- void PWM6_LoadDutyValue(uint16_t dutyValue)
- {
+    if( writeAddr != blockStartAddr )
+    {
+        return -1;
+    }
 
-     PWM6DCH = (dutyValue & 0x03FC)>>2;
+    INTCONbits.GIE = 0;
 
 
-     PWM6DCL = (dutyValue & 0x0003)<<6;
- }
+    FLASH_EraseBlock(writeAddr);
+
+
+    NVMCON1bits.NVMREGS = 0;
+    NVMCON1bits.WREN = 1;
+    NVMCON1bits.LWLO = 1;
+
+    for (i=0; i<32; i++)
+    {
+
+        NVMADRL = (writeAddr & 0xFF);
+
+        NVMADRH = ((writeAddr & 0xFF00) >> 8);
+
+
+        NVMDATL = flashWordArray[i];
+        NVMDATH = ((flashWordArray[i] & 0xFF00) >> 8);
+
+        if(i == (32 -1))
+        {
+
+            NVMCON1bits.LWLO = 0;
+        }
+
+        NVMCON2 = 0x55;
+        NVMCON2 = 0xAA;
+        NVMCON1bits.WR = 1;
+        __nop();
+        __nop();
+
+ writeAddr++;
+    }
+
+    NVMCON1bits.WREN = 0;
+    INTCONbits.GIE = GIEBitValue;
+
+    return 0;
+}
+
+void FLASH_EraseBlock(uint16_t startAddr)
+{
+    uint8_t GIEBitValue = INTCONbits.GIE;
+
+
+    INTCONbits.GIE = 0;
+
+    NVMADRL = (startAddr & 0xFF);
+
+    NVMADRH = ((startAddr & 0xFF00) >> 8);
+
+
+    NVMCON1bits.NVMREGS = 0;
+    NVMCON1bits.FREE = 1;
+    NVMCON1bits.WREN = 1;
+
+
+    NVMCON2 = 0x55;
+    NVMCON2 = 0xAA;
+    NVMCON1bits.WR = 1;
+    __nop();
+    __nop();
+
+    NVMCON1bits.WREN = 0;
+    INTCONbits.GIE = GIEBitValue;
+}
+
+
+
+
+
+void DATAEE_WriteByte(uint16_t bAdd, uint8_t bData)
+{
+    uint8_t GIEBitValue = INTCONbits.GIE;
+
+    NVMADRH = ((bAdd >> 8) & 0xFF);
+    NVMADRL = (bAdd & 0xFF);
+    NVMDATL = bData;
+    NVMCON1bits.NVMREGS = 1;
+    NVMCON1bits.WREN = 1;
+    INTCONbits.GIE = 0;
+    NVMCON2 = 0x55;
+    NVMCON2 = 0xAA;
+    NVMCON1bits.WR = 1;
+
+    while (NVMCON1bits.WR)
+    {
+    }
+
+    NVMCON1bits.WREN = 0;
+    INTCONbits.GIE = GIEBitValue;
+}
+
+uint8_t DATAEE_ReadByte(uint16_t bAdd)
+{
+    NVMADRH = ((bAdd >> 8) & 0xFF);
+    NVMADRL = (bAdd & 0xFF);
+    NVMCON1bits.NVMREGS = 1;
+    NVMCON1bits.RD = 1;
+    __nop();
+    __nop();
+
+    return (NVMDATL);
+}

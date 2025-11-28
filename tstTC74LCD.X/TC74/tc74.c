@@ -1,5 +1,5 @@
 /*
- * File:   TC74.c
+ * File:   tc74.c
  * Author: dias
  *
  * Created on November 24, 2025, 4:27 PM

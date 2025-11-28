@@ -21409,11 +21409,25 @@ _Bool ADCC_HasErrorCrossedLowerThreshold(void);
 # 824 "./mcc_generated_files/adcc.h"
 uint8_t ADCC_GetConversionStageStatus(void);
 # 63 "./mcc_generated_files/mcc.h" 2
-# 77 "./mcc_generated_files/mcc.h"
+# 1 "./mcc_generated_files/memory.h" 1
+# 99 "./mcc_generated_files/memory.h"
+uint16_t FLASH_ReadWord(uint16_t flashAddr);
+# 128 "./mcc_generated_files/memory.h"
+void FLASH_WriteWord(uint16_t flashAddr, uint16_t *ramBuf, uint16_t word);
+# 164 "./mcc_generated_files/memory.h"
+int8_t FLASH_WriteBlock(uint16_t writeAddr, uint16_t *flashWordArray);
+# 189 "./mcc_generated_files/memory.h"
+void FLASH_EraseBlock(uint16_t startAddr);
+# 222 "./mcc_generated_files/memory.h"
+void DATAEE_WriteByte(uint16_t bAdd, uint8_t bData);
+# 248 "./mcc_generated_files/memory.h"
+uint8_t DATAEE_ReadByte(uint16_t bAdd);
+# 64 "./mcc_generated_files/mcc.h" 2
+# 78 "./mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
-# 90 "./mcc_generated_files/mcc.h"
+# 91 "./mcc_generated_files/mcc.h"
 void OSCILLATOR_Initialize(void);
-# 103 "./mcc_generated_files/mcc.h"
+# 104 "./mcc_generated_files/mcc.h"
 void PMD_Initialize(void);
 # 45 "main.c" 2
 # 1 "./I2C/i2c.h" 1
@@ -21451,19 +21465,44 @@ void LCDpos(unsigned char l, unsigned char c);
 # 39 "./TC74/tc74.h"
 unsigned char readTC74 (void);
 # 49 "main.c" 2
+# 1 "./EEPROM/eeprom.h" 1
+# 41 "./EEPROM/eeprom.h"
+typedef struct __EEPROM_record {
+    uint8_t temp;
+    uint8_t lumin;
+    uint8_t hour;
+    uint8_t min;
+    uint8_t sec;
+} EEPROM_record;
 
+typedef struct __EEPROM_config {
+    uint8_t pmon;
+    uint8_t tala;
+    uint8_t tina;
+    uint8_t alaf;
+    uint8_t alah;
+    uint8_t alam;
+    uint8_t alas;
+    uint8_t alat;
+    uint8_t alal;
+    uint8_t clkh;
+    uint8_t clkm;
+} EEPROM_config;
 
-
-
-
+void write_EEPROM_record(EEPROM_record record, uint16_t addr);
+EEPROM_record read_EEPROM_record(uint16_t addr);
+void write_EEPROM_config(EEPROM_config config, uint16_t addr);
+EEPROM_config read_EEPROM_config(uint16_t addr);
+# 50 "main.c" 2
+# 73 "main.c"
 uint8_t timer_1s_flag = 0;
-uint8_t timer_5s_flag = 0;
-uint8_t timer3_100ms_flag = 0;
-uint8_t timer5_100ms_flag = 0;
+uint8_t timer_PMON_flag = 0;
+uint8_t timer3_100ms_flag = 1;
+uint8_t timer5_100ms_flag = 1;
 
 void timer_1s(void) {
     timer_1s_flag = 1;
-    timer_5s_flag += 1;
+    timer_PMON_flag += 1;
 }
 
 void timer3_100ms(void) {
@@ -21481,12 +21520,18 @@ void timer5_100ms(void) {
 void main(void)
 {
 
+    EEPROM_config config;
+
     adc_result_t potentiometer;
     uint8_t lumin;
+    EEPROM_record max_lumin = {0, 0, 0, 0, 0};
+    EEPROM_record min_lumin = {0, 3, 0, 0, 0};
 
     uint8_t temp;
+    EEPROM_record max_temp = {0, 0, 0, 0, 0};
+    EEPROM_record min_temp = {255, 0, 0, 0, 0};
 
-    uint8_t sec;
+    uint8_t sec = 0;
     uint8_t min;
     uint8_t hour;
 
@@ -21506,7 +21551,7 @@ void main(void)
 
 
     (INTCONbits.PEIE = 1);
-# 112 "main.c"
+# 137 "main.c"
     OpenI2C();
 
     LCDinit();
@@ -21526,6 +21571,29 @@ void main(void)
     ADCC_DisableContinuousConversion();
 
     PWM6_Initialize();
+
+
+
+    config = read_EEPROM_config(0x14);
+    if (config.pmon == 0) {
+        config.pmon = 5;
+        config.tala = 3;
+        config.tina = 10;
+        config.alaf = 0;
+        config.alah = 12;
+        config.alam = 0;
+        config.alas = 0;
+        config.alat = 20;
+        config.alal = 2;
+        config.clkh = 0;
+        config.clkm = 0;
+    }
+
+
+    write_EEPROM_record(max_temp, 0x00);
+    write_EEPROM_record(min_temp, 0x05);
+    write_EEPROM_record(max_lumin, 0x0A);
+    write_EEPROM_record(min_lumin, 0x0F);
 
 
     while (1)
@@ -21556,6 +21624,45 @@ void main(void)
         }
 
 
+        if (timer_PMON_flag == config.pmon) {
+            timer_PMON_flag = 0;
+
+            temp = readTC74();
+            potentiometer = ADCC_GetSingleConversion(adc_potent);
+            lumin = (potentiometer >> 8);
+
+            if (temp > max_temp.temp) {
+                max_temp.temp = temp;
+                max_temp.lumin = lumin;
+                max_temp.hour = hour;
+                max_temp.min = min;
+                max_temp.sec = sec;
+            }
+            if (temp < min_temp.temp) {
+                min_temp.temp = temp;
+                min_temp.lumin = lumin;
+                min_temp.hour = hour;
+                min_temp.min = min;
+                min_temp.sec = sec;
+            }
+
+            if (lumin > max_lumin.lumin) {
+                max_lumin.temp = temp;
+                max_lumin.lumin = lumin;
+                max_lumin.hour = hour;
+                max_lumin.min = min;
+                max_lumin.sec = sec;
+            }
+            if (lumin < min_lumin.lumin) {
+                min_lumin.temp = temp;
+                min_lumin.lumin = lumin;
+                min_lumin.hour = hour;
+                min_lumin.min = min;
+                min_lumin.sec = sec;
+            }
+        }
+
+
         if (timer_1s_flag == 1) {
             timer_1s_flag = 0;
 
@@ -21578,15 +21685,6 @@ void main(void)
             sprintf(buf, "%02d oC       L %1d", temp, lumin);
             while (LCDbusy());
             LCDstr(buf);
-
-        }
-
-        if (timer_5s_flag == 5) {
-            timer_5s_flag = 0;
-
-            temp = readTC74();
-            potentiometer = ADCC_GetSingleConversion(adc_potent);
-            lumin = (potentiometer >> 8);
         }
 
     }

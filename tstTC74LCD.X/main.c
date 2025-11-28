@@ -46,19 +46,38 @@
 #include "LCD/lcd.h"
 #include "stdio.h"
 #include "TC74/tc74.h"
+#include "EEPROM/eeprom.h"
+
+#define PMON_DEFAULT 5
+#define TALA_DEFAULT 3
+#define TINA_DEFAULT 10
+#define ALAF_DEFAULT 0
+#define ALAH_DEFAULT 12
+#define ALAM_DEFAULT 0
+#define ALAS_DEFAULT 0
+#define ALAT_DEFAULT 20
+#define ALAL_DEFAULT 2
+#define CLKH_DEFAULT 0
+#define CLKM_DEFAULT 0
+
+#define MAX_TEMP_ADDR   0x00
+#define MIN_TEMP_ADDR   0x05
+#define MAX_LUMIN_ADDR  0x0A
+#define MIN_LUMIN_ADDR  0x0F
+#define PARAM_ADDR      0x14
 
 /*
                          Main application
  */
 
 uint8_t timer_1s_flag = 0;
-uint8_t timer_5s_flag = 0;
+uint8_t timer_PMON_flag = 0;
 uint8_t timer3_100ms_flag = 1;
 uint8_t timer5_100ms_flag = 1;
 
 void timer_1s(void) {
     timer_1s_flag = 1;
-    timer_5s_flag += 1;
+    timer_PMON_flag += 1;
 }
 
 void timer3_100ms(void) {
@@ -75,13 +94,19 @@ void timer5_100ms(void) {
 
 void main(void)
 {   
+    /* CONFIG */
+    EEPROM_config config;
     /* POTENTIOMETER & LUMINOSITY */
     adc_result_t potentiometer;
     uint8_t lumin;
-    /* TEMPERATURE MEASUREMENT */
+    EEPROM_record max_lumin = {0, 0, 0, 0, 0};
+    EEPROM_record min_lumin = {0, 3, 0, 0, 0};
+    /* TEMPERATURE */
     uint8_t temp;
+    EEPROM_record max_temp = {0, 0, 0, 0, 0};
+    EEPROM_record min_temp = {255, 0, 0, 0, 0};
     /* CLOCK */
-    uint8_t sec;
+    uint8_t sec = 0;
     uint8_t min;
     uint8_t hour;
     /* LCD BUFFER */
@@ -126,9 +151,32 @@ void main(void)
     /* ADC INIT */
     ADCC_Initialize();
     ADCC_DisableContinuousConversion();
-    
+    /* PWM INIT */
     PWM6_Initialize();
     //PWM6_LoadDutyValue();
+    
+    /* INIT PARAMETERS */
+    config = read_EEPROM_config(PARAM_ADDR);
+    if (config.pmon == 0) {
+        config.pmon = PMON_DEFAULT;
+        config.tala = TALA_DEFAULT;
+        config.tina = TINA_DEFAULT;
+        config.alaf = ALAF_DEFAULT;
+        config.alah = ALAH_DEFAULT;
+        config.alam = ALAM_DEFAULT;
+        config.alas = ALAS_DEFAULT;
+        config.alat = ALAT_DEFAULT;
+        config.alal = ALAL_DEFAULT;
+        config.clkh = CLKH_DEFAULT;
+        config.clkm = CLKM_DEFAULT;
+    }
+    
+    /* WRITE CURRENT RECORDS */
+    write_EEPROM_record(max_temp, MAX_TEMP_ADDR);
+    write_EEPROM_record(min_temp, MIN_TEMP_ADDR);
+    write_EEPROM_record(max_lumin, MAX_LUMIN_ADDR);
+    write_EEPROM_record(min_lumin, MIN_LUMIN_ADDR);
+    
 
     while (1)
     {
@@ -157,6 +205,45 @@ void main(void)
             // ...
         }
         
+        /* Five seconds elapsed */
+        if (timer_PMON_flag == config.pmon) {
+            timer_PMON_flag = 0;
+            
+            temp = readTC74();
+            potentiometer = ADCC_GetSingleConversion(adc_potent);
+            lumin = (potentiometer >> 8); // Get only the 2 MSbits (10 bits - 8 bits = 2 bits)
+            
+            if (temp > max_temp.temp) {
+                max_temp.temp = temp;
+                max_temp.lumin = lumin;
+                max_temp.hour = hour;
+                max_temp.min = min;
+                max_temp.sec = sec;
+            }
+            if (temp < min_temp.temp) {
+                min_temp.temp = temp;
+                min_temp.lumin = lumin;
+                min_temp.hour = hour;
+                min_temp.min = min;
+                min_temp.sec = sec;
+            }
+            
+            if (lumin > max_lumin.lumin) {
+                max_lumin.temp = temp;
+                max_lumin.lumin = lumin;
+                max_lumin.hour = hour;
+                max_lumin.min = min;
+                max_lumin.sec = sec;
+            }
+            if (lumin < min_lumin.lumin) {
+                min_lumin.temp = temp;
+                min_lumin.lumin = lumin;
+                min_lumin.hour = hour;
+                min_lumin.min = min;
+                min_lumin.sec = sec;
+            }
+        }
+        
         /* One second elapsed */
         if (timer_1s_flag == 1) {
             timer_1s_flag = 0;
@@ -180,15 +267,6 @@ void main(void)
             sprintf(buf, "%02d oC       L %1d", temp, lumin);
             while (LCDbusy());
             LCDstr(buf);
-            
-        }
-        
-        if (timer_5s_flag == 5) {
-            timer_5s_flag = 0;
-            
-            temp = readTC74();
-            potentiometer = ADCC_GetSingleConversion(adc_potent);
-            lumin = (potentiometer >> 8); // Get only the 2 MSbits (10 bits - 8 bits = 2 bits)
         }
         
     }
