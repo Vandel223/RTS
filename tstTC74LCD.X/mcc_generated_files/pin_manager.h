@@ -65,6 +65,26 @@
 #define PULL_UP_ENABLED      1
 #define PULL_UP_DISABLED     0
 
+// get/set adc_potent aliases
+#define adc_potent_TRIS                 TRISAbits.TRISA0
+#define adc_potent_LAT                  LATAbits.LATA0
+#define adc_potent_PORT                 PORTAbits.RA0
+#define adc_potent_WPU                  WPUAbits.WPUA0
+#define adc_potent_OD                   ODCONAbits.ODCA0
+#define adc_potent_ANS                  ANSELAbits.ANSA0
+#define adc_potent_SetHigh()            do { LATAbits.LATA0 = 1; } while(0)
+#define adc_potent_SetLow()             do { LATAbits.LATA0 = 0; } while(0)
+#define adc_potent_Toggle()             do { LATAbits.LATA0 = ~LATAbits.LATA0; } while(0)
+#define adc_potent_GetValue()           PORTAbits.RA0
+#define adc_potent_SetDigitalInput()    do { TRISAbits.TRISA0 = 1; } while(0)
+#define adc_potent_SetDigitalOutput()   do { TRISAbits.TRISA0 = 0; } while(0)
+#define adc_potent_SetPullup()          do { WPUAbits.WPUA0 = 1; } while(0)
+#define adc_potent_ResetPullup()        do { WPUAbits.WPUA0 = 0; } while(0)
+#define adc_potent_SetPushPull()        do { ODCONAbits.ODCA0 = 0; } while(0)
+#define adc_potent_SetOpenDrain()       do { ODCONAbits.ODCA0 = 1; } while(0)
+#define adc_potent_SetAnalogMode()      do { ANSELAbits.ANSA0 = 1; } while(0)
+#define adc_potent_SetDigitalMode()     do { ANSELAbits.ANSA0 = 0; } while(0)
+
 // get/set LED_L aliases
 #define LED_L_TRIS                 TRISAbits.TRISA4
 #define LED_L_LAT                  LATAbits.LATA4

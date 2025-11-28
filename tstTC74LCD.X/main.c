@@ -51,9 +51,26 @@
                          Main application
  */
 
+uint8_t timer_1s_flag = 0;
+uint8_t timer_5s_flag = 0;
+
+void timer_1s(void) {
+    timer_1s_flag = 1;
+    timer_5s_flag += 1;
+}
+
 void main(void)
-{    
-    unsigned char c;
+{   
+    /* POTENTIOMETER & LUMINOSITY */
+    adc_result_t potentiometer;
+    uint8_t lumin;
+    /* TEMPERATURE MEASUREMENT */
+    uint8_t temp;
+    /* CLOCK */
+    uint8_t sec;
+    uint8_t min;
+    uint8_t hour;
+    /* LCD BUFFER */
     char buf[17];
 
     // initialize the device
@@ -63,10 +80,10 @@ void main(void)
     // Use the following macros to:
 
     // Enable the Global Interrupts
-    //INTERRUPT_GlobalInterruptEnable();
+    INTERRUPT_GlobalInterruptEnable();
 
     // Enable the Peripheral Interrupts
-    //INTERRUPT_PeripheralInterruptEnable();
+    INTERRUPT_PeripheralInterruptEnable();
 
     // Disable the Global Interrupts
     //INTERRUPT_GlobalInterruptDisable();
@@ -74,29 +91,55 @@ void main(void)
     // Disable the Peripheral Interrupts
     //INTERRUPT_PeripheralInterruptDisable();
 
+    /* I2C INIT */
     OpenI2C();
-    //I2C_SCL = 1;
-    //I2C_SDA = 1;
-    //WPUC3 = 1;
-    //WPUC4 = 1;
+    /* LCD INIT */
     LCDinit();
+    /* TIMER INIT */
+    TMR1_Initialize();
+    TMR1_SetInterruptHandler( timer_1s );
+    TMR1_StartTimer();
+    /* ADC INIT */
+    ADCC_Initialize();
+    ADCC_DisableContinuousConversion();
 
     while (1)
     {
         // Add your application code
+        /* One second elapsed */
+        if (timer_1s_flag == 1) {
+            timer_1s_flag = 0;
+            
+            sec += 1;
+            if (sec >= 60) {
+                sec = 0;
+                min += 1;
+                if (min >= 60) {
+                    min = 0;
+                    hour = (hour + 1) % 24;
+                }
+            }
+            
+            LCDpos(0, 0);
+            sprintf(buf, "%02d:%02d:%02d  CTL AR", hour, min, sec);
+            while (LCDbusy());
+            LCDstr(buf);
+
+            LCDpos(1, 0);;
+            sprintf(buf, "%02d oC       L %1d", temp, lumin);
+            while (LCDbusy());
+            LCDstr(buf);
+            
+        }
         
-        c = readTC74();
-        LCDcmd(0x80);       //first line, first column
-        while (LCDbusy());
-        LCDstr("Temp");
-        LCDpos(0,8);
-        while (LCDbusy());
-        LCDstr("STR-RTS");
-        LCDcmd(0xc0);       // second line, first column
-        sprintf(buf, "%02d C", c);
-        while (LCDbusy());
-        LCDstr(buf);
-        __delay_ms(2000);
+        if (timer_5s_flag == 5) {
+            timer_5s_flag = 0;
+            
+            temp = readTC74();
+            potentiometer = ADCC_GetSingleConversion(adc_potent);
+            lumin = (potentiometer >> 8); // Get only the 2 MSbits (10 bits - 8 bits = 2 bits)
+        }
+        
     }
 }
 /**

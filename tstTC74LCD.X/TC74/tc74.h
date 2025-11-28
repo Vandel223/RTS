@@ -36,7 +36,7 @@
 // TODO Insert appropriate #include <>
 
 // TODO Insert declarations
-unsigned char readTC74 (void)
+unsigned char readTC74 (void);
 
 #endif	/* __TC74__H */
 

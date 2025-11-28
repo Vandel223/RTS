@@ -99,8 +99,8 @@ void ADCC_Initialize(void)
     ADCLK = 0x00;
     // ADGO stop; ADFM right; ADON enabled; ADCONT disabled; ADCS FOSC/ADCLK; 
     ADCON0 = 0x84;
-    // ADACQ 0; 
-    ADACQ = 0x00;
+    // ADACQ 1; 
+    ADACQ = 0x01;
     
 
 }
