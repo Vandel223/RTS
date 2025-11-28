@@ -1,4 +1,4 @@
-# 1 "mcc_generated_files/mcc.c"
+# 1 "mcc_generated_files/tmr5.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 295 "<built-in>" 3
@@ -6,10 +6,8 @@
 # 1 "<built-in>" 2
 # 1 "/Applications/microchip/xc8/v3.10/pic/include/language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "mcc_generated_files/mcc.c" 2
-# 47 "mcc_generated_files/mcc.c"
-# 1 "mcc_generated_files/mcc.h" 1
-# 49 "mcc_generated_files/mcc.h"
+# 1 "mcc_generated_files/tmr5.c" 2
+# 51 "mcc_generated_files/tmr5.c"
 # 1 "/Applications/microchip/xc8/v3.10/pic/include/xc.h" 1 3
 # 18 "/Applications/microchip/xc8/v3.10/pic/include/xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -20807,247 +20805,11 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "/Applications/microchip/xc8/v3.10/pic/include/xc.h" 2 3
-# 50 "mcc_generated_files/mcc.h" 2
-# 1 "mcc_generated_files/device_config.h" 1
-# 51 "mcc_generated_files/mcc.h" 2
-# 1 "mcc_generated_files/pin_manager.h" 1
-# 234 "mcc_generated_files/pin_manager.h"
-void PIN_MANAGER_Initialize (void);
-# 246 "mcc_generated_files/pin_manager.h"
-void PIN_MANAGER_IOC(void);
-# 52 "mcc_generated_files/mcc.h" 2
-
-# 1 "/Applications/microchip/xc8/v3.10/pic/include/c99/stdbool.h" 1 3
-# 54 "mcc_generated_files/mcc.h" 2
-# 1 "/Applications/microchip/xc8/v3.10/pic/include/c99/conio.h" 1 3
-
-
-
-
-
-
-# 1 "/Applications/microchip/xc8/v3.10/pic/include/c99/stdio.h" 1 3
-# 24 "/Applications/microchip/xc8/v3.10/pic/include/c99/stdio.h" 3
-# 1 "/Applications/microchip/xc8/v3.10/pic/include/c99/bits/alltypes.h" 1 3
-# 12 "/Applications/microchip/xc8/v3.10/pic/include/c99/bits/alltypes.h" 3
-typedef void * va_list[1];
-
-
-
-
-typedef void * __isoc_va_list[1];
-# 143 "/Applications/microchip/xc8/v3.10/pic/include/c99/bits/alltypes.h" 3
-typedef short ssize_t;
-# 255 "/Applications/microchip/xc8/v3.10/pic/include/c99/bits/alltypes.h" 3
-typedef long long off_t;
-# 409 "/Applications/microchip/xc8/v3.10/pic/include/c99/bits/alltypes.h" 3
-typedef struct _IO_FILE FILE;
-# 25 "/Applications/microchip/xc8/v3.10/pic/include/c99/stdio.h" 2 3
-# 52 "/Applications/microchip/xc8/v3.10/pic/include/c99/stdio.h" 3
-typedef union _G_fpos64_t {
- char __opaque[16];
- double __align;
-} fpos_t;
-
-extern FILE *const stdin;
-extern FILE *const stdout;
-extern FILE *const stderr;
-
-
-
-
-
-FILE *fopen(const char *restrict, const char *restrict);
-FILE *freopen(const char *restrict, const char *restrict, FILE *restrict);
-int fclose(FILE *);
-
-int remove(const char *);
-int rename(const char *, const char *);
-
-int feof(FILE *);
-int ferror(FILE *);
-int fflush(FILE *);
-void clearerr(FILE *);
-
-int fseek(FILE *, long, int);
-long ftell(FILE *);
-void rewind(FILE *);
-
-int fgetpos(FILE *restrict, fpos_t *restrict);
-int fsetpos(FILE *, const fpos_t *);
-
-size_t fread(void *restrict, size_t, size_t, FILE *restrict);
-size_t fwrite(const void *restrict, size_t, size_t, FILE *restrict);
-
-int fgetc(FILE *);
-int getc(FILE *);
-int getchar(void);
-
-
-
-
-
-int ungetc(int, FILE *);
-int getch(void);
-
-int fputc(int, FILE *);
-int putc(int, FILE *);
-int putchar(int);
-
-
-
-
-
-void putch(char);
-
-char *fgets(char *restrict, int, FILE *restrict);
-
-char *gets(char *);
-
-
-int fputs(const char *restrict, FILE *restrict);
-int puts(const char *);
-
-__attribute__((__format__(__printf__, 1, 2)))
-int printf(const char *restrict, ...);
-__attribute__((__format__(__printf__, 2, 3)))
-int fprintf(FILE *restrict, const char *restrict, ...);
-__attribute__((__format__(__printf__, 2, 3)))
-int sprintf(char *restrict, const char *restrict, ...);
-__attribute__((__format__(__printf__, 3, 4)))
-int snprintf(char *restrict, size_t, const char *restrict, ...);
-
-__attribute__((__format__(__printf__, 1, 0)))
-int vprintf(const char *restrict, __isoc_va_list);
-int vfprintf(FILE *restrict, const char *restrict, __isoc_va_list);
-__attribute__((__format__(__printf__, 2, 0)))
-int vsprintf(char *restrict, const char *restrict, __isoc_va_list);
-__attribute__((__format__(__printf__, 3, 0)))
-int vsnprintf(char *restrict, size_t, const char *restrict, __isoc_va_list);
-
-__attribute__((__format__(__scanf__, 1, 2)))
-int scanf(const char *restrict, ...);
-__attribute__((__format__(__scanf__, 2, 3)))
-int fscanf(FILE *restrict, const char *restrict, ...);
-__attribute__((__format__(__scanf__, 2, 3)))
-int sscanf(const char *restrict, const char *restrict, ...);
-
-__attribute__((__format__(__scanf__, 1, 0)))
-int vscanf(const char *restrict, __isoc_va_list);
-int vfscanf(FILE *restrict, const char *restrict, __isoc_va_list);
-__attribute__((__format__(__scanf__, 2, 0)))
-int vsscanf(const char *restrict, const char *restrict, __isoc_va_list);
-
-void perror(const char *);
-
-int setvbuf(FILE *restrict, char *restrict, int, size_t);
-void setbuf(FILE *restrict, char *restrict);
-
-char *tmpnam(char *);
-FILE *tmpfile(void);
-
-
-
-
-FILE *fmemopen(void *restrict, size_t, const char *restrict);
-FILE *open_memstream(char **, size_t *);
-FILE *fdopen(int, const char *);
-FILE *popen(const char *, const char *);
-int pclose(FILE *);
-int fileno(FILE *);
-int fseeko(FILE *, off_t, int);
-off_t ftello(FILE *);
-int dprintf(int, const char *restrict, ...);
-int vdprintf(int, const char *restrict, __isoc_va_list);
-void flockfile(FILE *);
-int ftrylockfile(FILE *);
-void funlockfile(FILE *);
-int getc_unlocked(FILE *);
-int getchar_unlocked(void);
-int putc_unlocked(int, FILE *);
-int putchar_unlocked(int);
-ssize_t getdelim(char **restrict, size_t *restrict, int, FILE *restrict);
-ssize_t getline(char **restrict, size_t *restrict, FILE *restrict);
-int renameat(int, const char *, int, const char *);
-char *ctermid(char *);
-
-
-
-
-
-
-
-char *tempnam(const char *, const char *);
-# 8 "/Applications/microchip/xc8/v3.10/pic/include/c99/conio.h" 2 3
-# 55 "mcc_generated_files/mcc.h" 2
-# 1 "mcc_generated_files/interrupt_manager.h" 1
-# 56 "mcc_generated_files/mcc.h" 2
-# 1 "mcc_generated_files/i2c1_master.h" 1
-# 58 "mcc_generated_files/i2c1_master.h"
-typedef enum {
-    I2C1_NOERR,
-    I2C1_BUSY,
-    I2C1_FAIL
-
-
-} i2c1_error_t;
-
-typedef enum
-{
-    I2C1_STOP=1,
-    I2C1_RESTART_READ,
-    I2C1_RESTART_WRITE,
-    I2C1_CONTINUE,
-    I2C1_RESET_LINK
-} i2c1_operations_t;
-
-typedef uint8_t i2c1_address_t;
-typedef i2c1_operations_t (*i2c1_callback_t)(void *funPtr);
-
-
-i2c1_operations_t I2C1_CallbackReturnStop(void *funPtr);
-i2c1_operations_t I2C1_CallbackReturnReset(void *funPtr);
-i2c1_operations_t I2C1_CallbackRestartWrite(void *funPtr);
-i2c1_operations_t I2C1_CallbackRestartRead(void *funPtr);
-
-
-
-
-
-
-void I2C1_Initialize(void);
-# 101 "mcc_generated_files/i2c1_master.h"
-i2c1_error_t I2C1_Open(i2c1_address_t address);
-# 111 "mcc_generated_files/i2c1_master.h"
-i2c1_error_t I2C1_Close(void);
-# 123 "mcc_generated_files/i2c1_master.h"
-i2c1_error_t I2C1_MasterOperation(_Bool read);
-
-
-
-
-i2c1_error_t I2C1_MasterWrite(void);
-
-
-
-
-i2c1_error_t I2C1_MasterRead(void);
-# 142 "mcc_generated_files/i2c1_master.h"
-void I2C1_SetTimeout(uint8_t timeOut);
-# 152 "mcc_generated_files/i2c1_master.h"
-void I2C1_SetBuffer(void *buffer, size_t bufferSize);
-# 164 "mcc_generated_files/i2c1_master.h"
-void I2C1_SetDataCompleteCallback(i2c1_callback_t cb, void *ptr);
-# 174 "mcc_generated_files/i2c1_master.h"
-void I2C1_SetWriteCollisionCallback(i2c1_callback_t cb, void *ptr);
-# 184 "mcc_generated_files/i2c1_master.h"
-void I2C1_SetAddressNackCallback(i2c1_callback_t cb, void *ptr);
-# 194 "mcc_generated_files/i2c1_master.h"
-void I2C1_SetDataNackCallback(i2c1_callback_t cb, void *ptr);
-# 204 "mcc_generated_files/i2c1_master.h"
-void I2C1_SetTimeoutCallback(i2c1_callback_t cb, void *ptr);
-# 57 "mcc_generated_files/mcc.h" 2
+# 52 "mcc_generated_files/tmr5.c" 2
 # 1 "mcc_generated_files/tmr5.h" 1
+# 54 "mcc_generated_files/tmr5.h"
+# 1 "/Applications/microchip/xc8/v3.10/pic/include/c99/stdbool.h" 1 3
+# 55 "mcc_generated_files/tmr5.h" 2
 # 100 "mcc_generated_files/tmr5.h"
 void TMR5_Initialize(void);
 # 129 "mcc_generated_files/tmr5.h"
@@ -21072,392 +20834,137 @@ void TMR5_ISR(void);
 extern void (*TMR5_InterruptHandler)(void);
 # 421 "mcc_generated_files/tmr5.h"
 void TMR5_DefaultInterruptHandler(void);
-# 58 "mcc_generated_files/mcc.h" 2
-# 1 "mcc_generated_files/tmr3.h" 1
-# 100 "mcc_generated_files/tmr3.h"
-void TMR3_Initialize(void);
-# 129 "mcc_generated_files/tmr3.h"
-void TMR3_StartTimer(void);
-# 161 "mcc_generated_files/tmr3.h"
-void TMR3_StopTimer(void);
-# 196 "mcc_generated_files/tmr3.h"
-uint16_t TMR3_ReadTimer(void);
-# 235 "mcc_generated_files/tmr3.h"
-void TMR3_WriteTimer(uint16_t timerVal);
-# 271 "mcc_generated_files/tmr3.h"
-void TMR3_Reload(void);
-# 310 "mcc_generated_files/tmr3.h"
-void TMR3_StartSinglePulseAcquisition(void);
-# 349 "mcc_generated_files/tmr3.h"
-uint8_t TMR3_CheckGateValueStatus(void);
-# 367 "mcc_generated_files/tmr3.h"
-void TMR3_ISR(void);
-# 385 "mcc_generated_files/tmr3.h"
- void TMR3_SetInterruptHandler(void (* InterruptHandler)(void));
-# 403 "mcc_generated_files/tmr3.h"
-extern void (*TMR3_InterruptHandler)(void);
-# 421 "mcc_generated_files/tmr3.h"
-void TMR3_DefaultInterruptHandler(void);
-# 59 "mcc_generated_files/mcc.h" 2
-# 1 "mcc_generated_files/pwm6.h" 1
-# 102 "mcc_generated_files/pwm6.h"
- void PWM6_Initialize(void);
-# 129 "mcc_generated_files/pwm6.h"
- void PWM6_LoadDutyValue(uint16_t dutyValue);
-# 60 "mcc_generated_files/mcc.h" 2
-# 1 "mcc_generated_files/tmr1.h" 1
-# 100 "mcc_generated_files/tmr1.h"
-void TMR1_Initialize(void);
-# 129 "mcc_generated_files/tmr1.h"
-void TMR1_StartTimer(void);
-# 161 "mcc_generated_files/tmr1.h"
-void TMR1_StopTimer(void);
-# 196 "mcc_generated_files/tmr1.h"
-uint16_t TMR1_ReadTimer(void);
-# 235 "mcc_generated_files/tmr1.h"
-void TMR1_WriteTimer(uint16_t timerVal);
-# 271 "mcc_generated_files/tmr1.h"
-void TMR1_Reload(void);
-# 310 "mcc_generated_files/tmr1.h"
-void TMR1_StartSinglePulseAcquisition(void);
-# 349 "mcc_generated_files/tmr1.h"
-uint8_t TMR1_CheckGateValueStatus(void);
-# 367 "mcc_generated_files/tmr1.h"
-void TMR1_ISR(void);
-# 385 "mcc_generated_files/tmr1.h"
- void TMR1_SetInterruptHandler(void (* InterruptHandler)(void));
-# 403 "mcc_generated_files/tmr1.h"
-extern void (*TMR1_InterruptHandler)(void);
-# 421 "mcc_generated_files/tmr1.h"
-void TMR1_DefaultInterruptHandler(void);
-# 61 "mcc_generated_files/mcc.h" 2
-# 1 "mcc_generated_files/tmr2.h" 1
-# 79 "mcc_generated_files/tmr2.h"
-typedef enum
-{
-# 89 "mcc_generated_files/tmr2.h"
-   TMR2_ROP_STARTS_TMRON,
+# 53 "mcc_generated_files/tmr5.c" 2
 
 
 
 
-   TMR2_ROP_STARTS_TMRON_ERSHIGH,
+volatile uint16_t timer5ReloadVal;
+void (*TMR5_InterruptHandler)(void);
 
 
 
 
-   TMR2_ROP_STARTS_TMRON_ERSLOW,
 
-
-
-
-   TMR2_ROP_RESETS_ERSBOTHEDGE,
-
-
-
-
-   TMR2_ROP_RESETS_ERSRISINGEDGE,
-
-
-
-
-   TMR2_ROP_RESETS_ERSFALLINGEDGE,
-
-
-
-
-   TMR2_ROP_RESETS_ERSLOW,
-
-
-
-
-   TMR2_ROP_RESETS_ERSHIGH,
-# 135 "mcc_generated_files/tmr2.h"
-   TMR2_OS_STARTS_TMRON,
-
-
-
-
-   TMR2_OS_STARTS_ERSRISINGEDGE ,
-
-
-
-
-   TMR2_OS_STARTS_ERSFALLINGEDGE ,
-
-
-
-
-   TMR2_OS_STARTS_ERSBOTHEDGE,
-
-
-
-
-
-   TMR2_OS_STARTS_ERSFIRSTRISINGEDGE,
-
-
-
-
-
-   TMR2_OS_STARTS_ERSFIRSTFALLINGEDGE,
-
-
-
-
-
-   TMR2_OS_STARTS_ERSRISINGEDGEDETECT,
-
-
-
-
-   TMR2_OS_STARTS_ERSFALLINGEDGEDETECT,
-
-
-
-
-   TMR2_OS_STARTS_TMRON_ERSHIGH = 0x16,
-
-
-
-
-   TMR2_OS_STARTS_TMRON_ERSLOW = 0x17,
-# 192 "mcc_generated_files/tmr2.h"
-   TMR2_MS_STARTS_TMRON_ERSRISINGEDGEDETECT = 0x11,
-
-
-
-
-   TMR2_MS_STARTS_TMRON_ERSFALLINGEDGEDETECT = 0x12,
-
-
-
-
-
-   TMR2_MS_STARTS_TMRON_ERSBOTHEDGE = 0x13
-
-} TMR2_HLT_MODE;
-# 220 "mcc_generated_files/tmr2.h"
-typedef enum
+void TMR5_Initialize(void)
 {
 
 
-    TMR2_T2INPPS,
+
+    T5GCON = 0x00;
 
 
-
-    TMR2_RESERVED,
-
+    T5GATE = 0x00;
 
 
-    TMR2_T4POSTSCALED,
+    T5CLK = 0x04;
 
 
-
-    TMR2_T6POSTSCALED,
-
-
-    TMR2_CCP1_OUT,
+    TMR5H = 0xF3;
 
 
-
-    TMR2_CCP2_OUT,
-
+    TMR5L = 0xE4;
 
 
-    TMR2_CCP3_OUT,
+    PIR4bits.TMR5IF = 0;
 
 
-
-    TMR2_CCP4_OUT,
-
+    timer5ReloadVal=(uint16_t)((TMR5H << 8) | TMR5L);
 
 
-    TMR2_CCP5_OUT,
+    PIE4bits.TMR5IE = 1;
 
 
-
-    TMR2_PWM6_OUT,
-
+    TMR5_SetInterruptHandler(TMR5_DefaultInterruptHandler);
 
 
-    TMR2_PWM7_OUT,
-
-
-
-    TMR2_C1_OUT_SYNC,
-
-
-
-    TMR2_C2_OUT_SYNC,
-
-
-
-    TMR2_ZCD_OUTPUT,
-
-
-
-    TMR2_CLC1_OUT,
-
-
-
-    TMR2_CLC2_OUT,
-
-
-
-    TMR2_CLC3_OUT,
-
-
-
-    TMR2_CLC4_OUT
-
-
-} TMR2_HLT_EXT_RESET_SOURCE;
-# 336 "mcc_generated_files/tmr2.h"
-void TMR2_Initialize(void);
-# 372 "mcc_generated_files/tmr2.h"
-void TMR2_ModeSet(TMR2_HLT_MODE mode);
-# 407 "mcc_generated_files/tmr2.h"
-void TMR2_ExtResetSourceSet(TMR2_HLT_EXT_RESET_SOURCE reset);
-# 436 "mcc_generated_files/tmr2.h"
-void TMR2_Start(void);
-# 465 "mcc_generated_files/tmr2.h"
-void TMR2_StartTimer(void);
-# 497 "mcc_generated_files/tmr2.h"
-void TMR2_Stop(void);
-# 529 "mcc_generated_files/tmr2.h"
-void TMR2_StopTimer(void);
-# 564 "mcc_generated_files/tmr2.h"
-uint8_t TMR2_Counter8BitGet(void);
-# 599 "mcc_generated_files/tmr2.h"
-uint8_t TMR2_ReadTimer(void);
-# 638 "mcc_generated_files/tmr2.h"
-void TMR2_Counter8BitSet(uint8_t timerVal);
-# 677 "mcc_generated_files/tmr2.h"
-void TMR2_WriteTimer(uint8_t timerVal);
-# 729 "mcc_generated_files/tmr2.h"
-void TMR2_Period8BitSet(uint8_t periodVal);
-# 781 "mcc_generated_files/tmr2.h"
-void TMR2_LoadPeriodRegister(uint8_t periodVal);
-# 819 "mcc_generated_files/tmr2.h"
-_Bool TMR2_HasOverflowOccured(void);
-# 62 "mcc_generated_files/mcc.h" 2
-# 1 "mcc_generated_files/adcc.h" 1
-# 72 "mcc_generated_files/adcc.h"
-typedef uint16_t adc_result_t;
-# 86 "mcc_generated_files/adcc.h"
-typedef enum
-{
-    adc_potent = 0x0,
-    channel_VSS = 0x3C,
-    channel_Temp = 0x3D,
-    channel_DAC1 = 0x3E,
-    channel_FVR_buf1 = 0x3F
-} adcc_channel_t;
-# 127 "mcc_generated_files/adcc.h"
-void ADCC_Initialize(void);
-# 156 "mcc_generated_files/adcc.h"
-void ADCC_StartConversion(adcc_channel_t channel);
-# 186 "mcc_generated_files/adcc.h"
-_Bool ADCC_IsConversionDone(void);
-# 218 "mcc_generated_files/adcc.h"
-adc_result_t ADCC_GetConversionResult(void);
-# 249 "mcc_generated_files/adcc.h"
-adc_result_t ADCC_GetSingleConversion(adcc_channel_t channel);
-# 274 "mcc_generated_files/adcc.h"
-void ADCC_StopConversion(void);
-# 301 "mcc_generated_files/adcc.h"
-void ADCC_SetStopOnInterrupt(void);
-# 326 "mcc_generated_files/adcc.h"
-void ADCC_DischargeSampleCapacitor(void);
-# 352 "mcc_generated_files/adcc.h"
-void ADCC_LoadAcquisitionRegister(uint8_t);
-# 378 "mcc_generated_files/adcc.h"
-void ADCC_SetPrechargeTime(uint8_t);
-# 403 "mcc_generated_files/adcc.h"
-void ADCC_SetRepeatCount(uint8_t);
-# 431 "mcc_generated_files/adcc.h"
-uint8_t ADCC_GetCurrentCountofConversions(void);
-# 455 "mcc_generated_files/adcc.h"
-void ADCC_ClearAccumulator(void);
-# 480 "mcc_generated_files/adcc.h"
-uint16_t ADCC_GetAccumulatorValue(void);
-# 508 "mcc_generated_files/adcc.h"
-_Bool ADCC_HasAccumulatorOverflowed(void);
-# 533 "mcc_generated_files/adcc.h"
-uint16_t ADCC_GetFilterValue(void);
-# 561 "mcc_generated_files/adcc.h"
-uint16_t ADCC_GetPreviousResult(void);
-# 587 "mcc_generated_files/adcc.h"
-void ADCC_DefineSetPoint(uint16_t);
-# 613 "mcc_generated_files/adcc.h"
-void ADCC_SetUpperThreshold(uint16_t);
-# 639 "mcc_generated_files/adcc.h"
-void ADCC_SetLowerThreshold(uint16_t);
-# 666 "mcc_generated_files/adcc.h"
-uint16_t ADCC_GetErrorCalculation(void);
-# 693 "mcc_generated_files/adcc.h"
-void ADCC_EnableDoubleSampling(void);
-# 717 "mcc_generated_files/adcc.h"
-void ADCC_EnableContinuousConversion(void);
-# 741 "mcc_generated_files/adcc.h"
-void ADCC_DisableContinuousConversion(void);
-# 769 "mcc_generated_files/adcc.h"
-_Bool ADCC_HasErrorCrossedUpperThreshold(void);
-# 797 "mcc_generated_files/adcc.h"
-_Bool ADCC_HasErrorCrossedLowerThreshold(void);
-# 824 "mcc_generated_files/adcc.h"
-uint8_t ADCC_GetConversionStageStatus(void);
-# 63 "mcc_generated_files/mcc.h" 2
-# 77 "mcc_generated_files/mcc.h"
-void SYSTEM_Initialize(void);
-# 90 "mcc_generated_files/mcc.h"
-void OSCILLATOR_Initialize(void);
-# 103 "mcc_generated_files/mcc.h"
-void PMD_Initialize(void);
-# 48 "mcc_generated_files/mcc.c" 2
-
-
-void SYSTEM_Initialize(void)
-{
-    PMD_Initialize();
-    I2C1_Initialize();
-    PIN_MANAGER_Initialize();
-    OSCILLATOR_Initialize();
-    PWM6_Initialize();
-    ADCC_Initialize();
-    TMR3_Initialize();
-    TMR5_Initialize();
-    TMR2_Initialize();
-    TMR1_Initialize();
+    T5CON = 0x05;
 }
 
-void OSCILLATOR_Initialize(void)
+void TMR5_StartTimer(void)
 {
 
-    OSCCON1 = 0x62;
-
-    OSCCON3 = 0x00;
-
-    OSCEN = 0x00;
-
-    OSCFRQ = 0x02;
-
-    OSCTUNE = 0x00;
+    T5CONbits.TMR5ON = 1;
 }
 
-void PMD_Initialize(void)
+void TMR5_StopTimer(void)
 {
 
-    PMD0 = 0x00;
+    T5CONbits.TMR5ON = 0;
+}
 
-    PMD1 = 0x00;
+uint16_t TMR5_ReadTimer(void)
+{
+    uint16_t readVal;
+    uint8_t readValHigh;
+    uint8_t readValLow;
 
-    PMD2 = 0x00;
+    T5CONbits.T5RD16 = 1;
 
-    PMD3 = 0x00;
+    readValLow = TMR5L;
+    readValHigh = TMR5H;
 
-    PMD4 = 0x00;
+    readVal = ((uint16_t)readValHigh << 8) | readValLow;
 
-    PMD5 = 0x00;
+    return readVal;
+}
+
+void TMR5_WriteTimer(uint16_t timerVal)
+{
+    if (T5CONbits.nT5SYNC == 1)
+    {
+
+        T5CONbits.TMR5ON = 0;
+
+
+        TMR5H = (timerVal >> 8);
+        TMR5L = timerVal;
+
+
+        T5CONbits.TMR5ON =1;
+    }
+    else
+    {
+
+        TMR5H = (timerVal >> 8);
+        TMR5L = timerVal;
+    }
+}
+
+void TMR5_Reload(void)
+{
+    TMR5_WriteTimer(timer5ReloadVal);
+}
+
+void TMR5_StartSinglePulseAcquisition(void)
+{
+    T5GCONbits.T5GGO = 1;
+}
+
+uint8_t TMR5_CheckGateValueStatus(void)
+{
+    return (T5GCONbits.T5GVAL);
+}
+
+void TMR5_ISR(void)
+{
+
+
+    PIR4bits.TMR5IF = 0;
+    TMR5_WriteTimer(timer5ReloadVal);
+
+    if(TMR5_InterruptHandler)
+    {
+        TMR5_InterruptHandler();
+    }
+}
+
+
+void TMR5_SetInterruptHandler(void (* InterruptHandler)(void)){
+    TMR5_InterruptHandler = InterruptHandler;
+}
+
+void TMR5_DefaultInterruptHandler(void){
+
+
 }

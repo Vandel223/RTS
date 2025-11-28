@@ -20881,9 +20881,9 @@ uint8_t ADCC_GetConversionStageStatus(void);
 # 1 "mcc_generated_files/device_config.h" 1
 # 51 "mcc_generated_files/mcc.h" 2
 # 1 "mcc_generated_files/pin_manager.h" 1
-# 194 "mcc_generated_files/pin_manager.h"
+# 234 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
-# 206 "mcc_generated_files/pin_manager.h"
+# 246 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
 # 52 "mcc_generated_files/mcc.h" 2
 
@@ -21116,13 +21116,64 @@ void I2C1_SetDataNackCallback(i2c1_callback_t cb, void *ptr);
 # 204 "mcc_generated_files/i2c1_master.h"
 void I2C1_SetTimeoutCallback(i2c1_callback_t cb, void *ptr);
 # 57 "mcc_generated_files/mcc.h" 2
-
+# 1 "mcc_generated_files/tmr5.h" 1
+# 100 "mcc_generated_files/tmr5.h"
+void TMR5_Initialize(void);
+# 129 "mcc_generated_files/tmr5.h"
+void TMR5_StartTimer(void);
+# 161 "mcc_generated_files/tmr5.h"
+void TMR5_StopTimer(void);
+# 196 "mcc_generated_files/tmr5.h"
+uint16_t TMR5_ReadTimer(void);
+# 235 "mcc_generated_files/tmr5.h"
+void TMR5_WriteTimer(uint16_t timerVal);
+# 271 "mcc_generated_files/tmr5.h"
+void TMR5_Reload(void);
+# 310 "mcc_generated_files/tmr5.h"
+void TMR5_StartSinglePulseAcquisition(void);
+# 349 "mcc_generated_files/tmr5.h"
+uint8_t TMR5_CheckGateValueStatus(void);
+# 367 "mcc_generated_files/tmr5.h"
+void TMR5_ISR(void);
+# 385 "mcc_generated_files/tmr5.h"
+ void TMR5_SetInterruptHandler(void (* InterruptHandler)(void));
+# 403 "mcc_generated_files/tmr5.h"
+extern void (*TMR5_InterruptHandler)(void);
+# 421 "mcc_generated_files/tmr5.h"
+void TMR5_DefaultInterruptHandler(void);
+# 58 "mcc_generated_files/mcc.h" 2
+# 1 "mcc_generated_files/tmr3.h" 1
+# 100 "mcc_generated_files/tmr3.h"
+void TMR3_Initialize(void);
+# 129 "mcc_generated_files/tmr3.h"
+void TMR3_StartTimer(void);
+# 161 "mcc_generated_files/tmr3.h"
+void TMR3_StopTimer(void);
+# 196 "mcc_generated_files/tmr3.h"
+uint16_t TMR3_ReadTimer(void);
+# 235 "mcc_generated_files/tmr3.h"
+void TMR3_WriteTimer(uint16_t timerVal);
+# 271 "mcc_generated_files/tmr3.h"
+void TMR3_Reload(void);
+# 310 "mcc_generated_files/tmr3.h"
+void TMR3_StartSinglePulseAcquisition(void);
+# 349 "mcc_generated_files/tmr3.h"
+uint8_t TMR3_CheckGateValueStatus(void);
+# 367 "mcc_generated_files/tmr3.h"
+void TMR3_ISR(void);
+# 385 "mcc_generated_files/tmr3.h"
+ void TMR3_SetInterruptHandler(void (* InterruptHandler)(void));
+# 403 "mcc_generated_files/tmr3.h"
+extern void (*TMR3_InterruptHandler)(void);
+# 421 "mcc_generated_files/tmr3.h"
+void TMR3_DefaultInterruptHandler(void);
+# 59 "mcc_generated_files/mcc.h" 2
 # 1 "mcc_generated_files/pwm6.h" 1
 # 102 "mcc_generated_files/pwm6.h"
  void PWM6_Initialize(void);
 # 129 "mcc_generated_files/pwm6.h"
  void PWM6_LoadDutyValue(uint16_t dutyValue);
-# 59 "mcc_generated_files/mcc.h" 2
+# 60 "mcc_generated_files/mcc.h" 2
 # 1 "mcc_generated_files/tmr1.h" 1
 # 100 "mcc_generated_files/tmr1.h"
 void TMR1_Initialize(void);
@@ -21148,7 +21199,7 @@ void TMR1_ISR(void);
 extern void (*TMR1_InterruptHandler)(void);
 # 421 "mcc_generated_files/tmr1.h"
 void TMR1_DefaultInterruptHandler(void);
-# 60 "mcc_generated_files/mcc.h" 2
+# 61 "mcc_generated_files/mcc.h" 2
 # 1 "mcc_generated_files/tmr2.h" 1
 # 79 "mcc_generated_files/tmr2.h"
 typedef enum
@@ -21359,12 +21410,12 @@ void TMR2_Period8BitSet(uint8_t periodVal);
 void TMR2_LoadPeriodRegister(uint8_t periodVal);
 # 819 "mcc_generated_files/tmr2.h"
 _Bool TMR2_HasOverflowOccured(void);
-# 61 "mcc_generated_files/mcc.h" 2
-# 75 "mcc_generated_files/mcc.h"
+# 62 "mcc_generated_files/mcc.h" 2
+# 77 "mcc_generated_files/mcc.h"
 void SYSTEM_Initialize(void);
-# 88 "mcc_generated_files/mcc.h"
+# 90 "mcc_generated_files/mcc.h"
 void OSCILLATOR_Initialize(void);
-# 101 "mcc_generated_files/mcc.h"
+# 103 "mcc_generated_files/mcc.h"
 void PMD_Initialize(void);
 # 54 "mcc_generated_files/adcc.c" 2
 # 63 "mcc_generated_files/adcc.c"

@@ -53,10 +53,24 @@
 
 uint8_t timer_1s_flag = 0;
 uint8_t timer_5s_flag = 0;
+uint8_t timer3_100ms_flag = 1;
+uint8_t timer5_100ms_flag = 1;
 
 void timer_1s(void) {
     timer_1s_flag = 1;
     timer_5s_flag += 1;
+}
+
+void timer3_100ms(void) {
+    timer3_100ms_flag = 1;
+    TMR3_StopTimer();
+    TMR3_Reload();
+}
+
+void timer5_100ms(void) {
+    timer5_100ms_flag = 1;
+    TMR5_StopTimer();
+    TMR5_Reload();
 }
 
 void main(void)
@@ -72,6 +86,9 @@ void main(void)
     uint8_t hour;
     /* LCD BUFFER */
     char buf[17];
+    /* BUTTONS */
+    uint8_t sw1 = HIGH;
+    uint8_t sw2 = HIGH;
 
     // initialize the device
     SYSTEM_Initialize();
@@ -95,17 +112,51 @@ void main(void)
     OpenI2C();
     /* LCD INIT */
     LCDinit();
-    /* TIMER INIT */
+    /* TIMERS INIT */
+    // TMR1
     TMR1_Initialize();
     TMR1_SetInterruptHandler( timer_1s );
     TMR1_StartTimer();
+    // TMR3
+    TMR3_Initialize();
+    TMR3_SetInterruptHandler( timer3_100ms );
+    // TMR5
+    TMR5_Initialize();
+    TMR5_SetInterruptHandler( timer5_100ms );
     /* ADC INIT */
     ADCC_Initialize();
     ADCC_DisableContinuousConversion();
+    
+    PWM6_Initialize();
+    //PWM6_LoadDutyValue();
 
     while (1)
     {
         // Add your application code
+        
+        /* Debounce buttons */
+        if (SW1_GetValue() == LOW && timer3_100ms_flag) {
+            timer3_100ms_flag = 0;
+            TMR3_StartTimer();
+            
+            sw1 = LOW;
+        }
+        if (SW2_GetValue() == LOW && timer5_100ms_flag) {
+            timer5_100ms_flag = 0;
+            TMR5_StartTimer();
+            
+            sw2 = LOW;
+        }
+        /* Buttons tasks */
+        if (sw1 == LOW) {
+            sw1 = HIGH;
+            // ...
+        }
+        if (sw2 == LOW) {
+            sw2 = HIGH;
+            // ...
+        }
+        
         /* One second elapsed */
         if (timer_1s_flag == 1) {
             timer_1s_flag = 0;

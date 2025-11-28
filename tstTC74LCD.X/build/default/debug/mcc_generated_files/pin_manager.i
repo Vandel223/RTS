@@ -20808,9 +20808,9 @@ extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 29 "/Applications/microchip/xc8/v3.10/pic/include/xc.h" 2 3
 # 55 "mcc_generated_files/pin_manager.h" 2
-# 194 "mcc_generated_files/pin_manager.h"
+# 234 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_Initialize (void);
-# 206 "mcc_generated_files/pin_manager.h"
+# 246 "mcc_generated_files/pin_manager.h"
 void PIN_MANAGER_IOC(void);
 # 50 "mcc_generated_files/pin_manager.c" 2
 
@@ -20842,10 +20842,10 @@ void PIN_MANAGER_Initialize(void)
 
 
     ANSELD = 0xFF;
-    ANSELC = 0xE7;
-    ANSELB = 0xFF;
+    ANSELC = 0xC7;
+    ANSELB = 0xEF;
     ANSELE = 0x07;
-    ANSELA = 0x4F;
+    ANSELA = 0x0F;
 
 
 
