@@ -19,14 +19,12 @@ void write_EEPROM_record(EEPROM_record record, uint16_t addr) {
     DATAEE_WriteByte(addr + 4, record.lumin);
 }
 
-EEPROM_record read_EEPROM_record(uint16_t addr) {
-    EEPROM_record record;
-    record.hour = DATAEE_ReadByte(addr);
-    record.min = DATAEE_ReadByte(addr + 1);
-    record.sec = DATAEE_ReadByte(addr + 2);
-    record.temp = DATAEE_ReadByte(addr + 3);
-    record.lumin = DATAEE_ReadByte(addr + 4);
-    return record;
+void read_EEPROM_record(EEPROM_record *record, uint16_t addr) {
+    record->hour = DATAEE_ReadByte(addr);
+    record->min = DATAEE_ReadByte(addr + 1);
+    record->sec = DATAEE_ReadByte(addr + 2);
+    record->temp = DATAEE_ReadByte(addr + 3);
+    record->lumin = DATAEE_ReadByte(addr + 4);
 }
 
 uint8_t EEPROM_checksum(EEPROM_config config)
@@ -62,29 +60,24 @@ void write_EEPROM_config(EEPROM_config config, uint16_t addr) {
     DATAEE_WriteByte(addr + 12, EEPROM_checksum(config));
 }
 
-EEPROM_config read_EEPROM_config(uint16_t addr) {
-    EEPROM_config config;
+void read_EEPROM_config(EEPROM_config *config, uint16_t addr) {
     uint8_t magic_word, checksum;
     
     magic_word = DATAEE_ReadByte(addr);
-    config.pmon = DATAEE_ReadByte(addr + 1);
-    config.tala = DATAEE_ReadByte(addr + 2);
-    config.tina = DATAEE_ReadByte(addr + 3);
-    config.alaf = DATAEE_ReadByte(addr + 4);
-    config.alah = DATAEE_ReadByte(addr + 5);
-    config.alam = DATAEE_ReadByte(addr + 6);
-    config.alas = DATAEE_ReadByte(addr + 7);
-    config.alat = DATAEE_ReadByte(addr + 8);
-    config.alal = DATAEE_ReadByte(addr + 9);
-    config.clkh = DATAEE_ReadByte(addr + 10);
-    config.clkm = DATAEE_ReadByte(addr + 11);
+    config->pmon = DATAEE_ReadByte(addr + 1);
+    config->tala = DATAEE_ReadByte(addr + 2);
+    config->tina = DATAEE_ReadByte(addr + 3);
+    config->alaf = DATAEE_ReadByte(addr + 4);
+    config->alah = DATAEE_ReadByte(addr + 5);
+    config->alam = DATAEE_ReadByte(addr + 6);
+    config->alas = DATAEE_ReadByte(addr + 7);
+    config->alat = DATAEE_ReadByte(addr + 8);
+    config->alal = DATAEE_ReadByte(addr + 9);
+    config->clkh = DATAEE_ReadByte(addr + 10);
+    config->clkm = DATAEE_ReadByte(addr + 11);
     checksum = DATAEE_ReadByte(addr + 12);
     
-    if (magic_word == MAGIC_WORD && checksum == EEPROM_checksum(config))
-        return config;
-    else {
-        config.pmon = 0;
-        return config;
-    }
+    if (!(magic_word == MAGIC_WORD && checksum == EEPROM_checksum(*config)))
+        config->pmon = 0;
         
 }

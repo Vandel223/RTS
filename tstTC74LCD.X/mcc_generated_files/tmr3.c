@@ -74,11 +74,11 @@ void TMR3_Initialize(void)
     //CS LFINTOSC; 
     T3CLK = 0x04;
 
-    //TMR3H 243; 
-    TMR3H = 0xF3;
+    //TMR3H 195; 
+    TMR3H = 0xC3;
 
-    //TMR3L 228; 
-    TMR3L = 0xE4;
+    //TMR3L 116; 
+    TMR3L = 0x74;
 
     // Clearing IF flag before enabling the interrupt.
     PIR4bits.TMR3IF = 0;
@@ -168,12 +168,19 @@ void TMR3_ISR(void)
     PIR4bits.TMR3IF = 0;
     TMR3_WriteTimer(timer3ReloadVal);
 
+    // ticker function call;
+    // ticker is 1 -> Callback function gets called everytime this ISR executes
+    TMR3_CallBack();
+}
+
+void TMR3_CallBack(void)
+{
+    // Add your custom callback code here
     if(TMR3_InterruptHandler)
     {
         TMR3_InterruptHandler();
     }
 }
-
 
 void TMR3_SetInterruptHandler(void (* InterruptHandler)(void)){
     TMR3_InterruptHandler = InterruptHandler;

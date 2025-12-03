@@ -61,8 +61,8 @@ typedef struct __EEPROM_config {
 } EEPROM_config;
 
 void write_EEPROM_record(EEPROM_record record, uint16_t addr);
-EEPROM_record read_EEPROM_record(uint16_t addr);
+void read_EEPROM_record(EEPROM_record *record, uint16_t addr);
 void write_EEPROM_config(EEPROM_config config, uint16_t addr);
-EEPROM_config read_EEPROM_config(uint16_t addr);
+void read_EEPROM_config(EEPROM_config *config, uint16_t addr);
 
 #endif	/* __EEPROM__H */

@@ -1,9 +1,9 @@
 Version 4.0 HI-TECH Software Intermediate Code
-"161 ./mcc_generated_files/tmr3.h
-[; ;./mcc_generated_files/tmr3.h: 161: void TMR3_StopTimer(void);
+"162 ./mcc_generated_files/tmr3.h
+[; ;./mcc_generated_files/tmr3.h: 162: void TMR3_StopTimer(void);
 [v _TMR3_StopTimer `(v ~T0 @X0 0 ef ]
-"271
-[; ;./mcc_generated_files/tmr3.h: 271: void TMR3_Reload(void);
+"272
+[; ;./mcc_generated_files/tmr3.h: 272: void TMR3_Reload(void);
 [v _TMR3_Reload `(v ~T0 @X0 0 ef ]
 "161 ./mcc_generated_files/tmr5.h
 [; ;./mcc_generated_files/tmr5.h: 161: void TMR5_StopTimer(void);
@@ -25,15 +25,15 @@ Version 4.0 HI-TECH Software Intermediate Code
 [v _SYSTEM_Initialize `(v ~T0 @X0 0 ef ]
 "357 /Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8/pic/include/proc/pic16f18875.h
 [; ;/Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8/pic/include/proc/pic16f18875.h: 357:     struct {
-[s S31 :1 `uc 1 :5 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S31 . INTEDG . PEIE GIE ]
+[s S33 :1 `uc 1 :5 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S33 . INTEDG . PEIE GIE ]
 "356
 [; ;/Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8/pic/include/proc/pic16f18875.h: 356: typedef union {
-[u S30 `S31 1 ]
-[n S30 . . ]
+[u S32 `S33 1 ]
+[n S32 . . ]
 "364
 [; ;/Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8/pic/include/proc/pic16f18875.h: 364: extern volatile INTCONbits_t INTCONbits __attribute__((address(0x00B)));
-[v _INTCONbits `VS30 ~T0 @X0 0 e@11 ]
+[v _INTCONbits `VS32 ~T0 @X0 0 e@11 ]
 "155 ./I2C/i2c.h
 [; ;./I2C/i2c.h: 155: void OpenI2C( void );
 [v _OpenI2C `(v ~T0 @X0 0 ef ]
@@ -43,20 +43,20 @@ Version 4.0 HI-TECH Software Intermediate Code
 "100 ./mcc_generated_files/tmr1.h
 [; ;./mcc_generated_files/tmr1.h: 100: void TMR1_Initialize(void);
 [v _TMR1_Initialize `(v ~T0 @X0 0 ef ]
-[v F12661 `(v ~T0 @X0 0 tf ]
+[v F12659 `(v ~T0 @X0 0 tf ]
 "385
 [; ;./mcc_generated_files/tmr1.h: 385:  void TMR1_SetInterruptHandler(void (* InterruptHandler)(void));
-[v _TMR1_SetInterruptHandler `(v ~T0 @X0 0 ef1`*F12661 ]
+[v _TMR1_SetInterruptHandler `(v ~T0 @X0 0 ef1`*F12659 ]
 "129
 [; ;./mcc_generated_files/tmr1.h: 129: void TMR1_StartTimer(void);
 [v _TMR1_StartTimer `(v ~T0 @X0 0 ef ]
-"100 ./mcc_generated_files/tmr3.h
-[; ;./mcc_generated_files/tmr3.h: 100: void TMR3_Initialize(void);
+"101 ./mcc_generated_files/tmr3.h
+[; ;./mcc_generated_files/tmr3.h: 101: void TMR3_Initialize(void);
 [v _TMR3_Initialize `(v ~T0 @X0 0 ef ]
-[v F12641 `(v ~T0 @X0 0 tf ]
-"385
-[; ;./mcc_generated_files/tmr3.h: 385:  void TMR3_SetInterruptHandler(void (* InterruptHandler)(void));
-[v _TMR3_SetInterruptHandler `(v ~T0 @X0 0 ef1`*F12641 ]
+[v F12642 `(v ~T0 @X0 0 tf ]
+"403
+[; ;./mcc_generated_files/tmr3.h: 403:  void TMR3_SetInterruptHandler(void (* InterruptHandler)(void));
+[v _TMR3_SetInterruptHandler `(v ~T0 @X0 0 ef1`*F12642 ]
 "100 ./mcc_generated_files/tmr5.h
 [; ;./mcc_generated_files/tmr5.h: 100: void TMR5_Initialize(void);
 [v _TMR5_Initialize `(v ~T0 @X0 0 ef ]
@@ -74,59 +74,76 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;./mcc_generated_files/pwm6.h: 102:  void PWM6_Initialize(void);
 [v _PWM6_Initialize `(v ~T0 @X0 0 ef ]
 "66 ./EEPROM/eeprom.h
-[; ;./EEPROM/eeprom.h: 66: EEPROM_config read_EEPROM_config(uint16_t addr);
-[v _read_EEPROM_config `(S1621 ~T0 @X0 0 ef1`us ]
+[; ;./EEPROM/eeprom.h: 66: void read_EEPROM_config(EEPROM_config *config, uint16_t addr);
+[v _read_EEPROM_config `(v ~T0 @X0 0 ef2`*S1621`us ]
 "63
 [; ;./EEPROM/eeprom.h: 63: void write_EEPROM_record(EEPROM_record record, uint16_t addr);
 [v _write_EEPROM_record `(v ~T0 @X0 0 ef2`S1620`us ]
 "452 /Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8/pic/include/proc/pic16f18875.h
 [; ;/Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8/pic/include/proc/pic16f18875.h: 452:     struct {
-[s S35 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S35 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
+[s S37 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S37 . RB0 RB1 RB2 RB3 RB4 RB5 RB6 RB7 ]
 "451
 [; ;/Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8/pic/include/proc/pic16f18875.h: 451: typedef union {
-[u S34 `S35 1 ]
-[n S34 . . ]
+[u S36 `S37 1 ]
+[n S36 . . ]
 "463
 [; ;/Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8/pic/include/proc/pic16f18875.h: 463: extern volatile PORTBbits_t PORTBbits __attribute__((address(0x00D)));
-[v _PORTBbits `VS34 ~T0 @X0 0 e@13 ]
-"129 ./mcc_generated_files/tmr3.h
-[; ;./mcc_generated_files/tmr3.h: 129: void TMR3_StartTimer(void);
+[v _PORTBbits `VS36 ~T0 @X0 0 e@13 ]
+"130 ./mcc_generated_files/tmr3.h
+[; ;./mcc_generated_files/tmr3.h: 130: void TMR3_StartTimer(void);
 [v _TMR3_StartTimer `(v ~T0 @X0 0 ef ]
 "514 /Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8/pic/include/proc/pic16f18875.h
 [; ;/Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8/pic/include/proc/pic16f18875.h: 514:     struct {
-[s S37 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
-[n S37 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
+[s S39 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S39 . RC0 RC1 RC2 RC3 RC4 RC5 RC6 RC7 ]
 "513
 [; ;/Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8/pic/include/proc/pic16f18875.h: 513: typedef union {
-[u S36 `S37 1 ]
-[n S36 . . ]
+[u S38 `S39 1 ]
+[n S38 . . ]
 "525
 [; ;/Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8/pic/include/proc/pic16f18875.h: 525: extern volatile PORTCbits_t PORTCbits __attribute__((address(0x00E)));
-[v _PORTCbits `VS36 ~T0 @X0 0 e@14 ]
+[v _PORTCbits `VS38 ~T0 @X0 0 e@14 ]
 "129 ./mcc_generated_files/tmr5.h
 [; ;./mcc_generated_files/tmr5.h: 129: void TMR5_StartTimer(void);
 [v _TMR5_StartTimer `(v ~T0 @X0 0 ef ]
+"956 /Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8/pic/include/proc/pic16f18875.h
+[; ;/Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8/pic/include/proc/pic16f18875.h: 956:     struct {
+[s S55 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 :1 `uc 1 ]
+[n S55 . LATA0 LATA1 LATA2 LATA3 LATA4 LATA5 LATA6 LATA7 ]
+"955
+[; ;/Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8/pic/include/proc/pic16f18875.h: 955: typedef union {
+[u S54 `S55 1 ]
+[n S54 . . ]
+"967
+[; ;/Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8/pic/include/proc/pic16f18875.h: 967: extern volatile LATAbits_t LATAbits __attribute__((address(0x016)));
+[v _LATAbits `VS54 ~T0 @X0 0 e@22 ]
+"129 ./mcc_generated_files/pwm6.h
+[; ;./mcc_generated_files/pwm6.h: 129:  void PWM6_LoadDutyValue(uint16_t dutyValue);
+[v _PWM6_LoadDutyValue `(v ~T0 @X0 0 ef1`us ]
 "39 ./TC74/tc74.h
 [; ;./TC74/tc74.h: 39: unsigned char readTC74 (void);
 [v _readTC74 `(uc ~T0 @X0 0 ef ]
-"213 main.c
-[; ;main.c: 213:             potentiometer = ADCC_GetSingleConversion(adc_potent);
-[c E12731 0 60 61 62 63 .. ]
-[n E12731 . adc_potent channel_VSS channel_Temp channel_DAC1 channel_FVR_buf1  ]
+"301 main.c
+[; ;main.c: 301:             potentiometer = ADCC_GetSingleConversion(adc_potent);
+[c E12732 0 60 61 62 63 .. ]
+[n E12732 . adc_potent channel_VSS channel_Temp channel_DAC1 channel_FVR_buf1  ]
 "249 ./mcc_generated_files/adcc.h
 [; ;./mcc_generated_files/adcc.h: 249: adc_result_t ADCC_GetSingleConversion(adcc_channel_t channel);
-[v _ADCC_GetSingleConversion `(us ~T0 @X0 0 ef1`E12731 ]
-"28 ./LCD/lcd.h
+[v _ADCC_GetSingleConversion `(us ~T0 @X0 0 ef1`E12732 ]
+"65 ./EEPROM/eeprom.h
+[; ;./EEPROM/eeprom.h: 65: void write_EEPROM_config(EEPROM_config config, uint16_t addr);
+[v _write_EEPROM_config `(v ~T0 @X0 0 ef2`S1621`us ]
+"26 ./LCD/lcd.h
+[; ;./LCD/lcd.h: 26: int LCDbusy(void);
+[v _LCDbusy `(i ~T0 @X0 0 ef ]
+"28
 [; ;./LCD/lcd.h: 28: void LCDpos(unsigned char l, unsigned char c);
 [v _LCDpos `(v ~T0 @X0 0 ef2`uc`uc ]
 "121 /Applications/microchip/xc8/v3.10/pic/include/c99/stdio.h
 [; ;/Applications/microchip/xc8/v3.10/pic/include/c99/stdio.h: 121: int sprintf(char *restrict, const char *restrict, ...);
 [v _sprintf `(i ~T0 @X0 0 e1v`*uc`*Cuc ]
-"26 ./LCD/lcd.h
-[; ;./LCD/lcd.h: 26: int LCDbusy(void);
-[v _LCDbusy `(i ~T0 @X0 0 ef ]
-"24
+"24 ./LCD/lcd.h
 [; ;./LCD/lcd.h: 24: void LCDstr(char *p);
 [v _LCDstr `(v ~T0 @X0 0 ef1`*uc ]
 "54 /Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8/pic/include/proc/pic16f18875.h
@@ -1767,108 +1784,138 @@ Version 4.0 HI-TECH Software Intermediate Code
 "36489
 [; ;/Applications/microchip/mplabx/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8/pic/include/proc/pic16f18875.h: 36489: __asm("TOSH equ 0FEFh");
 [; <" TOSH equ 0FEFh ;# ">
-"73 main.c
-[; ;main.c: 73: uint8_t timer_1s_flag = 0;
-[v _timer_1s_flag `uc ~T0 @X0 1 e ]
+"91 main.c
+[; ;main.c: 91: _Bool timer_1s_flag = 0;
+[v _timer_1s_flag `a ~T0 @X0 1 e ]
 [i _timer_1s_flag
+-> -> 0 `i `a
+]
+"92
+[; ;main.c: 92: uint8_t timer_PMON_cnt = 0;
+[v _timer_PMON_cnt `uc ~T0 @X0 1 e ]
+[i _timer_PMON_cnt
 -> -> 0 `i `uc
 ]
-"74
-[; ;main.c: 74: uint8_t timer_PMON_flag = 0;
-[v _timer_PMON_flag `uc ~T0 @X0 1 e ]
-[i _timer_PMON_flag
+"93
+[; ;main.c: 93: uint8_t timer_TINA_cnt = 0;
+[v _timer_TINA_cnt `uc ~T0 @X0 1 e ]
+[i _timer_TINA_cnt
 -> -> 0 `i `uc
 ]
-"75
-[; ;main.c: 75: uint8_t timer3_100ms_flag = 1;
-[v _timer3_100ms_flag `uc ~T0 @X0 1 e ]
+"94
+[; ;main.c: 94: uint8_t timer_TALA_cnt = 0;
+[v _timer_TALA_cnt `uc ~T0 @X0 1 e ]
+[i _timer_TALA_cnt
+-> -> 0 `i `uc
+]
+"95
+[; ;main.c: 95: _Bool timer_TALA_on = 0;
+[v _timer_TALA_on `a ~T0 @X0 1 e ]
+[i _timer_TALA_on
+-> -> 0 `i `a
+]
+"96
+[; ;main.c: 96: _Bool timer_TINA_on = 0;
+[v _timer_TINA_on `a ~T0 @X0 1 e ]
+[i _timer_TINA_on
+-> -> 0 `i `a
+]
+"97
+[; ;main.c: 97: _Bool timer3_100ms_flag = 1;
+[v _timer3_100ms_flag `a ~T0 @X0 1 e ]
 [i _timer3_100ms_flag
--> -> 1 `i `uc
+-> -> 1 `i `a
 ]
-"76
-[; ;main.c: 76: uint8_t timer5_100ms_flag = 1;
-[v _timer5_100ms_flag `uc ~T0 @X0 1 e ]
+"98
+[; ;main.c: 98: _Bool timer5_100ms_flag = 1;
+[v _timer5_100ms_flag `a ~T0 @X0 1 e ]
 [i _timer5_100ms_flag
--> -> 1 `i `uc
+-> -> 1 `i `a
 ]
-"78
-[; ;main.c: 78: void timer_1s(void) {
+"100
+[; ;main.c: 100: void timer_1s(void) {
 [v _timer_1s `(v ~T0 @X0 1 ef ]
 {
 [e :U _timer_1s ]
 [f ]
-"79
-[; ;main.c: 79:     timer_1s_flag = 1;
-[e = _timer_1s_flag -> -> 1 `i `uc ]
-"80
-[; ;main.c: 80:     timer_PMON_flag += 1;
-[e =+ _timer_PMON_flag -> -> 1 `i `uc ]
-"81
-[; ;main.c: 81: }
+"101
+[; ;main.c: 101:     timer_1s_flag = 1;
+[e = _timer_1s_flag -> -> 1 `i `a ]
+"102
+[; ;main.c: 102:     timer_PMON_cnt += 1;
+[e =+ _timer_PMON_cnt -> -> 1 `i `uc ]
+"103
+[; ;main.c: 103:     timer_TINA_cnt += 1;
+[e =+ _timer_TINA_cnt -> -> 1 `i `uc ]
+"104
+[; ;main.c: 104:     timer_TALA_cnt += 1;
+[e =+ _timer_TALA_cnt -> -> 1 `i `uc ]
+"105
+[; ;main.c: 105: }
 [e :UE 1622 ]
 }
-"83
-[; ;main.c: 83: void timer3_100ms(void) {
+"107
+[; ;main.c: 107: void timer3_100ms(void) {
 [v _timer3_100ms `(v ~T0 @X0 1 ef ]
 {
 [e :U _timer3_100ms ]
 [f ]
-"84
-[; ;main.c: 84:     timer3_100ms_flag = 1;
-[e = _timer3_100ms_flag -> -> 1 `i `uc ]
-"85
-[; ;main.c: 85:     TMR3_StopTimer();
+"108
+[; ;main.c: 108:     timer3_100ms_flag = 1;
+[e = _timer3_100ms_flag -> -> 1 `i `a ]
+"109
+[; ;main.c: 109:     TMR3_StopTimer();
 [e ( _TMR3_StopTimer ..  ]
-"86
-[; ;main.c: 86:     TMR3_Reload();
+"110
+[; ;main.c: 110:     TMR3_Reload();
 [e ( _TMR3_Reload ..  ]
-"87
-[; ;main.c: 87: }
+"111
+[; ;main.c: 111: }
 [e :UE 1623 ]
 }
-"89
-[; ;main.c: 89: void timer5_100ms(void) {
+"113
+[; ;main.c: 113: void timer5_100ms(void) {
 [v _timer5_100ms `(v ~T0 @X0 1 ef ]
 {
 [e :U _timer5_100ms ]
 [f ]
-"90
-[; ;main.c: 90:     timer5_100ms_flag = 1;
-[e = _timer5_100ms_flag -> -> 1 `i `uc ]
-"91
-[; ;main.c: 91:     TMR5_StopTimer();
+"114
+[; ;main.c: 114:     timer5_100ms_flag = 1;
+[e = _timer5_100ms_flag -> -> 1 `i `a ]
+"115
+[; ;main.c: 115:     TMR5_StopTimer();
 [e ( _TMR5_StopTimer ..  ]
-"92
-[; ;main.c: 92:     TMR5_Reload();
+"116
+[; ;main.c: 116:     TMR5_Reload();
 [e ( _TMR5_Reload ..  ]
-"93
-[; ;main.c: 93: }
+"117
+[; ;main.c: 117: }
 [e :UE 1624 ]
 }
 [v $root$_main `(v ~T0 @X0 0 e ]
-"95
-[; ;main.c: 95: void main(void)
+"119
+[; ;main.c: 119: void main(void)
 [v _main `(v ~T0 @X0 1 ef ]
-"96
-[; ;main.c: 96: {
+"120
+[; ;main.c: 120: {
 {
 [e :U _main ]
 [f ]
-"98
-[; ;main.c: 98:     EEPROM_config config;
+"122
+[; ;main.c: 122:     EEPROM_config config;
 [v _config `S1621 ~T0 @X0 1 a ]
-"100
-[; ;main.c: 100:     adc_result_t potentiometer;
+"124
+[; ;main.c: 124:     adc_result_t potentiometer;
 [v _potentiometer `us ~T0 @X0 1 a ]
-"101
-[; ;main.c: 101:     uint8_t lumin;
+"125
+[; ;main.c: 125:     uint8_t lumin;
 [v _lumin `uc ~T0 @X0 1 a ]
-[v F12858 `S1620 ~T0 @X0 1 s ]
-[i F12858
+[v F12866 `S1620 ~T0 @X0 1 s ]
+[i F12866
 :U ..
 :U ..
-"102
-[; ;main.c: 102:     EEPROM_record max_lumin = {0, 0, 0, 0, 0};
+"126
+[; ;main.c: 126:     EEPROM_record max_lumin = {0, 0, 0, 0, 0};
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 0 `i `uc
@@ -1878,13 +1925,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _max_lumin `S1620 ~T0 @X0 1 a ]
-[e = _max_lumin F12858 ]
-[v F12860 `S1620 ~T0 @X0 1 s ]
-[i F12860
+[e = _max_lumin F12866 ]
+[v F12868 `S1620 ~T0 @X0 1 s ]
+[i F12868
 :U ..
 :U ..
-"103
-[; ;main.c: 103:     EEPROM_record min_lumin = {0, 3, 0, 0, 0};
+"127
+[; ;main.c: 127:     EEPROM_record min_lumin = {0, 3, 0, 0, 0};
 -> -> 0 `i `uc
 -> -> 3 `i `uc
 -> -> 0 `i `uc
@@ -1894,16 +1941,16 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _min_lumin `S1620 ~T0 @X0 1 a ]
-[e = _min_lumin F12860 ]
-"105
-[; ;main.c: 105:     uint8_t temp;
+[e = _min_lumin F12868 ]
+"129
+[; ;main.c: 129:     uint8_t temp;
 [v _temp `uc ~T0 @X0 1 a ]
-[v F12863 `S1620 ~T0 @X0 1 s ]
-[i F12863
+[v F12871 `S1620 ~T0 @X0 1 s ]
+[i F12871
 :U ..
 :U ..
-"106
-[; ;main.c: 106:     EEPROM_record max_temp = {0, 0, 0, 0, 0};
+"130
+[; ;main.c: 130:     EEPROM_record max_temp = {0, 0, 0, 0, 0};
 -> -> 0 `i `uc
 -> -> 0 `i `uc
 -> -> 0 `i `uc
@@ -1913,13 +1960,13 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _max_temp `S1620 ~T0 @X0 1 a ]
-[e = _max_temp F12863 ]
-[v F12865 `S1620 ~T0 @X0 1 s ]
-[i F12865
+[e = _max_temp F12871 ]
+[v F12873 `S1620 ~T0 @X0 1 s ]
+[i F12873
 :U ..
 :U ..
-"107
-[; ;main.c: 107:     EEPROM_record min_temp = {255, 0, 0, 0, 0};
+"131
+[; ;main.c: 131:     EEPROM_record min_temp = {255, 0, 0, 0, 0};
 -> -> 255 `i `uc
 -> -> 0 `i `uc
 -> -> 0 `i `uc
@@ -1929,387 +1976,793 @@ Version 4.0 HI-TECH Software Intermediate Code
 ..
 ]
 [v _min_temp `S1620 ~T0 @X0 1 a ]
-[e = _min_temp F12865 ]
-"109
-[; ;main.c: 109:     uint8_t sec = 0;
+[e = _min_temp F12873 ]
+"133
+[; ;main.c: 133:     uint8_t sec = 0;
 [v _sec `uc ~T0 @X0 1 a ]
 [e = _sec -> -> 0 `i `uc ]
-"110
-[; ;main.c: 110:     uint8_t min;
-[v _min `uc ~T0 @X0 1 a ]
-"111
-[; ;main.c: 111:     uint8_t hour;
-[v _hour `uc ~T0 @X0 1 a ]
-"113
-[; ;main.c: 113:     char buf[17];
+"135
+[; ;main.c: 135:     char buf[17];
 [v _buf `uc ~T0 @X0 -> 17 `i a ]
-"115
-[; ;main.c: 115:     uint8_t sw1 = 1;
+"137
+[; ;main.c: 137:     uint8_t sw1 = 1;
 [v _sw1 `uc ~T0 @X0 1 a ]
 [e = _sw1 -> -> 1 `i `uc ]
-"116
-[; ;main.c: 116:     uint8_t sw2 = 1;
+"138
+[; ;main.c: 138:     uint8_t sw2 = 1;
 [v _sw2 `uc ~T0 @X0 1 a ]
 [e = _sw2 -> -> 1 `i `uc ]
-"119
-[; ;main.c: 119:     SYSTEM_Initialize();
-[e ( _SYSTEM_Initialize ..  ]
-"125
-[; ;main.c: 125:     (INTCONbits.GIE = 1);
-[e = . . _INTCONbits 0 3 -> -> 1 `i `uc ]
-"128
-[; ;main.c: 128:     (INTCONbits.PEIE = 1);
-[e = . . _INTCONbits 0 2 -> -> 1 `i `uc ]
-"137
-[; ;main.c: 137:     OpenI2C();
-[e ( _OpenI2C ..  ]
-"139
-[; ;main.c: 139:     LCDinit();
-[e ( _LCDinit ..  ]
+"140
+[; ;main.c: 140:     mode_t mode = 0;
+[v _mode `uc ~T0 @X0 1 a ]
+[e = _mode -> -> 0 `i `uc ]
 "142
-[; ;main.c: 142:     TMR1_Initialize();
-[e ( _TMR1_Initialize ..  ]
+[; ;main.c: 142:     _Bool temp_alarm = 0;
+[v _temp_alarm `a ~T0 @X0 1 a ]
+[e = _temp_alarm -> -> 0 `i `a ]
 "143
-[; ;main.c: 143:     TMR1_SetInterruptHandler( timer_1s );
-[e ( _TMR1_SetInterruptHandler (1 &U _timer_1s ]
+[; ;main.c: 143:     _Bool lumin_alarm = 0;
+[v _lumin_alarm `a ~T0 @X0 1 a ]
+[e = _lumin_alarm -> -> 0 `i `a ]
 "144
-[; ;main.c: 144:     TMR1_StartTimer();
-[e ( _TMR1_StartTimer ..  ]
+[; ;main.c: 144:     _Bool clock_alarm = 0;
+[v _clock_alarm `a ~T0 @X0 1 a ]
+[e = _clock_alarm -> -> 0 `i `a ]
 "146
-[; ;main.c: 146:     TMR3_Initialize();
-[e ( _TMR3_Initialize ..  ]
-"147
-[; ;main.c: 147:     TMR3_SetInterruptHandler( timer3_100ms );
-[e ( _TMR3_SetInterruptHandler (1 &U _timer3_100ms ]
-"149
-[; ;main.c: 149:     TMR5_Initialize();
-[e ( _TMR5_Initialize ..  ]
-"150
-[; ;main.c: 150:     TMR5_SetInterruptHandler( timer5_100ms );
-[e ( _TMR5_SetInterruptHandler (1 &U _timer5_100ms ]
-"152
-[; ;main.c: 152:     ADCC_Initialize();
-[e ( _ADCC_Initialize ..  ]
-"153
-[; ;main.c: 153:     ADCC_DisableContinuousConversion();
-[e ( _ADCC_DisableContinuousConversion ..  ]
-"155
-[; ;main.c: 155:     PWM6_Initialize();
-[e ( _PWM6_Initialize ..  ]
-"159
-[; ;main.c: 159:     config = read_EEPROM_config(0x14);
-[e = _config ( _read_EEPROM_config (1 -> -> 20 `i `us ]
+[; ;main.c: 146:     uint8_t cursor;
+[v _cursor `uc ~T0 @X0 1 a ]
+"148
+[; ;main.c: 148:     uint8_t curr_record = 0;
+[v _curr_record `uc ~T0 @X0 1 a ]
+[e = _curr_record -> -> 0 `i `uc ]
+"151
+[; ;main.c: 151:     SYSTEM_Initialize();
+[e ( _SYSTEM_Initialize ..  ]
+"157
+[; ;main.c: 157:     (INTCONbits.GIE = 1);
+[e = . . _INTCONbits 0 3 -> -> 1 `i `uc ]
 "160
-[; ;main.c: 160:     if (config.pmon == 0) {
+[; ;main.c: 160:     (INTCONbits.PEIE = 1);
+[e = . . _INTCONbits 0 2 -> -> 1 `i `uc ]
+"169
+[; ;main.c: 169:     OpenI2C();
+[e ( _OpenI2C ..  ]
+"171
+[; ;main.c: 171:     LCDinit();
+[e ( _LCDinit ..  ]
+"174
+[; ;main.c: 174:     TMR1_Initialize();
+[e ( _TMR1_Initialize ..  ]
+"175
+[; ;main.c: 175:     TMR1_SetInterruptHandler( timer_1s );
+[e ( _TMR1_SetInterruptHandler (1 &U _timer_1s ]
+"176
+[; ;main.c: 176:     TMR1_StartTimer();
+[e ( _TMR1_StartTimer ..  ]
+"178
+[; ;main.c: 178:     TMR3_Initialize();
+[e ( _TMR3_Initialize ..  ]
+"179
+[; ;main.c: 179:     TMR3_SetInterruptHandler( timer3_100ms );
+[e ( _TMR3_SetInterruptHandler (1 &U _timer3_100ms ]
+"181
+[; ;main.c: 181:     TMR5_Initialize();
+[e ( _TMR5_Initialize ..  ]
+"182
+[; ;main.c: 182:     TMR5_SetInterruptHandler( timer5_100ms );
+[e ( _TMR5_SetInterruptHandler (1 &U _timer5_100ms ]
+"184
+[; ;main.c: 184:     ADCC_Initialize();
+[e ( _ADCC_Initialize ..  ]
+"185
+[; ;main.c: 185:     ADCC_DisableContinuousConversion();
+[e ( _ADCC_DisableContinuousConversion ..  ]
+"187
+[; ;main.c: 187:     PWM6_Initialize();
+[e ( _PWM6_Initialize ..  ]
+"190
+[; ;main.c: 190:     read_EEPROM_config(&config, 0x14);
+[e ( _read_EEPROM_config (2 , &U _config -> -> 20 `i `us ]
+"191
+[; ;main.c: 191:     if (config.pmon == 0) {
 [e $ ! == -> . _config 0 `i -> 0 `i 1626  ]
 {
-"161
-[; ;main.c: 161:         config.pmon = 5;
+"192
+[; ;main.c: 192:         config.pmon = 5;
 [e = . _config 0 -> -> 5 `i `uc ]
-"162
-[; ;main.c: 162:         config.tala = 3;
+"193
+[; ;main.c: 193:         config.tala = 3;
 [e = . _config 1 -> -> 3 `i `uc ]
-"163
-[; ;main.c: 163:         config.tina = 10;
+"194
+[; ;main.c: 194:         config.tina = 10;
 [e = . _config 2 -> -> 10 `i `uc ]
-"164
-[; ;main.c: 164:         config.alaf = 0;
-[e = . _config 3 -> -> 0 `i `uc ]
-"165
-[; ;main.c: 165:         config.alah = 12;
+"195
+[; ;main.c: 195:         config.alaf = 1;
+[e = . _config 3 -> -> 1 `i `uc ]
+"196
+[; ;main.c: 196:         config.alah = 12;
 [e = . _config 4 -> -> 12 `i `uc ]
-"166
-[; ;main.c: 166:         config.alam = 0;
+"197
+[; ;main.c: 197:         config.alam = 0;
 [e = . _config 5 -> -> 0 `i `uc ]
-"167
-[; ;main.c: 167:         config.alas = 0;
+"198
+[; ;main.c: 198:         config.alas = 0;
 [e = . _config 6 -> -> 0 `i `uc ]
-"168
-[; ;main.c: 168:         config.alat = 20;
+"199
+[; ;main.c: 199:         config.alat = 20;
 [e = . _config 7 -> -> 20 `i `uc ]
-"169
-[; ;main.c: 169:         config.alal = 2;
+"200
+[; ;main.c: 200:         config.alal = 2;
 [e = . _config 8 -> -> 2 `i `uc ]
-"170
-[; ;main.c: 170:         config.clkh = 0;
+"201
+[; ;main.c: 201:         config.clkh = 0;
 [e = . _config 9 -> -> 0 `i `uc ]
-"171
-[; ;main.c: 171:         config.clkm = 0;
+"202
+[; ;main.c: 202:         config.clkm = 0;
 [e = . _config 10 -> -> 0 `i `uc ]
-"172
-[; ;main.c: 172:     }
+"203
+[; ;main.c: 203:     }
 }
 [e :U 1626 ]
-"175
-[; ;main.c: 175:     write_EEPROM_record(max_temp, 0x00);
+"206
+[; ;main.c: 206:     write_EEPROM_record(max_temp, 0x00);
 [e ( _write_EEPROM_record (2 , _max_temp -> -> 0 `i `us ]
-"176
-[; ;main.c: 176:     write_EEPROM_record(min_temp, 0x05);
+"207
+[; ;main.c: 207:     write_EEPROM_record(min_temp, 0x05);
 [e ( _write_EEPROM_record (2 , _min_temp -> -> 5 `i `us ]
-"177
-[; ;main.c: 177:     write_EEPROM_record(max_lumin, 0x0A);
+"208
+[; ;main.c: 208:     write_EEPROM_record(max_lumin, 0x0A);
 [e ( _write_EEPROM_record (2 , _max_lumin -> -> 10 `i `us ]
-"178
-[; ;main.c: 178:     write_EEPROM_record(min_lumin, 0x0F);
+"209
+[; ;main.c: 209:     write_EEPROM_record(min_lumin, 0x0F);
 [e ( _write_EEPROM_record (2 , _min_lumin -> -> 15 `i `us ]
-"181
-[; ;main.c: 181:     while (1)
+"212
+[; ;main.c: 212:     while (1)
 [e :U 1628 ]
-"182
-[; ;main.c: 182:     {
+"213
+[; ;main.c: 213:     {
 {
-"186
-[; ;main.c: 186:         if (PORTBbits.RB4 == 0 && timer3_100ms_flag) {
-[e $ ! && == -> . . _PORTBbits 0 4 `i -> 0 `i != -> _timer3_100ms_flag `i -> 0 `i 1630  ]
+"215
+[; ;main.c: 215:         if (timer_TINA_cnt == config.tina) {
+[e $ ! == -> _timer_TINA_cnt `i -> . _config 2 `i 1630  ]
 {
-"187
-[; ;main.c: 187:             timer3_100ms_flag = 0;
-[e = _timer3_100ms_flag -> -> 0 `i `uc ]
-"188
-[; ;main.c: 188:             TMR3_StartTimer();
-[e ( _TMR3_StartTimer ..  ]
-"190
-[; ;main.c: 190:             sw1 = 0;
-[e = _sw1 -> -> 0 `i `uc ]
-"191
-[; ;main.c: 191:         }
+"216
+[; ;main.c: 216:             curr_record = 0;
+[e = _curr_record -> -> 0 `i `uc ]
+"217
+[; ;main.c: 217:         }
 }
 [e :U 1630 ]
-"192
-[; ;main.c: 192:         if (PORTCbits.RC5 == 0 && timer5_100ms_flag) {
-[e $ ! && == -> . . _PORTCbits 0 5 `i -> 0 `i != -> _timer5_100ms_flag `i -> 0 `i 1631  ]
+"219
+[; ;main.c: 219:         if (PORTBbits.RB4 == 0 && timer3_100ms_flag) {
+[e $ ! && == -> . . _PORTBbits 0 4 `i -> 0 `i != -> _timer3_100ms_flag `i -> 0 `i 1631  ]
 {
-"193
-[; ;main.c: 193:             timer5_100ms_flag = 0;
-[e = _timer5_100ms_flag -> -> 0 `i `uc ]
-"194
-[; ;main.c: 194:             TMR5_StartTimer();
-[e ( _TMR5_StartTimer ..  ]
-"196
-[; ;main.c: 196:             sw2 = 0;
-[e = _sw2 -> -> 0 `i `uc ]
-"197
-[; ;main.c: 197:         }
+"220
+[; ;main.c: 220:             timer3_100ms_flag = 0;
+[e = _timer3_100ms_flag -> -> 0 `i `a ]
+"221
+[; ;main.c: 221:             TMR3_Reload();
+[e ( _TMR3_Reload ..  ]
+"222
+[; ;main.c: 222:             TMR3_StartTimer();
+[e ( _TMR3_StartTimer ..  ]
+"224
+[; ;main.c: 224:             sw1 = 0;
+[e = _sw1 -> -> 0 `i `uc ]
+"225
+[; ;main.c: 225:         }
 }
 [e :U 1631 ]
-"199
-[; ;main.c: 199:         if (sw1 == 0) {
-[e $ ! == -> _sw1 `i -> 0 `i 1632  ]
+"226
+[; ;main.c: 226:         if (PORTCbits.RC5 == 0 && timer5_100ms_flag) {
+[e $ ! && == -> . . _PORTCbits 0 5 `i -> 0 `i != -> _timer5_100ms_flag `i -> 0 `i 1632  ]
 {
-"200
-[; ;main.c: 200:             sw1 = 1;
-[e = _sw1 -> -> 1 `i `uc ]
-"202
-[; ;main.c: 202:         }
+"227
+[; ;main.c: 227:             timer5_100ms_flag = 0;
+[e = _timer5_100ms_flag -> -> 0 `i `a ]
+"228
+[; ;main.c: 228:             TMR5_Reload();
+[e ( _TMR5_Reload ..  ]
+"229
+[; ;main.c: 229:             TMR5_StartTimer();
+[e ( _TMR5_StartTimer ..  ]
+"231
+[; ;main.c: 231:             sw2 = 0;
+[e = _sw2 -> -> 0 `i `uc ]
+"232
+[; ;main.c: 232:         }
 }
 [e :U 1632 ]
-"203
-[; ;main.c: 203:         if (sw2 == 0) {
-[e $ ! == -> _sw2 `i -> 0 `i 1633  ]
-{
-"204
-[; ;main.c: 204:             sw2 = 1;
-[e = _sw2 -> -> 1 `i `uc ]
-"206
-[; ;main.c: 206:         }
-}
-[e :U 1633 ]
-"209
-[; ;main.c: 209:         if (timer_PMON_flag == config.pmon) {
-[e $ ! == -> _timer_PMON_flag `i -> . _config 0 `i 1634  ]
-{
-"210
-[; ;main.c: 210:             timer_PMON_flag = 0;
-[e = _timer_PMON_flag -> -> 0 `i `uc ]
-"212
-[; ;main.c: 212:             temp = readTC74();
-[e = _temp ( _readTC74 ..  ]
-"213
-[; ;main.c: 213:             potentiometer = ADCC_GetSingleConversion(adc_potent);
-[e = _potentiometer ( _ADCC_GetSingleConversion (1 . `E12731 0 ]
-"214
-[; ;main.c: 214:             lumin = (potentiometer >> 8);
-[e = _lumin -> >> -> _potentiometer `ui -> 8 `i `uc ]
-"216
-[; ;main.c: 216:             if (temp > max_temp.temp) {
-[e $ ! > -> _temp `i -> . _max_temp 0 `i 1635  ]
-{
-"217
-[; ;main.c: 217:                 max_temp.temp = temp;
-[e = . _max_temp 0 _temp ]
-"218
-[; ;main.c: 218:                 max_temp.lumin = lumin;
-[e = . _max_temp 1 _lumin ]
-"219
-[; ;main.c: 219:                 max_temp.hour = hour;
-[e = . _max_temp 2 _hour ]
-"220
-[; ;main.c: 220:                 max_temp.min = min;
-[e = . _max_temp 3 _min ]
-"221
-[; ;main.c: 221:                 max_temp.sec = sec;
-[e = . _max_temp 4 _sec ]
-"222
-[; ;main.c: 222:             }
-}
-[e :U 1635 ]
-"223
-[; ;main.c: 223:             if (temp < min_temp.temp) {
-[e $ ! < -> _temp `i -> . _min_temp 0 `i 1636  ]
-{
-"224
-[; ;main.c: 224:                 min_temp.temp = temp;
-[e = . _min_temp 0 _temp ]
-"225
-[; ;main.c: 225:                 min_temp.lumin = lumin;
-[e = . _min_temp 1 _lumin ]
-"226
-[; ;main.c: 226:                 min_temp.hour = hour;
-[e = . _min_temp 2 _hour ]
-"227
-[; ;main.c: 227:                 min_temp.min = min;
-[e = . _min_temp 3 _min ]
-"228
-[; ;main.c: 228:                 min_temp.sec = sec;
-[e = . _min_temp 4 _sec ]
-"229
-[; ;main.c: 229:             }
-}
-[e :U 1636 ]
-"231
-[; ;main.c: 231:             if (lumin > max_lumin.lumin) {
-[e $ ! > -> _lumin `i -> . _max_lumin 1 `i 1637  ]
-{
-"232
-[; ;main.c: 232:                 max_lumin.temp = temp;
-[e = . _max_lumin 0 _temp ]
-"233
-[; ;main.c: 233:                 max_lumin.lumin = lumin;
-[e = . _max_lumin 1 _lumin ]
 "234
-[; ;main.c: 234:                 max_lumin.hour = hour;
-[e = . _max_lumin 2 _hour ]
-"235
-[; ;main.c: 235:                 max_lumin.min = min;
-[e = . _max_lumin 3 _min ]
-"236
-[; ;main.c: 236:                 max_lumin.sec = sec;
-[e = . _max_lumin 4 _sec ]
-"237
-[; ;main.c: 237:             }
-}
-[e :U 1637 ]
-"238
-[; ;main.c: 238:             if (lumin < min_lumin.lumin) {
-[e $ ! < -> _lumin `i -> . _min_lumin 1 `i 1638  ]
+[; ;main.c: 234:         if (sw1 == 0) {
+[e $ ! == -> _sw1 `i -> 0 `i 1633  ]
 {
+"235
+[; ;main.c: 235:             sw1 = 1;
+[e = _sw1 -> -> 1 `i `uc ]
+"236
+[; ;main.c: 236:             if (mode == 0) {
+[e $ ! == -> _mode `i -> 0 `i 1634  ]
+{
+"237
+[; ;main.c: 237:                 clock_alarm = 0;
+[e = _clock_alarm -> -> 0 `i `a ]
+"238
+[; ;main.c: 238:                 temp_alarm = 0;
+[e = _temp_alarm -> -> 0 `i `a ]
 "239
-[; ;main.c: 239:                 min_lumin.temp = temp;
-[e = . _min_lumin 0 _temp ]
-"240
-[; ;main.c: 240:                 min_lumin.lumin = lumin;
-[e = . _min_lumin 1 _lumin ]
+[; ;main.c: 239:                 lumin_alarm = 0;
+[e = _lumin_alarm -> -> 0 `i `a ]
 "241
-[; ;main.c: 241:                 min_lumin.hour = hour;
-[e = . _min_lumin 2 _hour ]
-"242
-[; ;main.c: 242:                 min_lumin.min = min;
-[e = . _min_lumin 3 _min ]
-"243
-[; ;main.c: 243:                 min_lumin.sec = sec;
-[e = . _min_lumin 4 _sec ]
-"244
-[; ;main.c: 244:             }
-}
-[e :U 1638 ]
-"245
-[; ;main.c: 245:         }
+[; ;main.c: 241:             }
 }
 [e :U 1634 ]
-"248
-[; ;main.c: 248:         if (timer_1s_flag == 1) {
-[e $ ! == -> _timer_1s_flag `i -> 1 `i 1639  ]
-{
-"249
-[; ;main.c: 249:             timer_1s_flag = 0;
-[e = _timer_1s_flag -> -> 0 `i `uc ]
-"251
-[; ;main.c: 251:             sec += 1;
-[e =+ _sec -> -> 1 `i `uc ]
-"252
-[; ;main.c: 252:             if (sec >= 60) {
-[e $ ! >= -> _sec `i -> 60 `i 1640  ]
-{
-"253
-[; ;main.c: 253:                 sec = 0;
-[e = _sec -> -> 0 `i `uc ]
-"254
-[; ;main.c: 254:                 min += 1;
-[e =+ _min -> -> 1 `i `uc ]
-"255
-[; ;main.c: 255:                 if (min >= 60) {
-[e $ ! >= -> _min `i -> 60 `i 1641  ]
-{
-"256
-[; ;main.c: 256:                     min = 0;
-[e = _min -> -> 0 `i `uc ]
-"257
-[; ;main.c: 257:                     hour = (hour + 1) % 24;
-[e = _hour -> % + -> _hour `i -> 1 `i -> 24 `i `uc ]
-"258
-[; ;main.c: 258:                 }
+"242
+[; ;main.c: 242:         }
 }
+[e :U 1633 ]
+"243
+[; ;main.c: 243:         if (sw2 == 0) {
+[e $ ! == -> _sw2 `i -> 0 `i 1635  ]
+{
+"244
+[; ;main.c: 244:             sw2 = 1;
+[e = _sw2 -> -> 1 `i `uc ]
+"245
+[; ;main.c: 245:             if (mode == 0) {
+[e $ ! == -> _mode `i -> 0 `i 1636  ]
+{
+"246
+[; ;main.c: 246:                 timer_TINA_cnt = 0;
+[e = _timer_TINA_cnt -> -> 0 `i `uc ]
+"247
+[; ;main.c: 247:                 timer_TINA_on = 1;
+[e = _timer_TINA_on -> -> 1 `i `a ]
+"248
+[; ;main.c: 248:                 curr_record = (curr_record + 1) % 3;
+[e = _curr_record -> % + -> _curr_record `i -> 1 `i -> 3 `i `uc ]
+"249
+[; ;main.c: 249:             }
+}
+[e :U 1636 ]
+"250
+[; ;main.c: 250:         }
+}
+[e :U 1635 ]
+"252
+[; ;main.c: 252:         uint8_t any_alarm = 0;
+[v _any_alarm `uc ~T0 @X0 1 a ]
+[e = _any_alarm -> -> 0 `i `uc ]
+"253
+[; ;main.c: 253:         if (config.alaf) {
+[e $ ! != -> . _config 3 `i -> 0 `i 1637  ]
+{
+"254
+[; ;main.c: 254:             if (lumin_alarm) {
+[e $ ! != -> _lumin_alarm `i -> 0 `i 1638  ]
+{
+"255
+[; ;main.c: 255:                 do { LATAbits.LATA4 = 1; } while(0);
 [e :U 1641 ]
-"259
-[; ;main.c: 259:             }
+{
+[e = . . _LATAbits 0 4 -> -> 1 `i `uc ]
 }
 [e :U 1640 ]
-"261
-[; ;main.c: 261:             LCDpos(0, 0);
-[e ( _LCDpos (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
-"262
-[; ;main.c: 262:             sprintf(buf, "%02d:%02d:%02d  CTL AR", hour, min, sec);
-[e ( _sprintf (1 , , , (. , &U _buf :s 1C -> _hour `i -> _min `i -> _sec `i ]
-"263
-[; ;main.c: 263:             while (LCDbusy());
-[e $U 1642  ]
-[e :U 1643 ]
-[e :U 1642 ]
-[e $ != ( _LCDbusy ..  -> 0 `i 1643  ]
-[e :U 1644 ]
-"264
-[; ;main.c: 264:             LCDstr(buf);
-[e ( _LCDstr (1 &U _buf ]
-"266
-[; ;main.c: 266:             LCDpos(1, 0);;
-[e ( _LCDpos (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
-"267
-[; ;main.c: 267:             sprintf(buf, "%02d oC       L %1d", temp, lumin);
-[e ( _sprintf (1 , , (. , &U _buf :s 2C -> _temp `i -> _lumin `i ]
-"268
-[; ;main.c: 268:             while (LCDbusy());
-[e $U 1645  ]
-[e :U 1646 ]
-[e :U 1645 ]
-[e $ != ( _LCDbusy ..  -> 0 `i 1646  ]
-[e :U 1647 ]
-"269
-[; ;main.c: 269:             LCDstr(buf);
-[e ( _LCDstr (1 &U _buf ]
-"270
-[; ;main.c: 270:         }
+"256
+[; ;main.c: 256:                 if (!timer_TALA_on) {
+[e $ ! ! != -> _timer_TALA_on `i -> 0 `i 1642  ]
+{
+"257
+[; ;main.c: 257:                     PWM6_LoadDutyValue(32);
+[e ( _PWM6_LoadDutyValue (1 -> -> 32 `i `us ]
+"258
+[; ;main.c: 258:                     timer_TALA_cnt = 0;
+[e = _timer_TALA_cnt -> -> 0 `i `uc ]
+"259
+[; ;main.c: 259:                     timer_TALA_on = 1;
+[e = _timer_TALA_on -> -> 1 `i `a ]
+"260
+[; ;main.c: 260:                 }
 }
-[e :U 1639 ]
+[e :U 1642 ]
+"261
+[; ;main.c: 261:                 any_alarm = 1;
+[e = _any_alarm -> -> 1 `i `uc ]
+"262
+[; ;main.c: 262:             }
+}
+[e $U 1643  ]
+"263
+[; ;main.c: 263:             else
+[e :U 1638 ]
+"264
+[; ;main.c: 264:                 do { LATAbits.LATA4 = 0; } while(0);
+[e :U 1646 ]
+{
+[e = . . _LATAbits 0 4 -> -> 0 `i `uc ]
+}
+[e :U 1645 ]
+[e :U 1643 ]
+"266
+[; ;main.c: 266:             if (temp_alarm) {
+[e $ ! != -> _temp_alarm `i -> 0 `i 1647  ]
+{
+"267
+[; ;main.c: 267:                 do { LATAbits.LATA5 = 1; } while(0);
+[e :U 1650 ]
+{
+[e = . . _LATAbits 0 5 -> -> 1 `i `uc ]
+}
+[e :U 1649 ]
+"268
+[; ;main.c: 268:                 if (!timer_TALA_on) {
+[e $ ! ! != -> _timer_TALA_on `i -> 0 `i 1651  ]
+{
+"269
+[; ;main.c: 269:                     PWM6_LoadDutyValue(66);
+[e ( _PWM6_LoadDutyValue (1 -> -> 66 `i `us ]
+"270
+[; ;main.c: 270:                     timer_TALA_cnt = 0;
+[e = _timer_TALA_cnt -> -> 0 `i `uc ]
+"271
+[; ;main.c: 271:                     timer_TALA_on = 1;
+[e = _timer_TALA_on -> -> 1 `i `a ]
 "272
-[; ;main.c: 272:     }
+[; ;main.c: 272:                 }
+}
+[e :U 1651 ]
+"273
+[; ;main.c: 273:                 any_alarm = 1;
+[e = _any_alarm -> -> 1 `i `uc ]
+"274
+[; ;main.c: 274:             }
+}
+[e $U 1652  ]
+"275
+[; ;main.c: 275:             else
+[e :U 1647 ]
+"276
+[; ;main.c: 276:                 do { LATAbits.LATA5 = 0; } while(0);
+[e :U 1655 ]
+{
+[e = . . _LATAbits 0 5 -> -> 0 `i `uc ]
+}
+[e :U 1654 ]
+[e :U 1652 ]
+"278
+[; ;main.c: 278:             if (clock_alarm) {
+[e $ ! != -> _clock_alarm `i -> 0 `i 1656  ]
+{
+"279
+[; ;main.c: 279:                 if (!timer_TALA_on) {
+[e $ ! ! != -> _timer_TALA_on `i -> 0 `i 1657  ]
+{
+"280
+[; ;main.c: 280:                     PWM6_LoadDutyValue(99);
+[e ( _PWM6_LoadDutyValue (1 -> -> 99 `i `us ]
+"281
+[; ;main.c: 281:                     timer_TALA_cnt = 0;
+[e = _timer_TALA_cnt -> -> 0 `i `uc ]
+"282
+[; ;main.c: 282:                     timer_TALA_on = 1;
+[e = _timer_TALA_on -> -> 1 `i `a ]
+"283
+[; ;main.c: 283:                 }
+}
+[e :U 1657 ]
+"284
+[; ;main.c: 284:                 any_alarm = 1;
+[e = _any_alarm -> -> 1 `i `uc ]
+"285
+[; ;main.c: 285:             }
+}
+[e :U 1656 ]
+"287
+[; ;main.c: 287:             if (!any_alarm)
+[e $ ! ! != -> _any_alarm `i -> 0 `i 1658  ]
+"288
+[; ;main.c: 288:                 PWM6_LoadDutyValue(0);
+[e ( _PWM6_LoadDutyValue (1 -> -> 0 `i `us ]
+[e :U 1658 ]
+"290
+[; ;main.c: 290:             if (timer_TALA_cnt == config.tala) {
+[e $ ! == -> _timer_TALA_cnt `i -> . _config 1 `i 1659  ]
+{
+"291
+[; ;main.c: 291:                 PWM6_LoadDutyValue(0);
+[e ( _PWM6_LoadDutyValue (1 -> -> 0 `i `us ]
+"292
+[; ;main.c: 292:                 timer_TALA_on = 0;
+[e = _timer_TALA_on -> -> 0 `i `a ]
+"293
+[; ;main.c: 293:             }
+}
+[e :U 1659 ]
+"294
+[; ;main.c: 294:         }
+}
+[e :U 1637 ]
+"297
+[; ;main.c: 297:         if (timer_PMON_cnt == config.pmon) {
+[e $ ! == -> _timer_PMON_cnt `i -> . _config 0 `i 1660  ]
+{
+"298
+[; ;main.c: 298:             timer_PMON_cnt = 0;
+[e = _timer_PMON_cnt -> -> 0 `i `uc ]
+"300
+[; ;main.c: 300:             temp = readTC74();
+[e = _temp ( _readTC74 ..  ]
+"301
+[; ;main.c: 301:             potentiometer = ADCC_GetSingleConversion(adc_potent);
+[e = _potentiometer ( _ADCC_GetSingleConversion (1 . `E12732 0 ]
+"302
+[; ;main.c: 302:             lumin = (potentiometer >> 8);
+[e = _lumin -> >> -> _potentiometer `ui -> 8 `i `uc ]
+"305
+[; ;main.c: 305:             if (temp > max_temp.temp) {
+[e $ ! > -> _temp `i -> . _max_temp 0 `i 1661  ]
+{
+"306
+[; ;main.c: 306:                 max_temp.temp = temp;
+[e = . _max_temp 0 _temp ]
+"307
+[; ;main.c: 307:                 max_temp.lumin = lumin;
+[e = . _max_temp 1 _lumin ]
+"308
+[; ;main.c: 308:                 max_temp.hour = config.clkh;
+[e = . _max_temp 2 . _config 9 ]
+"309
+[; ;main.c: 309:                 max_temp.min = config.clkm;
+[e = . _max_temp 3 . _config 10 ]
+"310
+[; ;main.c: 310:                 max_temp.sec = sec;
+[e = . _max_temp 4 _sec ]
+"311
+[; ;main.c: 311:                 write_EEPROM_record(max_temp, 0x00);
+[e ( _write_EEPROM_record (2 , _max_temp -> -> 0 `i `us ]
+"312
+[; ;main.c: 312:             }
+}
+[e :U 1661 ]
+"313
+[; ;main.c: 313:             if (temp < min_temp.temp) {
+[e $ ! < -> _temp `i -> . _min_temp 0 `i 1662  ]
+{
+"314
+[; ;main.c: 314:                 min_temp.temp = temp;
+[e = . _min_temp 0 _temp ]
+"315
+[; ;main.c: 315:                 min_temp.lumin = lumin;
+[e = . _min_temp 1 _lumin ]
+"316
+[; ;main.c: 316:                 min_temp.hour = config.clkh;
+[e = . _min_temp 2 . _config 9 ]
+"317
+[; ;main.c: 317:                 min_temp.min = config.clkm;
+[e = . _min_temp 3 . _config 10 ]
+"318
+[; ;main.c: 318:                 min_temp.sec = sec;
+[e = . _min_temp 4 _sec ]
+"319
+[; ;main.c: 319:                 write_EEPROM_record(min_temp, 0x05);
+[e ( _write_EEPROM_record (2 , _min_temp -> -> 5 `i `us ]
+"320
+[; ;main.c: 320:             }
+}
+[e :U 1662 ]
+"322
+[; ;main.c: 322:             if (lumin > max_lumin.lumin) {
+[e $ ! > -> _lumin `i -> . _max_lumin 1 `i 1663  ]
+{
+"323
+[; ;main.c: 323:                 max_lumin.temp = temp;
+[e = . _max_lumin 0 _temp ]
+"324
+[; ;main.c: 324:                 max_lumin.lumin = lumin;
+[e = . _max_lumin 1 _lumin ]
+"325
+[; ;main.c: 325:                 max_lumin.hour = config.clkh;
+[e = . _max_lumin 2 . _config 9 ]
+"326
+[; ;main.c: 326:                 max_lumin.min = config.clkm;
+[e = . _max_lumin 3 . _config 10 ]
+"327
+[; ;main.c: 327:                 max_lumin.sec = sec;
+[e = . _max_lumin 4 _sec ]
+"328
+[; ;main.c: 328:                 write_EEPROM_record(max_lumin, 0x0A);
+[e ( _write_EEPROM_record (2 , _max_lumin -> -> 10 `i `us ]
+"329
+[; ;main.c: 329:             }
+}
+[e :U 1663 ]
+"330
+[; ;main.c: 330:             if (lumin < min_lumin.lumin) {
+[e $ ! < -> _lumin `i -> . _min_lumin 1 `i 1664  ]
+{
+"331
+[; ;main.c: 331:                 min_lumin.temp = temp;
+[e = . _min_lumin 0 _temp ]
+"332
+[; ;main.c: 332:                 min_lumin.lumin = lumin;
+[e = . _min_lumin 1 _lumin ]
+"333
+[; ;main.c: 333:                 min_lumin.hour = config.clkh;
+[e = . _min_lumin 2 . _config 9 ]
+"334
+[; ;main.c: 334:                 min_lumin.min = config.clkm;
+[e = . _min_lumin 3 . _config 10 ]
+"335
+[; ;main.c: 335:                 min_lumin.sec = sec;
+[e = . _min_lumin 4 _sec ]
+"336
+[; ;main.c: 336:                 write_EEPROM_record(min_lumin, 0x0F);
+[e ( _write_EEPROM_record (2 , _min_lumin -> -> 15 `i `us ]
+"337
+[; ;main.c: 337:             }
+}
+[e :U 1664 ]
+"340
+[; ;main.c: 340:             if (temp >= config.alat)
+[e $ ! >= -> _temp `i -> . _config 7 `i 1665  ]
+"341
+[; ;main.c: 341:                 temp_alarm = 1;
+[e = _temp_alarm -> -> 1 `i `a ]
+[e :U 1665 ]
+"342
+[; ;main.c: 342:             if (lumin <= config.alal)
+[e $ ! <= -> _lumin `i -> . _config 8 `i 1666  ]
+"343
+[; ;main.c: 343:                 lumin_alarm = 1;
+[e = _lumin_alarm -> -> 1 `i `a ]
+[e :U 1666 ]
+"344
+[; ;main.c: 344:         }
+}
+[e :U 1660 ]
+"347
+[; ;main.c: 347:         if (timer_1s_flag) {
+[e $ ! != -> _timer_1s_flag `i -> 0 `i 1667  ]
+{
+"348
+[; ;main.c: 348:             timer_1s_flag = 0;
+[e = _timer_1s_flag -> -> 0 `i `a ]
+"351
+[; ;main.c: 351:             sec += 1;
+[e =+ _sec -> -> 1 `i `uc ]
+"352
+[; ;main.c: 352:             if (sec == config.alas && config.clkm == config.alam && config.clkh == config.alah)
+[e $ ! && && == -> _sec `i -> . _config 6 `i == -> . _config 10 `i -> . _config 5 `i == -> . _config 9 `i -> . _config 4 `i 1668  ]
+"353
+[; ;main.c: 353:                 clock_alarm = 1;
+[e = _clock_alarm -> -> 1 `i `a ]
+[e :U 1668 ]
+"354
+[; ;main.c: 354:             if (sec >= 60) {
+[e $ ! >= -> _sec `i -> 60 `i 1669  ]
+{
+"355
+[; ;main.c: 355:                 sec = 0;
+[e = _sec -> -> 0 `i `uc ]
+"356
+[; ;main.c: 356:                 config.clkm += 1;
+[e =+ . _config 10 -> -> 1 `i `uc ]
+"357
+[; ;main.c: 357:                 if (config.clkm >= 60) {
+[e $ ! >= -> . _config 10 `i -> 60 `i 1670  ]
+{
+"358
+[; ;main.c: 358:                     config.clkm = 0;
+[e = . _config 10 -> -> 0 `i `uc ]
+"359
+[; ;main.c: 359:                     config.clkh = (config.clkh + 1) % 24;
+[e = . _config 9 -> % + -> . _config 9 `i -> 1 `i -> 24 `i `uc ]
+"361
+[; ;main.c: 361:                 }
+}
+[e :U 1670 ]
+"363
+[; ;main.c: 363:                 write_EEPROM_config(config, 0x14);
+[e ( _write_EEPROM_config (2 , _config -> -> 20 `i `us ]
+"364
+[; ;main.c: 364:             }
+}
+[e :U 1669 ]
+"368
+[; ;main.c: 368:             do { LATAbits.LATA7 = ~LATAbits.LATA7; } while(0);
+[e :U 1673 ]
+{
+[e = . . _LATAbits 0 7 -> ~ -> . . _LATAbits 0 7 `i `uc ]
+}
+[e :U 1672 ]
+"371
+[; ;main.c: 371:             if (mode == 0) {
+[e $ ! == -> _mode `i -> 0 `i 1674  ]
+{
+"373
+[; ;main.c: 373:                 while (LCDbusy());
+[e $U 1675  ]
+[e :U 1676 ]
+[e :U 1675 ]
+[e $ != ( _LCDbusy ..  -> 0 `i 1676  ]
+[e :U 1677 ]
+"374
+[; ;main.c: 374:                 LCDpos(0, 0);
+[e ( _LCDpos (2 , -> -> 0 `i `uc -> -> 0 `i `uc ]
+"375
+[; ;main.c: 375:                 switch (curr_record) {
+[e $U 1679  ]
+{
+"376
+[; ;main.c: 376:                     case 0:
+[e :U 1680 ]
+"377
+[; ;main.c: 377:                         sprintf(buf, "%02d:%02d:%02d  %c%c%c %c ",
+[e ( _sprintf (1 , , , , , , , (. , &U _buf :s 1C -> . _config 9 `i -> . _config 10 `i -> _sec `i ? != -> _clock_alarm `i -> 0 `i : -> 67 `ui -> 32 `ui ? != -> _temp_alarm `i -> 0 `i : -> 84 `ui -> 32 `ui ? != -> _lumin_alarm `i -> 0 `i : -> 76 `ui -> 32 `ui ? != -> . _config 3 `i -> 0 `i : -> 65 `ui -> 97 `ui ]
+"382
+[; ;main.c: 382:                         break;
+[e $U 1678  ]
+"384
+[; ;main.c: 384:                     case 1:
+[e :U 1681 ]
+"385
+[; ;main.c: 385:                         sprintf(buf, "%02d:%02d:%02d %02dC   ",
+[e ( _sprintf (1 , , , , (. , &U _buf :s 2C -> . _max_temp 2 `i -> . _max_temp 3 `i -> . _max_temp 4 `i -> . _max_temp 0 `i ]
+"389
+[; ;main.c: 389:                         sprintf(buf + 14, "L%1d", max_temp.lumin);
+[e ( _sprintf (1 , (. , + &U _buf * -> -> 14 `i `x -> -> # *U &U _buf `i `x :s 3C -> . _max_temp 1 `i ]
+"390
+[; ;main.c: 390:                         break;
+[e $U 1678  ]
+"392
+[; ;main.c: 392:                     case 2:
+[e :U 1682 ]
+"393
+[; ;main.c: 393:                         sprintf(buf, "%02d:%02d:%02d %02dC   ",
+[e ( _sprintf (1 , , , , (. , &U _buf :s 4C -> . _max_lumin 2 `i -> . _max_lumin 3 `i -> . _max_lumin 4 `i -> . _max_lumin 0 `i ]
+"397
+[; ;main.c: 397:                         sprintf(buf + 14, "L%1d", max_lumin.lumin);
+[e ( _sprintf (1 , (. , + &U _buf * -> -> 14 `i `x -> -> # *U &U _buf `i `x :s 5C -> . _max_lumin 1 `i ]
+"398
+[; ;main.c: 398:                         break;
+[e $U 1678  ]
+"400
+[; ;main.c: 400:                     default:
+[e :U 1683 ]
+"401
+[; ;main.c: 401:                         break;
+[e $U 1678  ]
+"402
+[; ;main.c: 402:                 }
+}
+[e $U 1678  ]
+[e :U 1679 ]
+[e [\ _curr_record , $ -> 0 `i 1680
+ , $ -> 1 `i 1681
+ , $ -> 2 `i 1682
+ 1683 ]
+[e :U 1678 ]
+"403
+[; ;main.c: 403:                 while (LCDbusy());
+[e $U 1684  ]
+[e :U 1685 ]
+[e :U 1684 ]
+[e $ != ( _LCDbusy ..  -> 0 `i 1685  ]
+[e :U 1686 ]
+"404
+[; ;main.c: 404:                 LCDstr(buf);
+[e ( _LCDstr (1 &U _buf ]
+"406
+[; ;main.c: 406:                 while (LCDbusy());
+[e $U 1687  ]
+[e :U 1688 ]
+[e :U 1687 ]
+[e $ != ( _LCDbusy ..  -> 0 `i 1688  ]
+[e :U 1689 ]
+"407
+[; ;main.c: 407:                 LCDpos(1, 0);
+[e ( _LCDpos (2 , -> -> 1 `i `uc -> -> 0 `i `uc ]
+"408
+[; ;main.c: 408:                 switch (curr_record) {
+[e $U 1691  ]
+{
+"409
+[; ;main.c: 409:                     case 0:
+[e :U 1692 ]
+"410
+[; ;main.c: 410:                         sprintf(buf, "%02d oC           ", temp);
+[e ( _sprintf (1 , (. , &U _buf :s 6C -> _temp `i ]
+"411
+[; ;main.c: 411:                         sprintf(buf + 13, "L %1d", lumin);
+[e ( _sprintf (1 , (. , + &U _buf * -> -> 13 `i `x -> -> # *U &U _buf `i `x :s 7C -> _lumin `i ]
+"412
+[; ;main.c: 412:                         break;
+[e $U 1690  ]
+"414
+[; ;main.c: 414:                     case 1:
+[e :U 1693 ]
+"415
+[; ;main.c: 415:                         sprintf(buf, "%02d:%02d:%02d %02dC   ",
+[e ( _sprintf (1 , , , , (. , &U _buf :s 8C -> . _min_temp 2 `i -> . _min_temp 3 `i -> . _min_temp 4 `i -> . _min_temp 0 `i ]
+"419
+[; ;main.c: 419:                         sprintf(buf + 14, "L%1d", min_temp.lumin);
+[e ( _sprintf (1 , (. , + &U _buf * -> -> 14 `i `x -> -> # *U &U _buf `i `x :s 9C -> . _min_temp 1 `i ]
+"420
+[; ;main.c: 420:                         break;
+[e $U 1690  ]
+"422
+[; ;main.c: 422:                     case 2:
+[e :U 1694 ]
+"423
+[; ;main.c: 423:                         sprintf(buf, "%02d:%02d:%02d %02dC   ",
+[e ( _sprintf (1 , , , , (. , &U _buf :s 10C -> . _min_lumin 2 `i -> . _min_lumin 3 `i -> . _min_lumin 4 `i -> . _min_lumin 0 `i ]
+"427
+[; ;main.c: 427:                         sprintf(buf + 14, "L%1d", min_lumin.lumin);
+[e ( _sprintf (1 , (. , + &U _buf * -> -> 14 `i `x -> -> # *U &U _buf `i `x :s 11C -> . _min_lumin 1 `i ]
+"428
+[; ;main.c: 428:                         break;
+[e $U 1690  ]
+"430
+[; ;main.c: 430:                     default:
+[e :U 1695 ]
+"431
+[; ;main.c: 431:                         break;
+[e $U 1690  ]
+"433
+[; ;main.c: 433:                 }
+}
+[e $U 1690  ]
+[e :U 1691 ]
+[e [\ _curr_record , $ -> 0 `i 1692
+ , $ -> 1 `i 1693
+ , $ -> 2 `i 1694
+ 1695 ]
+[e :U 1690 ]
+"434
+[; ;main.c: 434:                 while (LCDbusy());
+[e $U 1696  ]
+[e :U 1697 ]
+[e :U 1696 ]
+[e $ != ( _LCDbusy ..  -> 0 `i 1697  ]
+[e :U 1698 ]
+"435
+[; ;main.c: 435:                 LCDstr(buf);
+[e ( _LCDstr (1 &U _buf ]
+"436
+[; ;main.c: 436:             }
+}
+[e :U 1674 ]
+"438
+[; ;main.c: 438:             if (mode == 1) {
+[e $ ! == -> _mode `i -> 1 `i 1699  ]
+{
+"440
+[; ;main.c: 440:             }
+}
+[e :U 1699 ]
+"441
+[; ;main.c: 441:         }
+}
+[e :U 1667 ]
+"443
+[; ;main.c: 443:     }
 }
 [e :U 1627 ]
 [e $U 1628  ]
 [e :U 1629 ]
-"273
-[; ;main.c: 273: }
+"444
+[; ;main.c: 444: }
 [e :UE 1625 ]
 }
-[p f _sprintf 8421508 ]
-[a 2C 37 48 50 100 32 111 67 32 32 32 32 32 32 32 76 32 37 49 100 0 ]
-[a 1C 37 48 50 100 58 37 48 50 100 58 37 48 50 100 32 32 67 84 76 32 65 82 0 ]
+[p f _sprintf 8945796 ]
+[a 3C 76 37 49 100 0 ]
+[a 5C 76 37 49 100 0 ]
+[a 9C 76 37 49 100 0 ]
+[a 11C 76 37 49 100 0 ]
+[a 7C 76 32 37 49 100 0 ]
+[a 1C 37 48 50 100 58 37 48 50 100 58 37 48 50 100 32 32 37 99 37 99 37 99 32 37 99 32 0 ]
+[a 2C 37 48 50 100 58 37 48 50 100 58 37 48 50 100 32 37 48 50 100 67 32 32 32 0 ]
+[a 4C 37 48 50 100 58 37 48 50 100 58 37 48 50 100 32 37 48 50 100 67 32 32 32 0 ]
+[a 8C 37 48 50 100 58 37 48 50 100 58 37 48 50 100 32 37 48 50 100 67 32 32 32 0 ]
+[a 10C 37 48 50 100 58 37 48 50 100 58 37 48 50 100 32 37 48 50 100 67 32 32 32 0 ]
+[a 6C 37 48 50 100 32 111 67 32 32 32 32 32 32 32 32 32 32 32 0 ]

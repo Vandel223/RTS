@@ -60,6 +60,7 @@
 
 #endif
 
+#define TMR3_INTERRUPT_TICKER_FACTOR    1
 
 /**
   Section: TMR3 APIs
@@ -365,6 +366,23 @@ uint8_t TMR3_CheckGateValueStatus(void);
     None
 */
 void TMR3_ISR(void);
+/**
+  @Summary
+    CallBack function.
+
+  @Description
+    This routine is called by the Interrupt Manager.
+
+  @Preconditions
+    Initialize  the TMR3 module with interrupt before calling this function.
+
+  @Param
+    None
+
+  @Returns
+    None
+*/
+void TMR3_CallBack(void);
 
 /**
   @Summary

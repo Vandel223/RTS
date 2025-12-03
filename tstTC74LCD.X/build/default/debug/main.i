@@ -7,7 +7,181 @@
 # 1 "/Applications/microchip/xc8/v3.10/pic/include/language_support.h" 1 3
 # 2 "<built-in>" 2
 # 1 "main.c" 2
-# 44 "main.c"
+# 43 "main.c"
+# 1 "/Applications/microchip/xc8/v3.10/pic/include/c99/stdio.h" 1 3
+
+
+
+# 1 "/Applications/microchip/xc8/v3.10/pic/include/c99/musl_xc8.h" 1 3
+# 5 "/Applications/microchip/xc8/v3.10/pic/include/c99/stdio.h" 2 3
+
+
+
+
+
+# 1 "/Applications/microchip/xc8/v3.10/pic/include/c99/features.h" 1 3
+# 11 "/Applications/microchip/xc8/v3.10/pic/include/c99/stdio.h" 2 3
+# 24 "/Applications/microchip/xc8/v3.10/pic/include/c99/stdio.h" 3
+# 1 "/Applications/microchip/xc8/v3.10/pic/include/c99/bits/alltypes.h" 1 3
+# 12 "/Applications/microchip/xc8/v3.10/pic/include/c99/bits/alltypes.h" 3
+typedef void * va_list[1];
+
+
+
+
+typedef void * __isoc_va_list[1];
+# 128 "/Applications/microchip/xc8/v3.10/pic/include/c99/bits/alltypes.h" 3
+typedef unsigned size_t;
+# 143 "/Applications/microchip/xc8/v3.10/pic/include/c99/bits/alltypes.h" 3
+typedef short ssize_t;
+# 174 "/Applications/microchip/xc8/v3.10/pic/include/c99/bits/alltypes.h" 3
+typedef __int24 int24_t;
+# 210 "/Applications/microchip/xc8/v3.10/pic/include/c99/bits/alltypes.h" 3
+typedef __uint24 uint24_t;
+# 255 "/Applications/microchip/xc8/v3.10/pic/include/c99/bits/alltypes.h" 3
+typedef long long off_t;
+# 409 "/Applications/microchip/xc8/v3.10/pic/include/c99/bits/alltypes.h" 3
+typedef struct _IO_FILE FILE;
+# 25 "/Applications/microchip/xc8/v3.10/pic/include/c99/stdio.h" 2 3
+# 52 "/Applications/microchip/xc8/v3.10/pic/include/c99/stdio.h" 3
+typedef union _G_fpos64_t {
+ char __opaque[16];
+ double __align;
+} fpos_t;
+
+extern FILE *const stdin;
+extern FILE *const stdout;
+extern FILE *const stderr;
+
+
+
+
+
+FILE *fopen(const char *restrict, const char *restrict);
+FILE *freopen(const char *restrict, const char *restrict, FILE *restrict);
+int fclose(FILE *);
+
+int remove(const char *);
+int rename(const char *, const char *);
+
+int feof(FILE *);
+int ferror(FILE *);
+int fflush(FILE *);
+void clearerr(FILE *);
+
+int fseek(FILE *, long, int);
+long ftell(FILE *);
+void rewind(FILE *);
+
+int fgetpos(FILE *restrict, fpos_t *restrict);
+int fsetpos(FILE *, const fpos_t *);
+
+size_t fread(void *restrict, size_t, size_t, FILE *restrict);
+size_t fwrite(const void *restrict, size_t, size_t, FILE *restrict);
+
+int fgetc(FILE *);
+int getc(FILE *);
+int getchar(void);
+
+
+
+
+
+int ungetc(int, FILE *);
+int getch(void);
+
+int fputc(int, FILE *);
+int putc(int, FILE *);
+int putchar(int);
+
+
+
+
+
+void putch(char);
+
+char *fgets(char *restrict, int, FILE *restrict);
+
+char *gets(char *);
+
+
+int fputs(const char *restrict, FILE *restrict);
+int puts(const char *);
+
+__attribute__((__format__(__printf__, 1, 2)))
+int printf(const char *restrict, ...);
+__attribute__((__format__(__printf__, 2, 3)))
+int fprintf(FILE *restrict, const char *restrict, ...);
+__attribute__((__format__(__printf__, 2, 3)))
+int sprintf(char *restrict, const char *restrict, ...);
+__attribute__((__format__(__printf__, 3, 4)))
+int snprintf(char *restrict, size_t, const char *restrict, ...);
+
+__attribute__((__format__(__printf__, 1, 0)))
+int vprintf(const char *restrict, __isoc_va_list);
+int vfprintf(FILE *restrict, const char *restrict, __isoc_va_list);
+__attribute__((__format__(__printf__, 2, 0)))
+int vsprintf(char *restrict, const char *restrict, __isoc_va_list);
+__attribute__((__format__(__printf__, 3, 0)))
+int vsnprintf(char *restrict, size_t, const char *restrict, __isoc_va_list);
+
+__attribute__((__format__(__scanf__, 1, 2)))
+int scanf(const char *restrict, ...);
+__attribute__((__format__(__scanf__, 2, 3)))
+int fscanf(FILE *restrict, const char *restrict, ...);
+__attribute__((__format__(__scanf__, 2, 3)))
+int sscanf(const char *restrict, const char *restrict, ...);
+
+__attribute__((__format__(__scanf__, 1, 0)))
+int vscanf(const char *restrict, __isoc_va_list);
+int vfscanf(FILE *restrict, const char *restrict, __isoc_va_list);
+__attribute__((__format__(__scanf__, 2, 0)))
+int vsscanf(const char *restrict, const char *restrict, __isoc_va_list);
+
+void perror(const char *);
+
+int setvbuf(FILE *restrict, char *restrict, int, size_t);
+void setbuf(FILE *restrict, char *restrict);
+
+char *tmpnam(char *);
+FILE *tmpfile(void);
+
+
+
+
+FILE *fmemopen(void *restrict, size_t, const char *restrict);
+FILE *open_memstream(char **, size_t *);
+FILE *fdopen(int, const char *);
+FILE *popen(const char *, const char *);
+int pclose(FILE *);
+int fileno(FILE *);
+int fseeko(FILE *, off_t, int);
+off_t ftello(FILE *);
+int dprintf(int, const char *restrict, ...);
+int vdprintf(int, const char *restrict, __isoc_va_list);
+void flockfile(FILE *);
+int ftrylockfile(FILE *);
+void funlockfile(FILE *);
+int getc_unlocked(FILE *);
+int getchar_unlocked(void);
+int putc_unlocked(int, FILE *);
+int putchar_unlocked(int);
+ssize_t getdelim(char **restrict, size_t *restrict, int, FILE *restrict);
+ssize_t getline(char **restrict, size_t *restrict, FILE *restrict);
+int renameat(int, const char *, int, const char *);
+char *ctermid(char *);
+
+
+
+
+
+
+
+char *tempnam(const char *, const char *);
+# 44 "main.c" 2
+# 1 "/Applications/microchip/xc8/v3.10/pic/include/c99/stdbool.h" 1 3
+# 45 "main.c" 2
+
 # 1 "./mcc_generated_files/mcc.h" 1
 # 49 "./mcc_generated_files/mcc.h"
 # 1 "/Applications/microchip/xc8/v3.10/pic/include/xc.h" 1 3
@@ -22,28 +196,10 @@ extern double __fpnormalize(double);
 
 
 # 1 "/Applications/microchip/xc8/v3.10/pic/include/c99/stdlib.h" 1 3
-
-
-
-# 1 "/Applications/microchip/xc8/v3.10/pic/include/c99/musl_xc8.h" 1 3
-# 5 "/Applications/microchip/xc8/v3.10/pic/include/c99/stdlib.h" 2 3
-
-
-
-
-
-# 1 "/Applications/microchip/xc8/v3.10/pic/include/c99/features.h" 1 3
-# 11 "/Applications/microchip/xc8/v3.10/pic/include/c99/stdlib.h" 2 3
 # 21 "/Applications/microchip/xc8/v3.10/pic/include/c99/stdlib.h" 3
 # 1 "/Applications/microchip/xc8/v3.10/pic/include/c99/bits/alltypes.h" 1 3
 # 24 "/Applications/microchip/xc8/v3.10/pic/include/c99/bits/alltypes.h" 3
 typedef long int wchar_t;
-# 128 "/Applications/microchip/xc8/v3.10/pic/include/c99/bits/alltypes.h" 3
-typedef unsigned size_t;
-# 174 "/Applications/microchip/xc8/v3.10/pic/include/c99/bits/alltypes.h" 3
-typedef __int24 int24_t;
-# 210 "/Applications/microchip/xc8/v3.10/pic/include/c99/bits/alltypes.h" 3
-typedef __uint24 uint24_t;
 # 22 "/Applications/microchip/xc8/v3.10/pic/include/c99/stdlib.h" 2 3
 
 int atoi (const char *);
@@ -20817,168 +20973,8 @@ void PIN_MANAGER_Initialize (void);
 void PIN_MANAGER_IOC(void);
 # 52 "./mcc_generated_files/mcc.h" 2
 
-# 1 "/Applications/microchip/xc8/v3.10/pic/include/c99/stdbool.h" 1 3
-# 54 "./mcc_generated_files/mcc.h" 2
+
 # 1 "/Applications/microchip/xc8/v3.10/pic/include/c99/conio.h" 1 3
-
-
-
-
-
-
-# 1 "/Applications/microchip/xc8/v3.10/pic/include/c99/stdio.h" 1 3
-# 24 "/Applications/microchip/xc8/v3.10/pic/include/c99/stdio.h" 3
-# 1 "/Applications/microchip/xc8/v3.10/pic/include/c99/bits/alltypes.h" 1 3
-# 12 "/Applications/microchip/xc8/v3.10/pic/include/c99/bits/alltypes.h" 3
-typedef void * va_list[1];
-
-
-
-
-typedef void * __isoc_va_list[1];
-# 143 "/Applications/microchip/xc8/v3.10/pic/include/c99/bits/alltypes.h" 3
-typedef short ssize_t;
-# 255 "/Applications/microchip/xc8/v3.10/pic/include/c99/bits/alltypes.h" 3
-typedef long long off_t;
-# 409 "/Applications/microchip/xc8/v3.10/pic/include/c99/bits/alltypes.h" 3
-typedef struct _IO_FILE FILE;
-# 25 "/Applications/microchip/xc8/v3.10/pic/include/c99/stdio.h" 2 3
-# 52 "/Applications/microchip/xc8/v3.10/pic/include/c99/stdio.h" 3
-typedef union _G_fpos64_t {
- char __opaque[16];
- double __align;
-} fpos_t;
-
-extern FILE *const stdin;
-extern FILE *const stdout;
-extern FILE *const stderr;
-
-
-
-
-
-FILE *fopen(const char *restrict, const char *restrict);
-FILE *freopen(const char *restrict, const char *restrict, FILE *restrict);
-int fclose(FILE *);
-
-int remove(const char *);
-int rename(const char *, const char *);
-
-int feof(FILE *);
-int ferror(FILE *);
-int fflush(FILE *);
-void clearerr(FILE *);
-
-int fseek(FILE *, long, int);
-long ftell(FILE *);
-void rewind(FILE *);
-
-int fgetpos(FILE *restrict, fpos_t *restrict);
-int fsetpos(FILE *, const fpos_t *);
-
-size_t fread(void *restrict, size_t, size_t, FILE *restrict);
-size_t fwrite(const void *restrict, size_t, size_t, FILE *restrict);
-
-int fgetc(FILE *);
-int getc(FILE *);
-int getchar(void);
-
-
-
-
-
-int ungetc(int, FILE *);
-int getch(void);
-
-int fputc(int, FILE *);
-int putc(int, FILE *);
-int putchar(int);
-
-
-
-
-
-void putch(char);
-
-char *fgets(char *restrict, int, FILE *restrict);
-
-char *gets(char *);
-
-
-int fputs(const char *restrict, FILE *restrict);
-int puts(const char *);
-
-__attribute__((__format__(__printf__, 1, 2)))
-int printf(const char *restrict, ...);
-__attribute__((__format__(__printf__, 2, 3)))
-int fprintf(FILE *restrict, const char *restrict, ...);
-__attribute__((__format__(__printf__, 2, 3)))
-int sprintf(char *restrict, const char *restrict, ...);
-__attribute__((__format__(__printf__, 3, 4)))
-int snprintf(char *restrict, size_t, const char *restrict, ...);
-
-__attribute__((__format__(__printf__, 1, 0)))
-int vprintf(const char *restrict, __isoc_va_list);
-int vfprintf(FILE *restrict, const char *restrict, __isoc_va_list);
-__attribute__((__format__(__printf__, 2, 0)))
-int vsprintf(char *restrict, const char *restrict, __isoc_va_list);
-__attribute__((__format__(__printf__, 3, 0)))
-int vsnprintf(char *restrict, size_t, const char *restrict, __isoc_va_list);
-
-__attribute__((__format__(__scanf__, 1, 2)))
-int scanf(const char *restrict, ...);
-__attribute__((__format__(__scanf__, 2, 3)))
-int fscanf(FILE *restrict, const char *restrict, ...);
-__attribute__((__format__(__scanf__, 2, 3)))
-int sscanf(const char *restrict, const char *restrict, ...);
-
-__attribute__((__format__(__scanf__, 1, 0)))
-int vscanf(const char *restrict, __isoc_va_list);
-int vfscanf(FILE *restrict, const char *restrict, __isoc_va_list);
-__attribute__((__format__(__scanf__, 2, 0)))
-int vsscanf(const char *restrict, const char *restrict, __isoc_va_list);
-
-void perror(const char *);
-
-int setvbuf(FILE *restrict, char *restrict, int, size_t);
-void setbuf(FILE *restrict, char *restrict);
-
-char *tmpnam(char *);
-FILE *tmpfile(void);
-
-
-
-
-FILE *fmemopen(void *restrict, size_t, const char *restrict);
-FILE *open_memstream(char **, size_t *);
-FILE *fdopen(int, const char *);
-FILE *popen(const char *, const char *);
-int pclose(FILE *);
-int fileno(FILE *);
-int fseeko(FILE *, off_t, int);
-off_t ftello(FILE *);
-int dprintf(int, const char *restrict, ...);
-int vdprintf(int, const char *restrict, __isoc_va_list);
-void flockfile(FILE *);
-int ftrylockfile(FILE *);
-void funlockfile(FILE *);
-int getc_unlocked(FILE *);
-int getchar_unlocked(void);
-int putc_unlocked(int, FILE *);
-int putchar_unlocked(int);
-ssize_t getdelim(char **restrict, size_t *restrict, int, FILE *restrict);
-ssize_t getline(char **restrict, size_t *restrict, FILE *restrict);
-int renameat(int, const char *, int, const char *);
-char *ctermid(char *);
-
-
-
-
-
-
-
-char *tempnam(const char *, const char *);
-# 8 "/Applications/microchip/xc8/v3.10/pic/include/c99/conio.h" 2 3
 # 55 "./mcc_generated_files/mcc.h" 2
 # 1 "./mcc_generated_files/interrupt_manager.h" 1
 # 56 "./mcc_generated_files/mcc.h" 2
@@ -21074,37 +21070,33 @@ extern void (*TMR5_InterruptHandler)(void);
 void TMR5_DefaultInterruptHandler(void);
 # 58 "./mcc_generated_files/mcc.h" 2
 # 1 "./mcc_generated_files/tmr3.h" 1
-# 100 "./mcc_generated_files/tmr3.h"
+# 101 "./mcc_generated_files/tmr3.h"
 void TMR3_Initialize(void);
-# 129 "./mcc_generated_files/tmr3.h"
+# 130 "./mcc_generated_files/tmr3.h"
 void TMR3_StartTimer(void);
-# 161 "./mcc_generated_files/tmr3.h"
+# 162 "./mcc_generated_files/tmr3.h"
 void TMR3_StopTimer(void);
-# 196 "./mcc_generated_files/tmr3.h"
+# 197 "./mcc_generated_files/tmr3.h"
 uint16_t TMR3_ReadTimer(void);
-# 235 "./mcc_generated_files/tmr3.h"
+# 236 "./mcc_generated_files/tmr3.h"
 void TMR3_WriteTimer(uint16_t timerVal);
-# 271 "./mcc_generated_files/tmr3.h"
+# 272 "./mcc_generated_files/tmr3.h"
 void TMR3_Reload(void);
-# 310 "./mcc_generated_files/tmr3.h"
+# 311 "./mcc_generated_files/tmr3.h"
 void TMR3_StartSinglePulseAcquisition(void);
-# 349 "./mcc_generated_files/tmr3.h"
+# 350 "./mcc_generated_files/tmr3.h"
 uint8_t TMR3_CheckGateValueStatus(void);
-# 367 "./mcc_generated_files/tmr3.h"
+# 368 "./mcc_generated_files/tmr3.h"
 void TMR3_ISR(void);
 # 385 "./mcc_generated_files/tmr3.h"
- void TMR3_SetInterruptHandler(void (* InterruptHandler)(void));
+void TMR3_CallBack(void);
 # 403 "./mcc_generated_files/tmr3.h"
-extern void (*TMR3_InterruptHandler)(void);
+ void TMR3_SetInterruptHandler(void (* InterruptHandler)(void));
 # 421 "./mcc_generated_files/tmr3.h"
+extern void (*TMR3_InterruptHandler)(void);
+# 439 "./mcc_generated_files/tmr3.h"
 void TMR3_DefaultInterruptHandler(void);
 # 59 "./mcc_generated_files/mcc.h" 2
-# 1 "./mcc_generated_files/pwm6.h" 1
-# 102 "./mcc_generated_files/pwm6.h"
- void PWM6_Initialize(void);
-# 129 "./mcc_generated_files/pwm6.h"
- void PWM6_LoadDutyValue(uint16_t dutyValue);
-# 60 "./mcc_generated_files/mcc.h" 2
 # 1 "./mcc_generated_files/tmr1.h" 1
 # 100 "./mcc_generated_files/tmr1.h"
 void TMR1_Initialize(void);
@@ -21130,6 +21122,12 @@ void TMR1_ISR(void);
 extern void (*TMR1_InterruptHandler)(void);
 # 421 "./mcc_generated_files/tmr1.h"
 void TMR1_DefaultInterruptHandler(void);
+# 60 "./mcc_generated_files/mcc.h" 2
+# 1 "./mcc_generated_files/pwm6.h" 1
+# 102 "./mcc_generated_files/pwm6.h"
+ void PWM6_Initialize(void);
+# 129 "./mcc_generated_files/pwm6.h"
+ void PWM6_LoadDutyValue(uint16_t dutyValue);
 # 61 "./mcc_generated_files/mcc.h" 2
 # 1 "./mcc_generated_files/tmr2.h" 1
 # 79 "./mcc_generated_files/tmr2.h"
@@ -21429,7 +21427,7 @@ void SYSTEM_Initialize(void);
 void OSCILLATOR_Initialize(void);
 # 104 "./mcc_generated_files/mcc.h"
 void PMD_Initialize(void);
-# 45 "main.c" 2
+# 47 "main.c" 2
 # 1 "./I2C/i2c.h" 1
 # 155 "./I2C/i2c.h"
 void OpenI2C( void );
@@ -21439,7 +21437,7 @@ signed char WriteI2C( unsigned char data_out );
 signed char putsI2C( unsigned char *wrptr );
 
 unsigned char ReadI2C( void );
-# 46 "main.c" 2
+# 48 "main.c" 2
 # 1 "./LCD/lcd.h" 1
 # 12 "./LCD/lcd.h"
 void LCDsend(unsigned char c);
@@ -21459,12 +21457,11 @@ void LCDstr(char *p);
 int LCDbusy(void);
 
 void LCDpos(unsigned char l, unsigned char c);
-# 47 "main.c" 2
-
+# 49 "main.c" 2
 # 1 "./TC74/tc74.h" 1
 # 39 "./TC74/tc74.h"
 unsigned char readTC74 (void);
-# 49 "main.c" 2
+# 50 "main.c" 2
 # 1 "./EEPROM/eeprom.h" 1
 # 41 "./EEPROM/eeprom.h"
 typedef struct __EEPROM_record {
@@ -21490,19 +21487,31 @@ typedef struct __EEPROM_config {
 } EEPROM_config;
 
 void write_EEPROM_record(EEPROM_record record, uint16_t addr);
-EEPROM_record read_EEPROM_record(uint16_t addr);
+void read_EEPROM_record(EEPROM_record *record, uint16_t addr);
 void write_EEPROM_config(EEPROM_config config, uint16_t addr);
-EEPROM_config read_EEPROM_config(uint16_t addr);
-# 50 "main.c" 2
-# 73 "main.c"
-uint8_t timer_1s_flag = 0;
-uint8_t timer_PMON_flag = 0;
-uint8_t timer3_100ms_flag = 1;
-uint8_t timer5_100ms_flag = 1;
+void read_EEPROM_config(EEPROM_config *config, uint16_t addr);
+# 51 "main.c" 2
+# 85 "main.c"
+typedef uint8_t mode_t;
+
+
+
+
+
+_Bool timer_1s_flag = 0;
+uint8_t timer_PMON_cnt = 0;
+uint8_t timer_TINA_cnt = 0;
+uint8_t timer_TALA_cnt = 0;
+_Bool timer_TALA_on = 0;
+_Bool timer_TINA_on = 0;
+_Bool timer3_100ms_flag = 1;
+_Bool timer5_100ms_flag = 1;
 
 void timer_1s(void) {
     timer_1s_flag = 1;
-    timer_PMON_flag += 1;
+    timer_PMON_cnt += 1;
+    timer_TINA_cnt += 1;
+    timer_TALA_cnt += 1;
 }
 
 void timer3_100ms(void) {
@@ -21532,13 +21541,21 @@ void main(void)
     EEPROM_record min_temp = {255, 0, 0, 0, 0};
 
     uint8_t sec = 0;
-    uint8_t min;
-    uint8_t hour;
 
     char buf[17];
 
     uint8_t sw1 = 1;
     uint8_t sw2 = 1;
+
+    mode_t mode = 0;
+
+    _Bool temp_alarm = 0;
+    _Bool lumin_alarm = 0;
+    _Bool clock_alarm = 0;
+
+    uint8_t cursor;
+
+    uint8_t curr_record = 0;
 
 
     SYSTEM_Initialize();
@@ -21551,7 +21568,7 @@ void main(void)
 
 
     (INTCONbits.PEIE = 1);
-# 137 "main.c"
+# 169 "main.c"
     OpenI2C();
 
     LCDinit();
@@ -21573,13 +21590,12 @@ void main(void)
     PWM6_Initialize();
 
 
-
-    config = read_EEPROM_config(0x14);
+    read_EEPROM_config(&config, 0x14);
     if (config.pmon == 0) {
         config.pmon = 5;
         config.tala = 3;
         config.tina = 10;
-        config.alaf = 0;
+        config.alaf = 1;
         config.alah = 12;
         config.alam = 0;
         config.alas = 0;
@@ -21599,16 +21615,20 @@ void main(void)
     while (1)
     {
 
-
+        if (timer_TINA_cnt == config.tina) {
+            curr_record = 0;
+        }
 
         if (PORTBbits.RB4 == 0 && timer3_100ms_flag) {
             timer3_100ms_flag = 0;
+            TMR3_Reload();
             TMR3_StartTimer();
 
             sw1 = 0;
         }
         if (PORTCbits.RC5 == 0 && timer5_100ms_flag) {
             timer5_100ms_flag = 0;
+            TMR5_Reload();
             TMR5_StartTimer();
 
             sw2 = 0;
@@ -21616,75 +21636,211 @@ void main(void)
 
         if (sw1 == 0) {
             sw1 = 1;
+            if (mode == 0) {
+                clock_alarm = 0;
+                temp_alarm = 0;
+                lumin_alarm = 0;
 
+            }
         }
         if (sw2 == 0) {
             sw2 = 1;
+            if (mode == 0) {
+                timer_TINA_cnt = 0;
+                timer_TINA_on = 1;
+                curr_record = (curr_record + 1) % 3;
+            }
+        }
 
+        uint8_t any_alarm = 0;
+        if (config.alaf) {
+            if (lumin_alarm) {
+                do { LATAbits.LATA4 = 1; } while(0);
+                if (!timer_TALA_on) {
+                    PWM6_LoadDutyValue(32);
+                    timer_TALA_cnt = 0;
+                    timer_TALA_on = 1;
+                }
+                any_alarm = 1;
+            }
+            else
+                do { LATAbits.LATA4 = 0; } while(0);
+
+            if (temp_alarm) {
+                do { LATAbits.LATA5 = 1; } while(0);
+                if (!timer_TALA_on) {
+                    PWM6_LoadDutyValue(66);
+                    timer_TALA_cnt = 0;
+                    timer_TALA_on = 1;
+                }
+                any_alarm = 1;
+            }
+            else
+                do { LATAbits.LATA5 = 0; } while(0);
+
+            if (clock_alarm) {
+                if (!timer_TALA_on) {
+                    PWM6_LoadDutyValue(99);
+                    timer_TALA_cnt = 0;
+                    timer_TALA_on = 1;
+                }
+                any_alarm = 1;
+            }
+
+            if (!any_alarm)
+                PWM6_LoadDutyValue(0);
+
+            if (timer_TALA_cnt == config.tala) {
+                PWM6_LoadDutyValue(0);
+                timer_TALA_on = 0;
+            }
         }
 
 
-        if (timer_PMON_flag == config.pmon) {
-            timer_PMON_flag = 0;
+        if (timer_PMON_cnt == config.pmon) {
+            timer_PMON_cnt = 0;
 
             temp = readTC74();
             potentiometer = ADCC_GetSingleConversion(adc_potent);
             lumin = (potentiometer >> 8);
 
+
             if (temp > max_temp.temp) {
                 max_temp.temp = temp;
                 max_temp.lumin = lumin;
-                max_temp.hour = hour;
-                max_temp.min = min;
+                max_temp.hour = config.clkh;
+                max_temp.min = config.clkm;
                 max_temp.sec = sec;
+                write_EEPROM_record(max_temp, 0x00);
             }
             if (temp < min_temp.temp) {
                 min_temp.temp = temp;
                 min_temp.lumin = lumin;
-                min_temp.hour = hour;
-                min_temp.min = min;
+                min_temp.hour = config.clkh;
+                min_temp.min = config.clkm;
                 min_temp.sec = sec;
+                write_EEPROM_record(min_temp, 0x05);
             }
 
             if (lumin > max_lumin.lumin) {
                 max_lumin.temp = temp;
                 max_lumin.lumin = lumin;
-                max_lumin.hour = hour;
-                max_lumin.min = min;
+                max_lumin.hour = config.clkh;
+                max_lumin.min = config.clkm;
                 max_lumin.sec = sec;
+                write_EEPROM_record(max_lumin, 0x0A);
             }
             if (lumin < min_lumin.lumin) {
                 min_lumin.temp = temp;
                 min_lumin.lumin = lumin;
-                min_lumin.hour = hour;
-                min_lumin.min = min;
+                min_lumin.hour = config.clkh;
+                min_lumin.min = config.clkm;
                 min_lumin.sec = sec;
+                write_EEPROM_record(min_lumin, 0x0F);
             }
+
+
+            if (temp >= config.alat)
+                temp_alarm = 1;
+            if (lumin <= config.alal)
+                lumin_alarm = 1;
         }
 
 
-        if (timer_1s_flag == 1) {
+        if (timer_1s_flag) {
             timer_1s_flag = 0;
 
+
             sec += 1;
+            if (sec == config.alas && config.clkm == config.alam && config.clkh == config.alah)
+                clock_alarm = 1;
             if (sec >= 60) {
                 sec = 0;
-                min += 1;
-                if (min >= 60) {
-                    min = 0;
-                    hour = (hour + 1) % 24;
+                config.clkm += 1;
+                if (config.clkm >= 60) {
+                    config.clkm = 0;
+                    config.clkh = (config.clkh + 1) % 24;
+
                 }
+
+                write_EEPROM_config(config, 0x14);
             }
 
-            LCDpos(0, 0);
-            sprintf(buf, "%02d:%02d:%02d  CTL AR", hour, min, sec);
-            while (LCDbusy());
-            LCDstr(buf);
 
-            LCDpos(1, 0);;
-            sprintf(buf, "%02d oC       L %1d", temp, lumin);
-            while (LCDbusy());
-            LCDstr(buf);
+
+            do { LATAbits.LATA7 = ~LATAbits.LATA7; } while(0);
+
+
+            if (mode == 0) {
+
+                while (LCDbusy());
+                LCDpos(0, 0);
+                switch (curr_record) {
+                    case 0:
+                        sprintf(buf, "%02d:%02d:%02d  %c%c%c %c ",
+                            config.clkh, config.clkm, sec,
+                            clock_alarm ? 'C' : ' ', temp_alarm ? 'T' : ' ', lumin_alarm ? 'L' : ' ',
+                            config.alaf ? 'A' : 'a'
+                        );
+                        break;
+
+                    case 1:
+                        sprintf(buf, "%02d:%02d:%02d %02dC   ",
+                            max_temp.hour, max_temp.min, max_temp.sec,
+                                max_temp.temp
+                        );
+                        sprintf(buf + 14, "L%1d", max_temp.lumin);
+                        break;
+
+                    case 2:
+                        sprintf(buf, "%02d:%02d:%02d %02dC   ",
+                            max_lumin.hour, max_lumin.min, max_lumin.sec,
+                                max_lumin.temp
+                        );
+                        sprintf(buf + 14, "L%1d", max_lumin.lumin);
+                        break;
+
+                    default:
+                        break;
+                }
+                while (LCDbusy());
+                LCDstr(buf);
+
+                while (LCDbusy());
+                LCDpos(1, 0);
+                switch (curr_record) {
+                    case 0:
+                        sprintf(buf, "%02d oC           ", temp);
+                        sprintf(buf + 13, "L %1d", lumin);
+                        break;
+
+                    case 1:
+                        sprintf(buf, "%02d:%02d:%02d %02dC   ",
+                            min_temp.hour, min_temp.min, min_temp.sec,
+                                min_temp.temp
+                        );
+                        sprintf(buf + 14, "L%1d", min_temp.lumin);
+                        break;
+
+                    case 2:
+                        sprintf(buf, "%02d:%02d:%02d %02dC   ",
+                            min_lumin.hour, min_lumin.min, min_lumin.sec,
+                                min_lumin.temp
+                        );
+                        sprintf(buf + 14, "L%1d", min_lumin.lumin);
+                        break;
+
+                    default:
+                        break;
+
+                }
+                while (LCDbusy());
+                LCDstr(buf);
+            }
+
+            if (mode == 1) {
+
+            }
         }
 
     }
