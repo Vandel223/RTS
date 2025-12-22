@@ -1,0 +1,7 @@
+ROOT=.
+DEVICE_ID[/home/studio/workspace/tstCmdFreeRTOS]=Sw3j47laNl5kx3bV
+DEVICE_TYPE[/home/studio/workspace/tstCmdFreeRTOS]=connected
+TARGET=LPC1768
+TARGET_CODE=1010
+DEVICE_ID[/home/studio/workspace/Project_Gui]=Sw3j47laNl5kx3bV
+DEVICE_TYPE[/home/studio/workspace/Project_Gui]=connected

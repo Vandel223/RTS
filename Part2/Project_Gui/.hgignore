@@ -1,0 +1,9 @@
+^BUILD$
+^.mbed$
+^compile_commands.json$
+^.clangd$
+^.cache$
+^mbed$
+^MMA7660$
+^C12832$
+^LM75B$
