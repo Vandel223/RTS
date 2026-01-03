@@ -47,6 +47,8 @@ QueueHandle_t xQueueLCD;
 static SemaphoreHandle_t xMutexI2C;
 static SemaphoreHandle_t xSemphrRTC;
 
+//function to read the command line
+extern void monitor(void);
 
 /* GLOBAL ALARM SYSTEM VARIABLES */
 
@@ -82,6 +84,8 @@ PwmOut led_b(p25);
 //Buzzer queue
 QueueHandle_t xQueueBuzzer; // buzzer events
 
+//cmd queue
+QueueHandle_t xQueueCMD; //monitor -> function
 
 /*Temperature rgb led and alarm helpers */
 
@@ -128,6 +132,24 @@ void sendAlarmFlagsToLCD() {
     xQueueSend(xQueueLCD, &msg, 0);
 }
 
+
+
+/*---------------------------created by professor----------------------------------------------*/
+
+char* my_fgets (char* ln, int sz, FILE* f)
+{
+//  fgets(line, MAX_LINE, stdin);
+//  pc.gets(line, MAX_LINE);
+  int i; char c;
+  for(i=0; i<sz-1; i++) {
+      c = pc.getc();
+      ln[i] = c;
+      if ((c == '\n') || (c == '\r')) break;
+  }
+  ln[i] = '\0';
+
+  return ln;
+}
 
 
 
@@ -338,6 +360,32 @@ void vTaskLCD(void *pvParameters) {
     }
 }
 
+/*CMD task sender*/
+void vTaskCMDSend( void *pvParameters ) {
+int32_t lValueToSend;
+BaseType_t xStatus;
+    for( ;; ) {
+        lValueToSend = 201;
+        xStatus = xQueueSend( xQueue, &lValueToSend, 0 );
+        monitor(); //does not return
+    }
+}
+
+/*CMD task receiver*/
+void vTaskCMDReceive( void *pvParameters ) {
+int32_t lReceivedValue;
+BaseType_t xStatus;
+
+    printf("Hello from mbed -- FreeRTOS / cmd\n");
+    for( ;; ) {
+//        vTaskDelay( 1000 );
+        xStatus = xQueueReceive( xQueue, &lReceivedValue, 1000 );
+        if( xStatus == pdPASS ) {
+            printf( "Received = %d", lReceivedValue );
+        }
+    }
+}
+
 int main( void ) {
     /* Perform any hardware setup necessary. */
     BaseType_t xStatus;
@@ -358,6 +406,8 @@ int main( void ) {
     printf("Initializing Queues...\n");
     xQueueLCD = xQueueCreate(10, sizeof(LcdMsg));
     configASSERT(xQueueLCD != NULL);
+    xQueueCMD = xQueueCreate( 19, sizeof( int32_t ) ); //19 cmd commands
+    configASSERT(xQueueCMD != NULL);
     printf("Initializing Semaphores...\n");
     xMutexI2C = xSemaphoreCreateMutex();
     configASSERT(xMutexI2C != NULL);
@@ -381,6 +431,10 @@ int main( void ) {
     xStatus = xTaskCreate(vTaskAlarmClock, "Task Alarm", 2*configMINIMAL_STACK_SIZE, NULL, 4, NULL);
     configASSERT(xStatus == pdPASS);
     xStatus = xTaskCreate(vTaskBuzzer,    "Task Buzzer", 2*configMINIMAL_STACK_SIZE, NULL, 4, NULL);  
+    configASSERT(xStatus == pdPASS);
+    xStatus = xTaskCreate(vTaskCMDSend, "Task command line write", 2*configMINIMAL_STACK_SIZE, NULL, 1, NULL ); //check priority 
+    configASSERT(xStatus == pdPASS);
+    xStatus = xTaskCreate(vTaskCMDReceive,"Task command line read", 2*configMINIMAL_STACK_SIZE, NULL, 2, NULL ); //check priority 
     configASSERT(xStatus == pdPASS);
     /* Attach interruption to RTC every second */
     NVIC_SetPriority(RTC_IRQn, configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY); // make sure RTC_IRQn can be masked by FreeRTOS
