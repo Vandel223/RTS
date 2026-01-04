@@ -10,29 +10,7 @@
 #include "C12832.h"
 #include "MMA7660.h"
 #include "RTC.h"
-
-
-
-typedef enum {
-    MSG_TEMPERATURE     = 1,
-    MSG_BUBBLE_POS      = 2,
-    MSG_RTC             = 3,
-    MSG_HIT_BIT_        = 4,
-    MSG_ALARM_FLAGS     = 5
-} MsgKind;
-
-typedef struct {
-    MsgKind         kind;
-    union {
-        float       f32;
-        time_t      t32;
-        struct {
-            int16_t x;
-            int16_t y;
-        } coords;
-        uint32_t    u32;
-    } v;
-} LcdMsg;
+#include "msg.h"
 
 
 C12832 lcd(p5, p7, p6, p8, p11);
@@ -44,33 +22,20 @@ LM75B tempSensor(i2c);
 Serial pc(USBTX,USBRX);
 
 QueueHandle_t xQueueLCD;
+QueueHandle_t xQueueCMD;
+QueueHandle_t xQueueRTC;
+QueueHandle_t xQueueBuzzer; // buzzer events
+QueueHandle_t xQueueTemp;
+QueueHandle_t xQueueBubble;
+
 static SemaphoreHandle_t xMutexI2C;
 static SemaphoreHandle_t xSemphrRTC;
 
 //function to read the command line
 extern void monitor(void);
 
-/* GLOBAL ALARM SYSTEM VARIABLES */
 
-//Alarm clock
-
-static int alarm_hour   = 12;
-static int alarm_minute = 0;
-static int alarm_second = 0;
-static bool alarmClockEnabled = false;
 static SemaphoreHandle_t xSemphrAlarm;     // Alarm Task
-
-//Temperature Alarm
-
-static int pmon = 5;              // monitoring period
-static float tlow = 10.0f;
-static float thigh = 25.0f;
-static bool alarmTempEnabled = false;
-
-static float tmin = 1000.0f;
-static float tmax = -1000.0f;
-static time_t tmin_timestamp = 0;
-static time_t tmax_timestamp = 0;
 
 
 //configuration for sound status
@@ -81,11 +46,6 @@ PwmOut led_r(p24);   // not sure about the led positions, so we should check and
 PwmOut led_g(p23);
 PwmOut led_b(p25);
 
-//Buzzer queue
-QueueHandle_t xQueueBuzzer; // buzzer events
-
-//cmd queue
-QueueHandle_t xQueueCMD; //monitor -> function
 
 /*Temperature rgb led and alarm helpers */
 
@@ -121,7 +81,7 @@ void checkTemperatureAlarm(float temp) {
 }
 
 void sendAlarmFlagsToLCD() {
-    LcdMsg msg;
+    Msg msg;
     msg.kind = MSG_ALARM_FLAGS;
 
     msg.v.u32 =
@@ -134,7 +94,6 @@ void sendAlarmFlagsToLCD() {
 
 
 
-/*---------------------------created by professor----------------------------------------------*/
 
 char* my_fgets (char* ln, int sz, FILE* f)
 {
@@ -184,7 +143,8 @@ void vTaskAlarmClock(void *pvParameters) {
 
 /* RTC Task */
 void vTaskRTC(void *pvParameters) {
-    LcdMsg txMsg;
+    Msg txMsg;
+    Msg request; //message sent by cmd
     txMsg.kind = MSG_RTC;
 
     while (1) {
@@ -192,6 +152,29 @@ void vTaskRTC(void *pvParameters) {
         txMsg.v.t32 = time(NULL);
         xQueueSend(xQueueLCD, &txMsg, 0);
         sendAlarmFlagsToLCD();
+
+        if(xQueueReceive(xQueueRTC, &request, portMAX_DELAY) == pdPASS){
+            if(request.kind == MSG_CMD){
+                switch(request.cmdID){
+                    case 1:
+                        xQueueSend(xQueueCMD, &txMsg, 0); //send the time
+                        break;
+                    case 2: 
+                        // d=msg.v.date.d;
+                        // M=msg.v.date.M;
+                        // Y=msg.v.date.Y;
+                        //change date
+                        break;
+                    case 4:
+                        // h=msg.v.clock.h;
+                        // m=msg.v.clock.m;
+                        // s=msg.v.clock.s;
+                        //change clock
+                        break;
+                }
+                
+            }
+        }
     }
 }
 
@@ -199,7 +182,6 @@ void vTaskRTC(void *pvParameters) {
 /*Buzzer task (It will be used by the two alarms)*/
 
 PwmOut buzzer(p21);   // adjust to correct pin
-static int tala = 3;  // duration in seconds
 
 void vTaskBuzzer(void *pvParameters) {
     uint32_t event;
@@ -222,7 +204,8 @@ void vTaskBuzzer(void *pvParameters) {
 /* LM75B Temperature Sensor Task */
 void vTaskTemperature(void *pvParameters) {
     TickType_t xLastTime;
-    LcdMsg txMsg;
+    Msg txMsg;
+    Msg request;
     txMsg.kind = MSG_TEMPERATURE;
 
     //Initialize xLastTime
@@ -233,7 +216,7 @@ void vTaskTemperature(void *pvParameters) {
         xSemaphoreGive(xMutexI2C);
 
         if (!ok) error("[Temperature Task] LM75B Device not detected\n");
-        else printf("[Temperature Task] LM75B Device detected!\n");
+        //else printf("[Temperature Task] LM75B Device detected!\n");
     }
 
     while (1) {
@@ -258,6 +241,28 @@ void vTaskTemperature(void *pvParameters) {
             vTaskDelay(pdMS_TO_TICKS(200));
         else
             vTaskDelayUntil(&xLastTime, pdMS_TO_TICKS(pmon * 1000));
+
+
+        if(xQueueReceive(xQueueTemp, &request, portMAX_DELAY) == pdPASS){
+            if(request.kind == MSG_CMD && request.v.can_i_send == true){
+                switch(request.cmdID){
+                    case 5:
+                        xQueueSend(xQueueCMD, &txMsg, 0); //send the temp
+                        break;
+                    case 6: 
+                        Msg reply;
+                        reply.kind = MSG_TEMPERATURE;
+                        reply.v.i16x2.x=tmin;
+                        reply.v.i16x2.y=tmax;
+                        break;
+                    case 7:          
+                        tmin = 1000.0f;
+                        tmax = -1000.0f;
+                        break;
+                }
+                
+            }
+        }
     }
     
 }
@@ -265,7 +270,7 @@ void vTaskTemperature(void *pvParameters) {
 /* Bubble Leveler Task */
 void vTaskBubble(void *pvParameters) {
     TickType_t xLastTime;
-    LcdMsg txMsg;
+    Msg txMsg;
     txMsg.kind = MSG_BUBBLE_POS;
 
     //Initialize xLastTime
@@ -276,7 +281,7 @@ void vTaskBubble(void *pvParameters) {
         xSemaphoreGive(xMutexI2C);
 
         if (!ok) error("[Bubble Task] MMA7660 Device not detected\n");
-        else printf("[Bubble Task] MMA7660 Device detected!\n");
+        //else printf("[Bubble Task] MMA7660 Device detected!\n");
     }
 
     int16_t x = 0, y = 0;
@@ -294,8 +299,8 @@ void vTaskBubble(void *pvParameters) {
         if (y < -13) y = -13;
         else if (y > 13) y = 13;
 
-        txMsg.v.coords.x = x;
-        txMsg.v.coords.y = y;
+        txMsg.v.i16x2.x = x;
+        txMsg.v.i16x2.y = y;
         xQueueSend(xQueueLCD, &txMsg, 0);
         vTaskDelayUntil(&xLastTime, pdMS_TO_TICKS(100));
     }
@@ -304,7 +309,7 @@ void vTaskBubble(void *pvParameters) {
 
 /* LCD Resource Manager */
 void vTaskLCD(void *pvParameters) {
-    LcdMsg rxMsg;
+    Msg rxMsg;
 
     while (1) {
         /* Block until there is something to update */
@@ -318,7 +323,7 @@ void vTaskLCD(void *pvParameters) {
                 case MSG_BUBBLE_POS:
                     lcd.fillrect(95, 0, 127, 31, 0); // clear
                     lcd.rect(95, 0, 127, 31, 1);
-                    lcd.fillcircle(rxMsg.v.coords.x+111, rxMsg.v.coords.y+15, 3, 1); //draw bubble
+                    lcd.fillcircle(rxMsg.v.i16x2.x+111, rxMsg.v.i16x2.y+15, 3, 1); //draw bubble
                     lcd.circle(111, 15, 5, 1);
                     break;
 
@@ -361,27 +366,49 @@ void vTaskLCD(void *pvParameters) {
 }
 
 /*CMD task sender*/
-void vTaskCMDSend( void *pvParameters ) {
-int32_t lValueToSend;
-BaseType_t xStatus;
+void vTaskCMD( void *pvParameters ) {
+    Msg rxMsg;
     for( ;; ) {
-        lValueToSend = 201;
-        xStatus = xQueueSend( xQueue, &lValueToSend, 0 );
         monitor(); //does not return
-    }
-}
 
-/*CMD task receiver*/
-void vTaskCMDReceive( void *pvParameters ) {
-int32_t lReceivedValue;
-BaseType_t xStatus;
+        if ((xQueueReceive(xQueueCMD, &rxMsg, portMAX_DELAY) == pdPASS)) {
+            switch (rxMsg.kind) {
+                case MSG_TEMPERATURE:
+                    if(rxMsg.cmdID==5){
+                        printf("T(C) = %.3f\n", rxMsg.v.f32);
+                    }
+                    if(rxMsg.cmdID==6){
+                        printf("Tmax(C) = %.3f\n", rxMsg.v.i16x2.y);
+                        printf("Tmin(C) = %.3f\n", rxMsg.v.i16x2.x);
+                    }
+                    break;
 
-    printf("Hello from mbed -- FreeRTOS / cmd\n");
-    for( ;; ) {
-//        vTaskDelay( 1000 );
-        xStatus = xQueueReceive( xQueue, &lReceivedValue, 1000 );
-        if( xStatus == pdPASS ) {
-            printf( "Received = %d", lReceivedValue );
+                case MSG_BUBBLE_POS:
+                    break;
+
+                case MSG_HIT_BIT_:
+                    break;
+
+                case MSG_RTC:
+                    time_t t = rxMsg.v.t32;
+                    // conversion to secs, mins and hours
+                    uint32_t s = (uint32_t)(t % 86400);
+                    uint32_t hh = (s / 3600) % 24;
+                    uint32_t mm = (s / 60) % 60;
+                    uint32_t ss = s % 60;
+
+                    //falta a data
+
+                    printf("%d/%d/%d %02lu:%02lu:%02lu", rxMsg.v.date.d, rxMsg.v.date.M, rxMsg.v.date.Y, hh, mm, ss);
+                    break;
+
+                case MSG_ALARM_FLAGS: 
+                    break;
+
+                default:
+                    break;
+
+            }
         }
     }
 }
@@ -404,10 +431,12 @@ int main( void ) {
 
     /* Queue/Semaphore init */
     printf("Initializing Queues...\n");
-    xQueueLCD = xQueueCreate(10, sizeof(LcdMsg));
+    xQueueLCD = xQueueCreate(10, sizeof(Msg));
     configASSERT(xQueueLCD != NULL);
-    xQueueCMD = xQueueCreate( 19, sizeof( int32_t ) ); //19 cmd commands
-    configASSERT(xQueueCMD != NULL);
+    xQueueRTC = xQueueCreate(10, sizeof(Msg));
+    configASSERT(xQueueRTC != NULL);
+    xQueueTemp = xQueueCreate(10, sizeof(Msg));
+    configASSERT(xQueueTemp != NULL);
     printf("Initializing Semaphores...\n");
     xMutexI2C = xSemaphoreCreateMutex();
     configASSERT(xMutexI2C != NULL);
@@ -432,9 +461,7 @@ int main( void ) {
     configASSERT(xStatus == pdPASS);
     xStatus = xTaskCreate(vTaskBuzzer,    "Task Buzzer", 2*configMINIMAL_STACK_SIZE, NULL, 4, NULL);  
     configASSERT(xStatus == pdPASS);
-    xStatus = xTaskCreate(vTaskCMDSend, "Task command line write", 2*configMINIMAL_STACK_SIZE, NULL, 1, NULL ); //check priority 
-    configASSERT(xStatus == pdPASS);
-    xStatus = xTaskCreate(vTaskCMDReceive,"Task command line read", 2*configMINIMAL_STACK_SIZE, NULL, 2, NULL ); //check priority 
+    xStatus = xTaskCreate(vTaskCMD, "Task cmd", 2*configMINIMAL_STACK_SIZE, NULL, 1, NULL ); //check priority 
     configASSERT(xStatus == pdPASS);
     /* Attach interruption to RTC every second */
     NVIC_SetPriority(RTC_IRQn, configLIBRARY_MAX_SYSCALL_INTERRUPT_PRIORITY); // make sure RTC_IRQn can be masked by FreeRTOS

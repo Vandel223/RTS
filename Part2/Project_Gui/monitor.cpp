@@ -26,6 +26,17 @@ extern void cmd_rdt(int, char** );
 extern void cmd_sd(int, char** );
 extern void cmd_rc(int, char** );
 extern void cmd_sc(int, char** );
+extern void cmd_rt(int, char** );
+extern void cmd_rmm(int, char** );
+extern void cmd_cmm(int, char** );
+extern void cmd_rp(int, char** );
+extern void cmd_mmp(int, char** );
+extern void cmd_mta(int, char** );
+extern void cmd_rai(int, char** );
+extern void cmd_sac(int, char** );
+extern void cmd_sat(int, char** );
+extern void cmd_adac(int, char** );
+extern void cmd_adat(int, char** );
 /*-------------------------------------------------------------------------+
 | Variable and constants definition
 +--------------------------------------------------------------------------*/ 
@@ -46,6 +57,17 @@ struct  command_d {
   {cmd_sd,  "sd","<d> <M> <Y>        set date"},
   {cmd_rc,  "rc","                   read clock"},
   {cmd_sc,  "sc","<h> <m> <s>        set clock"},
+  {cmd_rt,  "rt","                   read temperature"},
+  {cmd_rmm, "rmm","                  read max and min of temperature"},
+  {cmd_cmm, "cmm","                  clear max and min of temperature"},
+  {cmd_rp,  "rp","                   read pmon and tala"},
+  {cmd_mmp, "mmp","<p>               modify monitoring period"},
+  {cmd_mta, "mta","<t>               modify time alarm"},
+  {cmd_rai, "rai","                  read alarm info"},
+  {cmd_sac, "sac","<h> <m> <s>       set alarm clock"},
+  {cmd_sat, "sat","<tl> <th>         set alarm temperature thresholds"},
+  {cmd_adac,"adac","<1/0>            activate/deactivate alarm clock"},
+  {cmd_adat,"adat","<1/0>            activate/deactivate alarm temp"}
 };
 
 #define NCOMMANDS  (sizeof(commands)/sizeof(struct command_d))
