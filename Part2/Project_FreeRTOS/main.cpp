@@ -481,6 +481,10 @@ void vTaskCMD( void *pvParameters ) {
 
     printf("%s Type sos for help\n", TitleMsg);
     for( ;; ) {
+        printf("\nCmd> "); fflush(stdout);
+        while (!pc.readable())
+            vTaskDelay(pdMS_TO_TICKS(100));
+        
         monitor(); //does not return
 
         while ((xQueueReceive(xQueueCMD, &rxMsg, pdMS_TO_TICKS(100)) == pdPASS)) {
@@ -535,11 +539,11 @@ int main( void ) {
 
     /* Task init */
     printf("Initializing Tasks...\n");
-    xStatus = xTaskCreate( vTaskTemperature, "Task Temp", 4*configMINIMAL_STACK_SIZE, NULL, 2, NULL );
+    xStatus = xTaskCreate( vTaskTemperature, "Task Temp", 4*configMINIMAL_STACK_SIZE, NULL, 3, NULL );
     configASSERT(xStatus == pdPASS);
     xStatus = xTaskCreate( vTaskBubble, "Task Bubb", 2*configMINIMAL_STACK_SIZE, NULL, 3, NULL );
     configASSERT(xStatus == pdPASS);
-    xStatus = xTaskCreate( vTaskHitBit, "Task HitBit", 2*configMINIMAL_STACK_SIZE, NULL, 3, NULL );
+    xStatus = xTaskCreate( vTaskHitBit, "Task HitBit", 2*configMINIMAL_STACK_SIZE, NULL, 2, NULL );
     configASSERT(xStatus == pdPASS);
     xStatus = xTaskCreate( vTaskLCD, "Task LCD", 2*configMINIMAL_STACK_SIZE, NULL, 5, NULL );
     configASSERT(xStatus == pdPASS);

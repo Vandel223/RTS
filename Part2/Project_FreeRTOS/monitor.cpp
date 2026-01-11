@@ -12,6 +12,11 @@
 #include <stdlib.h>
 #include <ctype.h>
 
+#include "mbed.h"
+#include "FreeRTOS.h"
+#include "FreeRTOSConfig.h"
+#include "task.h"
+
 /*-------------------------------------------------------------------------+
 | Headers of command functions
 +--------------------------------------------------------------------------*/ 
@@ -41,6 +46,8 @@ extern void cmd_adhb(int, char** );
 extern void cmd_adcs(int, char** );
 
 extern char* my_fgets (char*, int, FILE*);
+
+extern Serial pc;
 
 /*-------------------------------------------------------------------------+
 | Variable and constants definition
@@ -128,7 +135,6 @@ void monitor (void)
   static char *argv[ARGVECSIZE+1], *p;
   int argc, i;
 
-    printf("\nCmd> ");
     /* Reading and parsing command line  ----------------------------------*/
     if ((argc = my_getline(argv, ARGVECSIZE)) > 0) {
       for (p=argv[0]; *p != '\0'; *p=tolower(*p), p++);
